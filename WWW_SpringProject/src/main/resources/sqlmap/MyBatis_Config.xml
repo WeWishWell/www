@@ -10,6 +10,7 @@
 	<typeAlias type="com.wewishwell.shop.vo.BasketVO" alias="BasketVO"/>
 	<typeAlias type="com.wewishwell.shop.vo.ProdLikeVO" alias="ProdLikeVO"/>
 	<typeAlias type="com.wewishwell.shop.vo.ReviewVO" alias="ReviewVO"/>
+	<typeAlias type="com.wewishwell.shop.vo.ReviewlikeVO" alias="ReviewlikeVO"/>
 	<typeAlias type="com.wewishwell.shop.vo.EventBoardVO" alias="EventBoardVO"/>
 	<typeAlias type="com.wewishwell.shop.vo.EventReplyVO" alias="EventReplyVO"/>
 </typeAliases>
@@ -18,6 +19,7 @@
   <mapper resource="/sqlmap/mapper/Mapper.xml"/>
   <mapper resource="/sqlmap/mapper/product-mapper.xml"/>
   <mapper resource="/sqlmap/mapper/eventBoard-mapper.xml"/>
+  <mapper resource="/sqlmap/mapper/Review_Mapper.xml"/>
 </mappers>
 
 </configuration>
