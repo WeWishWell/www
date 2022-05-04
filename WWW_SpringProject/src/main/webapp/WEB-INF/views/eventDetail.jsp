@@ -74,7 +74,8 @@
 		<h5 style="margin-left: 30px;"><b>${data.title}</b></h5><br>
 		
 		<div style="margin:10px auto;">
-			<img src="resources/images/eventDetail_${data.seq}.png" style="width: 72rem;">
+			<%double s = Math.random();%>
+			<img src="resources/images/eventDetail_${data.seq}.png?a=<%=s%>" style="width: 72rem;">
 		</div>
 	</div>
 	<hr>

@@ -56,8 +56,9 @@
                 <tr>
                   <th scope="row" class="border-0">
                     <div class="p-2">
-						<a href="productDetail?id=${b.prod_id}" style="width: 100%; text-align: center; text-decoration: none;"> 
-	                      <img src="resources/images/pro_${b.prod_id}.png" alt="" width="70" class="img-fluid rounded shadow-sm">
+						<a href="productDetail?id=${b.prod_id}" style="width: 100%; text-align: center; text-decoration: none;">
+							<%double s = Math.random();%> 
+	                      <img src="resources/images/pro_${b.prod_id}.png?a=<%=s%>" alt="" width="70" class="img-fluid rounded shadow-sm">
 						</a>
                       <div class="ml-3 d-inline-block align-middle" style="padding-left: 20">
                         <h5 class="mb-0"> <a href="orderTracking?order_num=${b.order_num}" class="text-dark d-inline-block align-middle">${b.name}</a></h5>

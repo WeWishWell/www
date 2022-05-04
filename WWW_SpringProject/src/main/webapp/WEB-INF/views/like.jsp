@@ -39,7 +39,8 @@
                 <tr>
                   <th scope="row" class="border-0">
                     <div class="p-2">
-                      <img src="resources/images/pro_${b.id}.png" alt="" width="70" class="img-fluid rounded shadow-sm">
+                    	<%double s = Math.random();%>
+                      <img src="resources/images/pro_${b.id}.png?a=<%=s%>" alt="" width="70" class="img-fluid rounded shadow-sm">
                       <div class="ml-3 d-inline-block align-middle" style="padding-left: 20">
                         <h5 class="mb-0"> <a href="productDetail?id=${b.prod_id}" class="text-dark d-inline-block align-middle">${b.name}</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: ${b.category}</span>
                       </div>

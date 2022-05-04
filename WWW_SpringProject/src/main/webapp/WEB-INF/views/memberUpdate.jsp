@@ -15,9 +15,10 @@
 
 <script type="text/javascript">
 function check() {
-	const pw = document.form.pw;
-	const repw = document.form.repw;
-	const name = document.form.name;
+	const form = document.form;
+	const pw = form.pw;
+	const repw = form.repw;
+	const name = form.name;
 	
 	if(pw.value == '') {
 		alert('새 비밀번호를 입력해주세요.');
@@ -50,9 +51,6 @@ function checkDel() {
 	}
 }
 
-window.onload = function(){
-	document.getElementById('birthday').max = new Date().toISOString().substring(0, 10);
-}
 </script>
 
 </head>
@@ -68,7 +66,7 @@ window.onload = function(){
 				<span class="input-group-text" id="id-form">
 					아이디
 				</span>
-				<span class="form-control" name="id" aria-describedby="id-form">${requestScope.data.id}</span>
+				<input type="text" class="form-control" name="id" value="${requestScope.data.id}" readonly="readonly">
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="pw-form">
@@ -111,5 +109,8 @@ window.onload = function(){
 			</div>
 		</form>
 	</div>
+<script type="text/javascript">
+	document.getElementById('birthday').max = new Date().toISOString().substring(0, 10);
+</script>
 </body>
 </html>

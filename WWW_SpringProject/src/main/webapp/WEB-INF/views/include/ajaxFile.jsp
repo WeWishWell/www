@@ -13,12 +13,12 @@
     function handleImgFileSelect(e) {
         var files = e.target.files;
         var filesArr = Array.prototype.slice.call(files);
- 
         var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
  
         filesArr.forEach(function(f) {
             if (!f.type.match(reg)) {
                 alert("확장자는 이미지 확장자만 가능합니다.");
+                $('#file').val('');
                 return;
             }
  
@@ -27,7 +27,7 @@
             var reader = new FileReader();
             reader.onload = function(e) {
                 $("#img").attr("src", e.target.result);
-                $("#img").width('100px');
+                $("#img").width('200px');
             }
             reader.readAsDataURL(f);
         });
@@ -45,12 +45,15 @@
 	           , contentType : false
 	           , data : form
 	           , success:function(response) {
-	               alert("성공하였습니다.");
+	        	   console.log(response);
+	               //alert("사진 변경에 성공하였습니다.");
 	           }
 	           ,error: function (jqXHR) 
 	           { 
-	               alert(jqXHR.responseText); 
+	               //alert(jqXHR.responseText);
+	               alert("오류로 인해 사진 변경에 실패했습니다.");
 	           }
 	       });
 	}
+	
 </script>

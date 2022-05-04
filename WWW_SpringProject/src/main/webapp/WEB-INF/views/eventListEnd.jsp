@@ -24,7 +24,8 @@
 	<div class="row">
 	<c:forEach var="event" items="${data}">
 	<div class="card" style="width: 47%; margin: 0 1.5% 10px 1.5%; padding: 0;">
-		<a href="eventDetail?seq=${event.seq}"><img src="resources/images/event_${event.seq}.png" class="card-img-top" alt="..."></a>
+		<%double s = Math.random();%>
+		<a href="eventDetail?seq=${event.seq}"><img src="resources/images/event_${event.seq}.png?a=<%=s%>" class="card-img-top" alt="..."></a>
 		<div class="card-body">
 			<a href="eventDetail?seq=${event.seq}" class="card-title" style="font-size: 1.25rem;"><b>${event.title}</b></a>
 			<p class="card-text">${event.content}</p>

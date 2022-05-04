@@ -10,10 +10,6 @@
 <body>
 <input type="file" id="file" name="file"> <br><br>
 <button is="submitBtn" onclick="fn_submit();">전송</button>
-<div>
-	<div class="img_wrap">
-	    <img id="img"/>
-	</div>
-</div>
+<img id="img"/>
 </body>
 </html>

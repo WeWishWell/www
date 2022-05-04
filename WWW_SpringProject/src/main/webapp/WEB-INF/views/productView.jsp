@@ -123,8 +123,9 @@ ul li {list-style-type: none;}
 						<!--             <div class="card-header"> -->
 						<%--               <h4><b>${b.name}</b></h4> <h6>${b.price }</h6> --%>
 						<!--             </div> -->
-						<a href="productDetail?id=${b.id}" style="width: 100%; text-align: center;"> 
-							<img src="resources/images/pro_${b.id}.png" alt="Image" style="max-width: 100%;" />
+						<a href="productDetail?id=${b.id}" style="width: 100%; text-align: center;">
+							<%double s = Math.random();%>
+							<img src="resources/images/pro_${b.id}.png?a=<%=s%>" alt="Image" style="max-width: 100%;" />
 						</a>
 						<div class="card-body">
 							<h6>

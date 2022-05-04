@@ -24,7 +24,7 @@
 					if(check == 0) {
 						$('#prod').append(data[prodNum].name[index++]);
 						if(ImgCheck == 0) {
-							$('#prodImgDiv').html('<a href="productDetail?id='+data[prodNum].id+'"><img src="resources/images/pro_'+data[prodNum].id+'.png" alt="Image" id="prodImg" style="max-width: 100%; border-radius: 5px;"/></a>');
+							$('#prodImgDiv').html('<a href="productDetail?id='+data[prodNum].id+'"><img src="resources/images/pro_'+data[prodNum].id+'.png?a='+Math.random()+'" alt="Image" id="prodImg" style="max-width: 100%; border-radius: 5px;"/></a>');
 							$('#prodImgDiv').css('opacity', 1);
 							ImgCheck = 1;
 						}

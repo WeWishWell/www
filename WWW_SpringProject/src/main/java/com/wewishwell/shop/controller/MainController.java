@@ -17,13 +17,10 @@ import org.springframework.web.util.WebUtils;
 
 import com.wewishwell.shop.service.MainService;
 import com.wewishwell.shop.service.MemberService;
-import com.wewishwell.shop.service.ReviewService;
 import com.wewishwell.shop.vo.BasketVO;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProdLikeVO;
 import com.wewishwell.shop.vo.ProductVO;
-import com.wewishwell.shop.vo.ReviewVO;
-import com.wewishwell.shop.vo.ReviewlikeVO;
 
 @Controller
 public class MainController {
@@ -34,18 +31,10 @@ public class MainController {
 	@Autowired
 	MemberService mbs;
 	
-	@Autowired
-	ReviewService reviewservice;
-	
 	@GetMapping("test")
 	public String testing() {
 		return "test";
 	}
-	@GetMapping("test2")
-	public String testing2() {
-		return "test2";
-	}
-	
 	
 	@GetMapping("/")
 	public String index(HttpServletRequest req) {
@@ -95,7 +84,6 @@ public class MainController {
 	public ModelAndView getSearchList(@RequestParam Map<String,String> map) {
 		ModelAndView mav = new ModelAndView();
 		List<ProductVO> searchList = ms.getSearchList(map);
-		System.out.println(searchList);
 		mav.addObject("data", searchList);
 		mav.setViewName("productView");
 		return mav;
@@ -111,32 +99,14 @@ public class MainController {
 		if(id == null) {
 			id = "";
 		}
-		List<ReviewlikeVO> checkreviewnum = reviewservice.checkreviewnum(id);
 		ProdLikeVO plVO = new ProdLikeVO(productVO.getId(), id);
 		int check = ms.likeCheck(plVO);
-		List<ReviewVO> reviewlist = new ArrayList<ReviewVO>();
-		reviewlist = reviewservice.getreviewlist(productVO);
-		int cnt5star = reviewservice.cnt5star(productVO);
-		int cnt4star = reviewservice.cnt4star(productVO);
-		int cnt3star = reviewservice.cnt3star(productVO);
-		int cnt2star = reviewservice.cnt2star(productVO);
-		int cnt1star = reviewservice.cnt1star(productVO);
-		int cntreview = reviewservice.cntreview(productVO);	
-		Double avgreview = reviewservice.avgreview(productVO);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("likeCheck", check);
 		mav.addObject("data", productDetail); // request.setAttribute("data",list)
-		mav.addObject("review",reviewlist);
-		mav.addObject("cnt5star",cnt5star);
-		mav.addObject("cnt4star",cnt4star);
-		mav.addObject("cnt3star",cnt3star);
-		mav.addObject("cnt2star",cnt2star);
-		mav.addObject("cnt1star",cnt1star);
-		mav.addObject("cntreview",cntreview);
-		mav.addObject("avgreview", avgreview);
-		mav.addObject("checkreviewnum", checkreviewnum);
 		mav.setViewName("productDetail"); // list.jsp
-		
+
 		return mav;
 	}
 

@@ -177,7 +177,8 @@ h4 {
 <div class="card" style="margin: auto; width: 440px; height: 116px; font-family: GangwonEduHyeonokT_OTFMediumA;">
 	<div style="margin: auto 0;">
 		<div style="font-size: 25px; position: absolute; margin: 32px 0 0 100px;">상품명 : ${requestScope.prodata.name}</div>
-		<img alt="" style="width: 80px; margin-left: 10px;" src="resources/images/pro_${requestScope.prodata.id}.png">
+		<%double s = Math.random();%>
+		<img alt="" style="width: 80px; margin-left: 10px;" src="resources/images/pro_${requestScope.prodata.id}.png?a=<%=s%>">
 	</div>
 </div>
 <div class="card" style="text-align: center; margin: 10px auto; width: 440px; font-family: GangwonEduHyeonokT_OTFMediumA;">

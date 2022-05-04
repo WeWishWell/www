@@ -29,17 +29,6 @@ function pwtest() {
     var p1 = document.getElementById('pw').value;
     var p2 = document.getElementById('pw_re').value;
     var addr = document.form.addr.value;
-    const idCheck = '문자와 숫자의 조합은 필수입니다.';
-	
-    if(isNaN(document.querySelector('#id').value)) {
-    	if(document.querySelector('#id').value.replace(/\D/g,'') == '') {
-    		alert(idCheck);
-    		return;
-    	}
-    } else {
-    	alert(idCheck);
-    	return;
-    }
     
 	if(document.querySelector('#checkBtn').disabled == false) {
 		alert("ID중복 체크를 해주세요.");

@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wewishwell.shop.service.AdminService;
+import com.wewishwell.shop.service.EventService;
 import com.wewishwell.shop.service.MainService;
 import com.wewishwell.shop.service.MemberService;
-import com.wewishwell.shop.service.ReviewService;
 import com.wewishwell.shop.vo.BasketVO;
+import com.wewishwell.shop.vo.EventReplyVO;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProdLikeVO;
 import com.wewishwell.shop.vo.ProductVO;
 import com.wewishwell.shop.vo.ReviewVO;
-import com.wewishwell.shop.vo.ReviewlikeVO;
 
 @RestController
 public class AjaxController {
@@ -29,7 +30,10 @@ public class AjaxController {
 	MemberService mbs;
 	
 	@Autowired
-	ReviewService rvs;
+	EventService es;
+	
+	@Autowired
+	AdminService as;
 	
 	@PostMapping("loginCheck")
 	public int loginCheck(MemberVO vo) {
@@ -92,28 +96,43 @@ public class AjaxController {
 		return mbs.insertReview(vo);
 	}
 	
-	@GetMapping("insert_reviewlike")
-	public int insert_reviewlike(ReviewlikeVO reviewlikeVO) {
-		return rvs.Insert_like_review(reviewlikeVO);
+	@PostMapping("prodListForIndex")
+	public List<ProductVO> prodListForIndex() {
+		return ms.prodListForIndex();
 	}
-	@GetMapping("Increase_likeCNT")
-	public int Increase_likeCNT(ReviewVO vo) {
-		return rvs.Increase_likeCNT(vo);
+	
+	// reply
+	@PostMapping("/insertReply")
+	public List<EventReplyVO> insertReply(EventReplyVO vo) {
+		if(!vo.getContent().equals("")) {
+			es.insertReply(vo);
+		}
+		return es.selectReplyList(vo.getEvent_seq());
 	}
-	@GetMapping("Decrease_likeCNT")
-	public int Decrease_likeCNT(ReviewVO vo) {
-		return rvs.Decrease_likeCNT(vo);
+	
+	@PostMapping("/updateReply")
+	public int updateReply(EventReplyVO vo) {
+		return es.updateReply(vo);
 	}
-	@GetMapping("check_reviewLike")
-	public int check_reviewLike(ReviewlikeVO reviewlikeVO) {
-		return rvs.check_reviewLike(reviewlikeVO); 
+
+	@GetMapping("/deleteReply")
+	public int deleteReply(EventReplyVO vo) {
+		return es.deleteReply(vo);
 	}
-	@GetMapping("delete_reviewlike")
-	public int delete_reviewlike(ReviewlikeVO reviewlikeVO) {
-		return rvs.delete_reviewlike(reviewlikeVO);
+	
+	//ADMIN AJAX
+	@GetMapping("adminProdModify")
+	public ProductVO adminProdModify_getProdOne(String id) {
+		return as.getProdOne(id);
 	}
-	@GetMapping("update_reviewlike")
-	public int update_reviewlike(ReviewlikeVO reviewlikeVO) {
-		return rvs.update_reviewlikee(reviewlikeVO);
+	
+	@GetMapping("adminProdCreate")
+	public int adminProdCreate() {
+		return as.prodMaxNum();
+	}
+	
+	@GetMapping("adminProdDel")
+	public int deleteProd(String id) {
+		return as.deleteProd(id);
 	}
 }

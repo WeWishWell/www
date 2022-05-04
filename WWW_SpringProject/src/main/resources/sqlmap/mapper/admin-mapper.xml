@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+
+	<select id="prodMaxNum" resultType="_int">
+		<![CDATA[SELECT max(id) FROM product]]>
+	</select>
+	
+	<!-- 배송현황 MAPPER -->
+	<select id="getOrderList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[ select * from `order` WHERE 1 = 1 ]]>
+		<if test="searchKeyword != null and searchKeyword != ''">
+		<choose>
+		<when test="searchType == 'user_id' and searchKeyword == 'nonmember'"> And user_id = concat("", user_id*1) </when>
+		<otherwise> AND ${searchType} = #{searchKeyword} </otherwise>
+		</choose>
+		</if>
+		<if test="order_status != null and order_status != ''"> AND order_status = #{order_status} </if>
+		<if test="startDate != null and startDate != ''"> AND order_date >= cast(#{startDate} as date) </if>
+		<if test="endDate != null and endDate != ''">
+		<![CDATA[ AND order_date <= DATE_ADD(cast(#{endDate} as date), INTERVAL 1 DAY) ]]>
+		</if>
+		<![CDATA[ order by order_num DESC ]]>
+	</select>
+	
+	<update id="updateStatus">
+		<![CDATA[ update `order` set order_status = #{order_status}, lastModifiedAt = CURRENT_TIMESTAMP where order_num = #{order_num} ]]>
+	</update>
+	
+	<!-- 상품관리 MAPPER -->
+	<select id="getProd" resultType="productVO">
+		<![CDATA[SELECT id, name, price, disc, category FROM product]]>
+	</select>
+	
+	<select id="getProdOne" resultType="productVO">
+		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE id=#{id}]]>
+	</select>
+	
+	<update id="modifyProd">
+		<![CDATA[UPDATE product SET name=#{name}, price=#{price}, disc=#{disc}, category=#{category} WHERE id=#{id}]]>
+	</update>
+	
+	<insert id="createProd">
+		<![CDATA[INSERT INTO product (id, name, price, disc, category) VALUES (#{id}, #{name}, #{price}, #{disc}, #{category})]]>
+	</insert>
+	
+	<delete id="deleteProd">
+		<![CDATA[DELETE FROM product WHERE id=#{id}]]>
+	</delete>
+	
+	<select id="prodNameSrch" resultType="productVO">
+		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE name LIKE CONCAT('%',#{val},'%');]]>
+	</select>
+	
+	<select id="prodCateSrch" resultType="productVO">
+		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE category LIKE CONCAT('%',#{val},'%');]]>
+	</select>
+	
+		<!-- 회원리스트 -->
+	<select id="adminMemList" parameterType="hashmap" resultType="hashmap">
+    	<![CDATA[select * from members where 1=1 ]]>
+    	<if test="searchKeyword != null and searchKeyword != ''">
+					AND ${searchType} = #{searchKeyword}		
+		</if>
+		<if test="startDate != null and startDate != ''">
+			AND regdate >= cast(#{startDate} as date)
+		</if>
+		
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[ AND regdate <=  DATE_ADD(cast(#{endDate} as date), INTERVAL 1 DAY) ]]>
+		</if>
+		<![CDATA[
+			order by regdate DESC
+		]]>
+	</select>
+	
+	<!-- 회원삭제 -->
+	<delete id="adminMemDel" parameterType="MemberVO">
+		<![CDATA[delete from members where id=#{id}]]>
+	</delete>
+	
+	<!-- 리뷰리스트 -->
+	<select id="reviewList" parameterType="hashmap" resultType="hashmap">
+    	<![CDATA[select *, DATE_FORMAT(regdate, '%Y-%m-%d') as 'reDate' from review where 1=1 ]]>
+    	<if test="searchKeyword != null and searchKeyword != ''">
+					AND ${searchType} = #{searchKeyword}		
+		</if>
+		<if test="startDate != null and startDate != ''">
+			AND regdate >= cast(#{startDate} as date)
+		</if>
+		
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[ AND regdate <=  DATE_ADD(cast(#{endDate} as date), INTERVAL 1 DAY) ]]>
+		</if>
+		<![CDATA[
+			order by regdate DESC
+		]]>
+	</select>
+	
+	<!-- 리뷰삭제 -->
+	<delete id="reviewDel" parameterType="reviewVO">
+		<![CDATA[delete from review where num=#{num}]]>
+	</delete>
+	
+</mapper>

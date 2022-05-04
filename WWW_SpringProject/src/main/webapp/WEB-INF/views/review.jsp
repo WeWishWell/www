@@ -31,7 +31,8 @@ List<ReviewVO> reviews = (List<ReviewVO>)request.getAttribute("reviews");
 		for(ReviewVO rv : reviews) { 
 			i++;%>
 			<div class="card rounded-0" style="width: 240px; padding: 0; margin: 0 40px 20px 0;">
-			  <img src="resources/images/pro_<%=rv.getProd_id()%>.png" alt="img">
+				<%double s = Math.random();%>
+			  <img src="resources/images/pro_<%=rv.getProd_id()%>.png?a=<%=s%>" alt="img">
 			  <div class="card-body">
 			    <h5 class="card-title"><b><%=rv.getTitle()%></b></h5>
 			    <p><b><%=rv.getProd_name()%></b></p>

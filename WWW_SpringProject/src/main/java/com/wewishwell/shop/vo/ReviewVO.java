@@ -10,12 +10,11 @@ public class ReviewVO {
 	private String title;
 	private String content;
 	private String regdate;
-	private int like;
+	
 	public ReviewVO() {}
 
-
 	public ReviewVO(int num, int prod_id, String prod_name, String user_id, double star, String title, String content,
-			String regdate, int like) {
+			String regdate) {
 		super();
 		this.num = num;
 		this.prod_id = prod_id;
@@ -25,9 +24,7 @@ public class ReviewVO {
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
-		this.like = like;
 	}
-
 
 	public int getNum() {
 		return num;
@@ -93,23 +90,10 @@ public class ReviewVO {
 		this.regdate = regdate;
 	}
 
-
-	public int getLike() {
-		return like;
-	}
-
-
-	public void setLike(int like) {
-		this.like = like;
-	}
-
-
 	@Override
 	public String toString() {
 		return "ReviewVO [num=" + num + ", prod_id=" + prod_id + ", prod_name=" + prod_name + ", user_id=" + user_id
-				+ ", star=" + star + ", title=" + title + ", content=" + content + ", regdate=" + regdate + ", like="
-				+ like + "]";
+				+ ", star=" + star + ", title=" + title + ", content=" + content + ", regdate=" + regdate + "]";
 	}
-
 
 }

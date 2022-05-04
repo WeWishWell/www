@@ -125,7 +125,7 @@ public class MemberController {
 			mav.setViewName("redirect:/memberDetail?id="+vo.getId());
 			/* System.out.println("@회원정보수정 성공"); */
 		}else {
-			mav.setViewName("redirect:/memberUpdate?id="+vo.getId());
+			mav.setViewName("memberUpdate");
 			/* System.out.println("@회원정보수정 실패"); */
 		}
 		return mav;

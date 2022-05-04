@@ -167,7 +167,4 @@
 		<![CDATA[SELECT name, id FROM product]]>
 	</select>
 	
-	<select id="prodAINum" resultType="_int">
-		<![CDATA[SELECT auto_increment FROM sys.schema_auto_increment_columns WHERE table_schema='shop' AND table_name='product']]>
-	</select>
 </mapper>
