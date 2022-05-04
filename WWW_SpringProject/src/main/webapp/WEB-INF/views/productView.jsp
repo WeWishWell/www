@@ -147,34 +147,33 @@ ul li {list-style-type: none;}
 <script type="text/javascript">
 var category = '${category}'
 console.log(category);
-	if(category == 'all') {
+	if(category == 'all' || category == '') {
 		document.querySelector('#category1').className = 'on'
 		document.querySelector('#category1_image').src = 'resources/images/icon_cate015001_on.png'
-	}else {
-	 	if('${data[0].category}' == '스킨,미스트'){
+	}else if(category == '스킨,미스트'){
 	 		document.querySelector('#category2').className = 'on'
 	 		document.querySelector('#category2_image').src = 'resources/images/icon_cate015001001_on.png'
-		}else if('${data[0].category}' == '세럼,에센스'){
+	}else if(category == '세럼,에센스'){
 			document.querySelector('#category3').className = 'on'
 			document.querySelector('#category3_image').src = 'resources/images/icon_cate015001002_on.png'
 			
-		}else if('${data[0].category}' == '로션,크림'){
+	}else if(category == '로션,크림'){
 			document.querySelector('#category4').className = 'on'
 			document.querySelector('#category4_image').src = 'resources/images/icon_cate015001003_on.png'
-		}else if('${data[0].category}' == '마스크,패드,마사지'){
+	}else if(category == '마스크,패드,마사지'){
 			document.querySelector('#category5').className = 'on'
 			document.querySelector('#category5_image').src = 'resources/images/icon_cate015001004_on.png'
-		}else if('${data[0].category}' == '선케어'){
+	}else if(category == '선케어'){
 			document.querySelector('#category6').className = 'on'
 			document.querySelector('#category6_image').src = 'resources/images/icon_cate015001005_on.png'
-		}else if('${data[0].category}' == '클렌징'){
+	}else if(category == '클렌징'){
 			document.querySelector('#category7').className = 'on'
 			document.querySelector('#category7_image').src = 'resources/images/icon_cate015001007_on.png'
-		}else{
+	}else{
 			document.querySelector('#category1').className = 'on'
 			document.querySelector('#category1_image').src = 'resources/images/icon_cate015001_on.png'
-		}
 	}
+	
  
 </script>
 

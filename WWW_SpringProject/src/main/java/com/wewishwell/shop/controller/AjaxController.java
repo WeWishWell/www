@@ -13,12 +13,14 @@ import com.wewishwell.shop.service.AdminService;
 import com.wewishwell.shop.service.EventService;
 import com.wewishwell.shop.service.MainService;
 import com.wewishwell.shop.service.MemberService;
+import com.wewishwell.shop.service.ReviewService;
 import com.wewishwell.shop.vo.BasketVO;
 import com.wewishwell.shop.vo.EventReplyVO;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProdLikeVO;
 import com.wewishwell.shop.vo.ProductVO;
 import com.wewishwell.shop.vo.ReviewVO;
+import com.wewishwell.shop.vo.ReviewlikeVO;
 
 @RestController
 public class AjaxController {
@@ -34,6 +36,9 @@ public class AjaxController {
 	
 	@Autowired
 	AdminService as;
+	
+	@Autowired
+	ReviewService rvs;
 	
 	@PostMapping("loginCheck")
 	public int loginCheck(MemberVO vo) {
@@ -134,5 +139,29 @@ public class AjaxController {
 	@GetMapping("adminProdDel")
 	public int deleteProd(String id) {
 		return as.deleteProd(id);
+	}
+	@GetMapping("insert_reviewlike")
+	public int insert_reviewlike(ReviewlikeVO reviewlikeVO) {
+		return rvs.Insert_like_review(reviewlikeVO);
+	}
+	@GetMapping("Increase_likeCNT")
+	public int Increase_likeCNT(ReviewVO vo) {
+		return rvs.Increase_likeCNT(vo);
+	}
+	@GetMapping("Decrease_likeCNT")
+	public int Decrease_likeCNT(ReviewVO vo) {
+		return rvs.Decrease_likeCNT(vo);
+	}
+	@GetMapping("check_reviewLike")
+	public int check_reviewLike(ReviewlikeVO reviewlikeVO) {
+		return rvs.check_reviewLike(reviewlikeVO); 
+	}
+	@GetMapping("delete_reviewlike")
+	public int delete_reviewlike(ReviewlikeVO reviewlikeVO) {
+		return rvs.delete_reviewlike(reviewlikeVO);
+	}
+	@GetMapping("update_reviewlike")
+	public int update_reviewlike(ReviewlikeVO reviewlikeVO) {
+		return rvs.update_reviewlikee(reviewlikeVO);
 	}
 }
