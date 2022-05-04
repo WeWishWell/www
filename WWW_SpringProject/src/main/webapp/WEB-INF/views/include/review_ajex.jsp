@@ -150,7 +150,6 @@
 					rs = data;
 					return 
 				}else if(data == -1){
-					console.log('좋아요를 눌렀는데 싫어요가 이미 눌러져 있을 때')
 					rs = data;
 					return 
 				}
@@ -197,7 +196,6 @@
 					rs = data;
 					return 
 				}else if(data == 1){
-					console.log('싫어요를 눌렀는데 좋아요가 이미 눌러져 있을 때')
 					rs = data;
 					return 
 				}
@@ -248,4 +246,27 @@
 			}
 		});
 	}
+	function checkreviewcnt(number){
+		const num = document.querySelector('#reviewnum'+number).innerText;
+		const id = '${sessionScope.data}';
+		let rs = null;
+		$.ajax({
+			type: 'GET',
+			url : 'checkreviewcnt',
+			dataType : 'json',
+			async: false,
+			data:{num: num, id: id},
+			success: function(data){
+				if(data == 1 ) {
+					rs = data;
+					return 
+				}
+			},
+			error: function (request, status, error) {
+				console.log(request, status, error);
+			}
+		});
+		return rs;
+	}
+	
 </script>

@@ -86,4 +86,10 @@
 		update review_like set review_like.like = #{like} where num = #{num} and id = #{id};
 		]]>
 	</update>
+	
+	<select id="checkreviewcnt" parameterType="ReviewlikeVO" resultType="int">
+		<![CDATA[
+			select count(`like`) from review_like where num= #{num} and id = ${id};
+		]]>
+	</select>
 </mapper>

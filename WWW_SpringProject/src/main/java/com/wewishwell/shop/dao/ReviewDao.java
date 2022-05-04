@@ -76,4 +76,8 @@ public class ReviewDao {
 		return sst.update("review.update_reviewlike", reviewlikeVO);
 	}
 
+	public int checkreviewcnt(ReviewlikeVO reviewlikeVO) {
+		return sst.selectOne("review.checkreviewcnt", reviewlikeVO);
+	}
+
 }

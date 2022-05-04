@@ -41,4 +41,6 @@ public interface ReviewService {
 
 	public int update_reviewlikee(ReviewlikeVO reviewlikeVO);
 
+	public int checkreviewcnt(ReviewlikeVO reviewlikeVO);
+
 }

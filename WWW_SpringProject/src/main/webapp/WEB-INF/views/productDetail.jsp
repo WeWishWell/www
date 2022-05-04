@@ -104,17 +104,20 @@
 		
 	}
 	function check_member_likereview(number){
-		var chkrs = check_reviewLike(number);
-		if(chkrs ==1){
-			//이미 좋아요를 눌렀을 때
-			delete_reviewlike(number);
-			Decrease_likeCNT(number);
-			likeclick(number);
-		}else if(chkrs == -1){
-			//좋아요를 눌렀는데 싫어요가 이미 눌러져 있을 때
-			modify_unlike2like(number);
-			Modify_un2likeCNT(number);
-			likeclick(number);
+		var chklikecnt = checkreviewcnt(number);
+		if(chklikecnt == 1){
+			var chkrs = check_reviewLike(number);
+			if(chkrs ==1){
+				//이미 좋아요를 눌렀을 때
+				delete_reviewlike(number);
+				Decrease_likeCNT(number);
+				likeclick(number);
+			}else if(chkrs == -1){
+				//좋아요를 눌렀는데 싫어요가 이미 눌러져 있을 때
+				modify_unlike2like(number);
+				Modify_un2likeCNT(number);
+				likeclick(number);
+			}
 		}else{
 			//처음 좋아요를 누를 때
 			//좋아요 누른걸 넣어주고 review의 like 값을 올려줘야한다.
@@ -124,17 +127,20 @@
 		}
 	}
 	function check_member_Unlikereview(number){
-		var chkrs = check_review_unLike(number);
-		if(chkrs ==-1){
-			//이미 싫어요를 눌렀을 때
-			Increase_likeCNT(number);
-			delete_reviewlike(number);
-			unlikeclick(number);
-		}else if(chkrs == 1){
-			//싫어요를 눌렀는데 좋아요가 이미 눌러져 있을 때
-			modify_like2unlike(number);
-			Modify_li2unlikeCNT(number);
-			unlikeclick(number);
+		var chklikecnt = checkreviewcnt(number);
+		if(chklikecnt == 1){
+			var chkrs = check_review_unLike(number);
+			if(chkrs ==-1){
+				//이미 싫어요를 눌렀을 때
+				Increase_likeCNT(number);
+				delete_reviewlike(number);
+				unlikeclick(number);
+			}else if(chkrs == 1){
+				//싫어요를 눌렀는데 좋아요가 이미 눌러져 있을 때
+				modify_like2unlike(number);
+				Modify_li2unlikeCNT(number);
+				unlikeclick(number);
+			}	
 		}else{
 			//처음 싫어요를 누를 때
 			//싫어요 누른걸 넣어주고 review의 like 값을 내려줘야한다.

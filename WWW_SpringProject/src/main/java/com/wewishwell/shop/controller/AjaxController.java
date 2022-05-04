@@ -164,4 +164,8 @@ public class AjaxController {
 	public int update_reviewlike(ReviewlikeVO reviewlikeVO) {
 		return rvs.update_reviewlikee(reviewlikeVO);
 	}
+	@GetMapping("checkreviewcnt")
+	public int checkreviewcnt(ReviewlikeVO reviewlikeVO) {
+		return rvs.checkreviewcnt(reviewlikeVO);
+	}
 }

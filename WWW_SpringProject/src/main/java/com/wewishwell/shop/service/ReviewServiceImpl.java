@@ -97,5 +97,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return dao.update_reviewlike(reviewlikeVO);
 	}
 
+	@Override
+	public int checkreviewcnt(ReviewlikeVO reviewlikeVO) {
+		return dao.checkreviewcnt(reviewlikeVO);
+	}
+
 
 }
