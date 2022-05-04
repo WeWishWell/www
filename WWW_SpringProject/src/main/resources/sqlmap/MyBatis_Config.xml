@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<typeAliases>
+	<typeAlias type="com.wewishwell.shop.vo.ProductVO" alias="productVO"/>
+	<typeAlias type="com.wewishwell.shop.vo.MemberVO" alias="MemberVO"/>
+	<typeAlias type="com.wewishwell.shop.vo.BasketVO" alias="BasketVO"/>
+	<typeAlias type="com.wewishwell.shop.vo.ProdLikeVO" alias="ProdLikeVO"/>
+	<typeAlias type="com.wewishwell.shop.vo.ReviewVO" alias="ReviewVO"/>
+	<typeAlias type="com.wewishwell.shop.vo.EventBoardVO" alias="EventBoardVO"/>
+	<typeAlias type="com.wewishwell.shop.vo.EventReplyVO" alias="EventReplyVO"/>
+</typeAliases>
+
+<mappers>
+  <mapper resource="/sqlmap/mapper/Mapper.xml"/>
+  <mapper resource="/sqlmap/mapper/product-mapper.xml"/>
+  <mapper resource="/sqlmap/mapper/eventBoard-mapper.xml"/>
+</mappers>
+
+</configuration>

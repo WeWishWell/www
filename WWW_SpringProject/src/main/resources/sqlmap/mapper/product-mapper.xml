@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+	<select id="product_list" resultType="ProductVO">  
+		<![CDATA[  
+			select  *  
+			from  product  
+			where 1 = 1
+		]]>
+		<if test="category != 'all'" >
+		and category = #{category}
+		</if>
+		<![CDATA[
+		order by id desc;
+		]]>
+	</select>
+	
+	
+	<select id="product_detail" resultType="ProductVO">  
+		<![CDATA[  
+			select *
+			from product
+			where id = #{id}
+		]]>
+	</select>
+	
+	<select id="checkBasket" parameterType="BasketVO" resultType="BasketVO">
+		<![CDATA[
+			select * from basket
+			where prod_id = #{prod_id} and user_id = #{user_id}		
+		]]>
+	</select>
+	
+	<insert id="addBasket" parameterType="BasketVO">
+    	<![CDATA[  
+    		insert into basket (prod_id, user_id, cnt)
+			values (#{prod_id}, #{user_id}, #{cnt})		
+	    ]]>  
+	</insert>
+	
+	<update id="updateBasket" parameterType="BasketVO">
+		<![CDATA[
+			update basket 
+			set cnt = cnt + #{cnt}
+			where prod_id = #{prod_id} and user_id = #{user_id}		
+		]]>
+	</update>
+	
+	<delete id="deleteBasket" parameterType="BasketVO">
+		<![CDATA[
+			delete from basket where 1 = 1
+		]]>
+			<if test="prod_id != 0">
+				and prod_id = #{prod_id} 
+			</if>
+		<![CDATA[
+			and user_id = #{user_id}		
+		]]>
+	</delete>
+	
+	<select id="basketList" parameterType="memberVO" resultType="hashmap">  
+	<![CDATA[  
+		select b.user_id, b.prod_id, p.name, p.price, b.cnt, p.category
+		from basket b
+		left join product p
+		on b.prod_id = p.id
+		where b.user_id=#{id}
+	]]>
+	</select>
+
+	<select id="orderInfo" parameterType="memberVO" resultType="hashmap">  
+	<![CDATA[  
+		select o.*, m.name as "user_name", m.address
+		from (select b.user_id, p.name as "prod_name", GROUP_CONCAT(b.prod_id) AS "product", sum(b.cnt) as ttl_cnt, sum(cnt*price) as "amount"
+				from basket b
+				left join product p
+				on b.prod_id=p.id
+				where user_id=#{id}) o
+		left join members m
+		on o.user_id=m.id;
+	]]>
+	</select>
+	
+	<select id="likeList" resultType="hashmap">
+		<![CDATA[SELECT p.id, p.name, p.price, p.category FROM prod_like pl, product p WHERE p.id = pl.prod_id and user_id=#{id};]]>
+	</select>
+	
+	<delete id="deleteLike">
+		<![CDATA[DELETE FROM prod_like WHERE prod_id=#{prod_id} AND user_id=#{user_id}]]>
+	</delete>
+	
+	<select id="buyList" resultType="hashmap">
+		<![CDATA[SELECT b.order_num, order_detail_num odm, prod_id, name, price, order_date, order_status FROM order_detail od, (SELECT order_num, id, name, price, order_date, order_status FROM product p, (SELECT o.order_num, order_date, order_status, prod_id FROM `order` o, order_detail od WHERE o.order_num = od.order_num AND user_id=#{id}) a WHERE p.id=a.prod_id) b WHERE od.order_num = b.order_num AND od.prod_id = b.id order by order_date desc]]>
+	</select>
+	
+	<delete id="delReview">
+		<![CDATA[DELETE FROM review WHERE num=#{odm}]]>
+	</delete>
+	
+	<select id="getproductList" resultType="hashmap">
+		<![CDATA[
+		SELECT id,name, price,category from product where id=#{id};
+		]]>
+	</select>
+		<select id="getSearchList" parameterType="hashmap" resultType="ProductVO">
+	<![CDATA[  
+		select  * 
+		from  product  
+		where 1 = 1  
+	]]>  
+	<if test="keyword != null and keyword != ''">  
+		and (name like CONCAT('%',#{keyword},'%') 
+		or category like CONCAT('%',#{keyword},'%')
+		or replace(name,' ','') like CONCAT('%',#{keyword},'%')
+		or replace(category,' ','') like CONCAT('%',#{keyword},'%'))  
+	</if>  
+
+	</select>
+	
+	<insert id="insertOrder">
+		<![CDATA[
+			insert into `order`(user_id, receiver_address, receiver_name, receiver_phone, payment) 
+			VALUES(#{user_id}, #{receiver_address}, #{receiver_name}, #{receiver_phone}, #{paymentMethod})
+		]]>
+	</insert>
+	
+	<select id="selectOrderNum" resultType="_int">
+		<![CDATA[
+			select max(order_num) as order_num 
+			from `order` o  
+			where user_id=#{user_id}
+		]]>
+	</select>
+	
+	<insert id="insertOrderList">
+		<![CDATA[
+			insert into order_detail(order_num, prod_id, prod_cnt)
+			select o.order_num, b.prod_id, b.cnt 
+			from (select order_num, user_id from `order` o  where order_num=#{order_num}) o
+			left join basket b 
+			on o.user_id=b.user_id;
+		]]>
+	</insert>
+	
+	<insert id="insertOrderDetailOne">
+		<![CDATA[
+			insert into order_detail(order_num, prod_id, prod_cnt)
+			values (#{order_num}, #{prod_id}, #{prod_cnt})
+		]]>
+	</insert>
+	
+	<select id="getOrderList" resultType="hashmap">
+		<![CDATA[
+			select oi.*, p.name, p.price, p.category
+			from (select o.*, od.prod_id, od.prod_cnt
+					from `order` o left join order_detail od
+					on o.order_num = od.order_num
+					where o.order_num=#{order_num}) oi
+			left join product p
+			on oi.prod_id = p.id;
+		]]>
+	</select>
+	
+	<select id="prodListForIndex" resultType="productVO">
+		<![CDATA[SELECT name, id FROM product]]>
+	</select>
+	
+	<select id="prodAINum" resultType="_int">
+		<![CDATA[SELECT auto_increment FROM sys.schema_auto_increment_columns WHERE table_schema='shop' AND table_name='product']]>
+	</select>
+</mapper>

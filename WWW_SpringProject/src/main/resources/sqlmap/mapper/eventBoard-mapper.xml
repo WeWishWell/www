@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="event">
+
+	<select id="boardListWinner" resultType="EventBoardVO">  
+	<![CDATA[  
+		select  *  
+		from event_board
+		where category = '[당첨자발표]'	
+		order by seq desc  
+	]]>
+	</select>
+
+	<select id="boardListEnd" resultType="EventBoardVO">  
+	<![CDATA[  
+		select  *  
+		from event_board
+		where category = '[종료이벤트]'	
+		order by seq desc  
+	]]>
+	</select>
+
+	<select id="boardSearch" parameterType="map" resultType="EventBoardVO">
+	<![CDATA[  
+		select  *  
+		from event_board
+		where ${searchType} like concat('%',#{keyword},'%') 
+		and category = '[당첨자발표]'
+		order by seq desc
+	]]>
+	</select>
+
+	<select id="boardListOn" resultType="EventBoardVO">  
+	<![CDATA[  
+		select  *  
+		from event_board
+		where category = '[진행이벤트]'	
+		order by seq desc
+	]]>
+	</select>
+	
+	<select id="eventDetailWinner" resultType="EventBoardVO">  
+	<![CDATA[
+		select seq, title, writer, content, regdate, category
+		from event_board
+		where seq = #{seq}
+	]]>
+	</select>
+
+	<select id="eventDetail" resultType="EventBoardVO">  
+	<![CDATA[
+		select seq, title, writer, content, regdate, category
+		from event_board
+		where seq = #{seq}
+	]]>
+	</select>
+
+	<insert id="insertBoard" parameterType="EventBoardVO">
+		<![CDATA[
+			insert into event_board (seq, title, writer, content, category)
+			values ((select max(seq)+1 from event_board e), #{title}, #{writer}, #{content}, #{category})
+		]]>
+	</insert>
+
+	<update id="updateBoard" parameterType="EventBoardVO">
+		<![CDATA[
+			update event_board 
+			set title = #{title}, writer = #{writer}, content = #{content}, category = #{category}
+			where seq = #{seq}
+		]]>
+	</update>
+
+	<delete id="deleteBoard" parameterType="EventBoardVO">
+		<![CDATA[
+			delete from event_board 
+			where seq = #{seq}
+		]]>
+	</delete>
+
+
+<!-- reply mapper -->
+	<insert id="insertReply" parameterType="EventReplyVO">
+		<![CDATA[
+			insert into event_reply (user_id, event_seq, content)
+			values (#{user_id}, #{event_seq}, #{content})
+		]]>
+	</insert>
+
+	<update id="updateReply" parameterType="EventReplyVO">
+		<![CDATA[
+			update event_reply
+			set content = #{content}
+			where reply_num = #{reply_num}
+		]]>
+	</update>
+
+	<delete id="deleteReply" parameterType="EventReplyVO">
+		<![CDATA[
+			delete from event_reply
+			where reply_num = #{reply_num}
+		]]>
+	</delete>
+	
+	<select id="selectReplyList" parameterType="int" resultType="EventReplyVO">
+		<![CDATA[
+			select * 
+			from event_reply
+			where event_seq = #{event_seq}
+			order by reply_num desc
+		]]>
+	</select>
+
+	<select id="selectReplyCnt" parameterType="int" resultType="int">
+		<![CDATA[
+			select count(*)
+			from event_reply
+			where event_seq = #{event_seq}
+		]]>	
+	</select>
+
+</mapper>
