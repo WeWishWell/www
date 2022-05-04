@@ -11,6 +11,7 @@ import com.wewishwell.shop.vo.BasketVO;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProdLikeVO;
 import com.wewishwell.shop.vo.ProductVO;
+import com.wewishwell.shop.vo.ReviewVO;
 
 @Repository
 public class MainDao {
@@ -114,12 +115,7 @@ public class MainDao {
 		return sst.selectList("product.getOrderList", order);
 	}
 
-	public List<ProductVO> prodListForIndex() {
-		return sst.selectList("product.prodListForIndex");
-	}
-	
-	public int prodAINum() {
-		return sst.selectOne("product.prodAINum");
-	}
+
+
 	
 }

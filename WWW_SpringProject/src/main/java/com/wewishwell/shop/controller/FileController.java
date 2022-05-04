@@ -5,24 +5,21 @@ import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.wewishwell.shop.service.MainService;
-
 @Controller
 public class FileController {
-	
-	@Autowired
-	MainService ms;
 	
 	@PostMapping("fileUpload")
 	public String testing(@RequestParam("file") MultipartFile multi, Model model, HttpServletRequest request) {
         try {
+        	 
+            //String uploadpath = request.getServletContext().getRealPath(path);
+            //String uploadpath = "/Users/jeongjinhee/bigdata0214/SpringProjectJ/src/main/webapp/resources/images";
             String uploadpath = request.getSession().getServletContext().getRealPath("resources/images");
             String originFilename = multi.getOriginalFilename();
             String extName = originFilename.substring(originFilename.lastIndexOf("."),originFilename.length());
@@ -37,8 +34,7 @@ public class FileController {
             
             if(!multi.isEmpty())
             {
-                //File file = new File(uploadpath, multi.getOriginalFilename());
-                File file = new File(uploadpath, "pro_"+ms.prodAINum()+".png");
+                File file = new File(uploadpath, multi.getOriginalFilename());
                 multi.transferTo(file);
                 
                 model.addAttribute("filename", multi.getOriginalFilename());

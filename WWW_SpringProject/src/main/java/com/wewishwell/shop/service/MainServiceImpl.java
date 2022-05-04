@@ -11,6 +11,7 @@ import com.wewishwell.shop.vo.BasketVO;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProdLikeVO;
 import com.wewishwell.shop.vo.ProductVO;
+import com.wewishwell.shop.vo.ReviewVO;
 
 @Service
 public class MainServiceImpl implements MainService{
@@ -128,14 +129,6 @@ public class MainServiceImpl implements MainService{
 		return dao.getOrderList(order);
 	}
 
-	@Override
-	public List<ProductVO> prodListForIndex() {
-		return dao.prodListForIndex();
-	}
 
-	@Override
-	public int prodAINum() {
-		return dao.prodAINum();
-	}
 	
 }

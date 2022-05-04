@@ -7,6 +7,7 @@ import com.wewishwell.shop.vo.BasketVO;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProdLikeVO;
 import com.wewishwell.shop.vo.ProductVO;
+import com.wewishwell.shop.vo.ReviewVO;
 
 public interface MainService {
 
@@ -53,8 +54,6 @@ public interface MainService {
 	public List<Map<String, Object>> getOrderList(Map<String, Object> order);
 
 	public int insertOrderDetailOne(Map<String, Object> order);
+
 	
-	public List<ProductVO> prodListForIndex();
-	
-	public int prodAINum();
 }
