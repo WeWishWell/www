@@ -168,4 +168,10 @@ public class AjaxController {
 	public int checkreviewcnt(ReviewlikeVO reviewlikeVO) {
 		return rvs.checkreviewcnt(reviewlikeVO);
 	}
+	
+	// === 배송상태 변경
+	@PostMapping("updateStatus")
+	public int updateStatus(@RequestParam Map<String, Object> updateStatus) {
+		return as.updateStatus(updateStatus);
+	}
 }
