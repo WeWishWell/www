@@ -29,14 +29,14 @@
 	      <th scope="col">날짜</th>
 	    </tr>
 	  <tbody>
-	    <c:forEach var="event" items="${data}">
+    	<c:forEach var="event" items="${data}">
 			<tr>
 				<td>${event.seq}</td>
 				<td>${event.category}</td>
-				<td><a href="eventDetailWinner?seq=${event.seq}">${event.title}</a></td>
+				<td><a href="eventDetailWinner?seq=${event.seq}" style="text-decoration: none; color: black;">${event.title}</a></td>
 				<td>${event.regdate}</td>
 			</tr>
-			</c:forEach>
+		</c:forEach>
 	  </tbody>
 	</table>
 	

@@ -191,11 +191,11 @@
 		<div class="row">
 			<div class="col">
 				<img src="resources/images/pro_${data.id}.png" alt="Image"
-					style="max-width: 80%;" />
+					style="max-width: 80%;"/>
 			</div>
 			<div class="col">
-				<h3>${data.name }</h3>
-				<h5>${data.price }</h5>
+				<h3>${data.name}</h3>
+				<h5>${data.price}원</h5>
 				<hr>
 				${data.disc } <br> <br>
 				<div class="col" align="right">
@@ -216,7 +216,7 @@
 						</thead>
 						<tbody>
 							<tr align="center">
-								<td>${data.price }</td>
+								<td>${data.price}원</td>
 								<td id="out_cnt"><script type="text/javascript">
 			                    $("select[name=cnt]").change(function(){
 			                    	document.querySelector('#out_cnt').innerText = $(this).val(); //value값 가져오기
@@ -282,8 +282,7 @@
 	<div class="container">
 		<div id="reviews" class="review-section">
 			<div class="d-flex align-items-center justify-content-between mb-4">
-				<h4 class="m-0">REVIEW|악의적인 비방글은 무통보 삭제되는 점 유의 부탁
-					드립니다.(${cntreview})</h4>
+				<h4 class="m-0">REVIEW | 악의적인 비방글은 무통보 삭제되는 점 유의 부탁드립니다. (${cntreview})</h4>
 				<select
 					class="custom-select custom-select-sm border-0 shadow-sm ml-2 select2-hidden-accessible"
 					data-select2-id="1" tabindex="-1" aria-hidden="true">
@@ -394,7 +393,7 @@
             document.querySelector('#progress-fill_1').style.width=progressbar(${cnt1star});
             </script>
 				<div class="col-md-6">
-					<div class="products_reviews_summary_v2__lcontent">
+					<div class="products_reviews_summary_v2__lcontent" style="padding: 20px 0 0 50px;">
 						<div class="products_reviews_summary_v2__score">
 							<span class="products_reviews_summary_v2__score_icon">
 									<svg xmlns="http://www.w3.org/2000/svg"
@@ -410,7 +409,13 @@
 							</span>
 							 <span class="products_reviews_summary_v2__score_icon_avg" style="font-size:50;line-height: 1.0em">${avgreview}</span>
 						</div>
-							<b id="likeratio"></b>의 구매자가 이 상품에 만족합니다.
+							<b id="likeratio"></b><span id="reviewSatisfy">의 구매자가 이 상품에 만족합니다.</span>
+							<script type="text/javascript">
+								if('${review}' == '[]') {
+									$('#reviewSatisfy').text('리뷰가 없습니다.');
+									document.querySelector('#progress-fill_4').style.width='0';
+								}
+							</script>
 					</div>
 					</div>
 				</div>

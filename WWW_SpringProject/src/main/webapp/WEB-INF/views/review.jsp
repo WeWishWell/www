@@ -38,7 +38,7 @@ List<ReviewVO> reviews = (List<ReviewVO>)request.getAttribute("reviews");
 			    <p><b><%=rv.getProd_name()%></b></p>
 			    <hr>
 			    <p class="card-text"><%=rv.getContent()%></p>
-			    <a href="javascript:return false;" data-bs-toggle="modal" data-bs-target="#modal<%=rv.getNum()%>">자세히</a>
+			    <a href="javascript:return false;" data-bs-toggle="modal" data-bs-target="#modal<%=rv.getNum()%>" style="text-decoration: none;">자세히</a>
 			  </div>
 			</div>
 			
