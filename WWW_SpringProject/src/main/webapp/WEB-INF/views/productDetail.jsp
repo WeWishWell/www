@@ -412,31 +412,20 @@
 						</div>
 							<b id="likeratio"></b>의 구매자가 이 상품에 만족합니다.
 					</div>
-
-
-						<a class="js-new-review-write-button"
-							data-url="/aboutmeshop.com/reviews/new?nonmember_token=4ba0f8f7e7c4284b7a05395f46e6f5c9&amp;product_id=108&amp;review_source=24&amp;widget_env=100&amp;widget_id=31"
-							data-product-code="1000000015" data-review-source="24"
-							data-login-required="true">
-							<div class="products_reviews_summary_v2__create_review_button">상품
-								리뷰 작성하기</div>
-						</a>
-
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="container">
 		<c:forEach var="review" items="${review}" varStatus="status">
 			<!-- review 1 -->
 			<div class="review-list">
-				<ul>
-					<li>
 						<div class="d-flex">
 							<div class="right">
 								<span id='reviewnum${status.index}' hidden="true">${review.num}</span>
 								<h4>${review.user_id}님의
-									리뷰
-									<div class='RatingStar' id='rating${status.index}'>
+									리뷰</h4>
+									<div class='RatingStar' id='rating${status.index}' style="font-size: calc(1.275rem + .3vw);">
 										<div class='RatingScore'>
 											<div class='outer-star'>
 												<div class='inner-star' id='star${status.index}'></div>
@@ -464,7 +453,7 @@
 							}
 							likeratio();
 						</script>
-								</h4>
+								
 
 								<div class="review-description">
 									<p>${review.content}</p>
@@ -514,6 +503,7 @@
 		
 		</script>
 		</c:forEach>
+		</div>
 </body>
 <script type="text/javascript">
 <c:forEach var="checkreviewnum" items="${checkreviewnum}">

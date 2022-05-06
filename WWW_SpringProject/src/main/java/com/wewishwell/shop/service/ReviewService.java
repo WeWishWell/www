@@ -1,7 +1,6 @@
 package com.wewishwell.shop.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.wewishwell.shop.vo.ProductVO;
 import com.wewishwell.shop.vo.ReviewVO;
