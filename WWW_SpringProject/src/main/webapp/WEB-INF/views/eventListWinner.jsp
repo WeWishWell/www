@@ -14,7 +14,7 @@
 	<br>
 	<nav class="navbar" style="margin-left: 30px;">
 	  <div class="container">
-	    <span class="navbar-brand" style="font-size: 2rem;"><b>종료된 이벤트</b></span>
+	    <span class="navbar-brand" style="font-size: 2rem;"><b>당첨자 발표</b></span>
 	    <%@include file="include/eventHeader.jsp"%>
 	  </div>
 	</nav>
