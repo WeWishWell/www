@@ -55,8 +55,8 @@
 								<td style=" text-align: center;">${event.title}</td>
 								<td style=" text-align: center;">${event.regdate}</td>
 								<td style=" text-align: center;">
-									<button type="button" class="btn btn-primary" onclick="location.href='adminEventUpdate?seq=${event.seq}'">수정</button>			
-									<button type="button" class="btn btn-danger" onclick="location.href='deleteEvent?seq=${event.seq}'">삭제</button>
+									<button type="button" class="btn btn-outline-primary" onclick="location.href='adminEventUpdate?seq=${event.seq}'">수정</button>			
+									<button type="button" class="btn btn-outline-danger" onclick="location.href='deleteEvent?seq=${event.seq}'">삭제</button>
 								</td>			
 							</tr>
 						</c:forEach>
