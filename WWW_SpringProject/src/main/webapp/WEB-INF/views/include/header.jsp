@@ -66,6 +66,7 @@
 		} else {
 			document.querySelector('#myInfo').innerHTML += '<li><a class="dropdown-item" href="logout">로그아웃</a></li>';
 		}
+		
 	}
 	
 	window.addEventListener('scroll', () => {
@@ -105,14 +106,14 @@
 	.dropdown-menu:hover {display: block;}
 	
 	@font-face {
-    font-family: 'font12312313';
+    font-family: 'S-CoreDream-6Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 	}
 </style>
 </head>
-<body style="font-family: font12312313">
+<body style="font-family: S-CoreDream-6Bold">
 <header>
 <div style="width: 100%; height: 150px; display: inline-block;">
 	<div id="color" style="width: 100%; height: 110px; position: fixed; z-index: 900">

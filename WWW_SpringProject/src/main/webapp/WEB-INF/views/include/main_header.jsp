@@ -105,14 +105,15 @@
 	.dropdown-menu:hover {display: block;}
 	
 	@font-face {
-    font-family: 'font12312313';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-family: 'S-CoreDream-6Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 	}
+	
 </style>
 </head>
-<body style="font-family: font12312313">
+<body style="font-family: S-CoreDream-6Bold">
 <header>
 	<div id="color" style="width: 100%; height: 110px; position: fixed; z-index: 900">
 		<div style="width: 1280px; margin: auto;">

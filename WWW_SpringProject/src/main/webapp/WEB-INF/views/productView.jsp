@@ -34,6 +34,12 @@ ul li {list-style-type: none;}
  .list_item_category li a.gz img{ position: relative;     top: 8px; } 
 .list_item_category li a.bs img{   /*  position: relative;    top: -5px; */}
 
+@font-face {
+    font-family: 'SeoulHangangM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/YiSunShinDotumM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 
 </head>
@@ -118,7 +124,7 @@ ul li {list-style-type: none;}
 			<hr>
 			<c:forEach var="b" items="${data}">
 				<!-- card 1 -->
-				<div style="margin-bottom: 20px; width: 300px;">
+				<div style="margin-bottom: 20px; width: 300px; font-family: SeoulHangangM;">
 					<div class="card">
 						<!--             <div class="card-header"> -->
 						<%--               <h4><b>${b.name}</b></h4> <h6>${b.price }</h6> --%>
@@ -128,13 +134,13 @@ ul li {list-style-type: none;}
 							<img src="resources/images/pro_${b.id}.png?a=<%=s%>" alt="Image" style="max-width: 100%;" />
 						</a>
 						<div class="card-body">
-							<h6>
+							<h4>
 							<a href="productDetail?id=${b.id}"
 							style="color: black; text-decoration: none;">
 							<b>${b.name}</b>
 							</a>
-							</h6>
-							<h6>${b.price}원</h6>
+							</h4>
+							<h5>${b.price}원</h5>
 							<%--               <p class="card-text">${b.disc}</p> --%>
 							<%--               <a href="productDetail?id=${b.id}" class="btn btn-primary">More</a> --%>
 						</div>
