@@ -19,10 +19,10 @@
 
 </head>
 <body>
-<div class="bgColor" style="width: 100%; height: 2000px; color: black;">
+<div class="bgColor" style="width: 100%; color: black;">
 	<img alt="organic" id="bgImg" style="width: 100%; min-width: 1200px; opacity: 0.3; margin: auto; position: absolute; z-index: 0; display: block;" src="resources/images/index_bg2.jpg?a=134">
-	<div style="margin-left: 40%; font-size: 3vw; z-index: 1; position: relative;">
-		<span style="padding-top: 20%; display: block; color: black;"># 자연주의</span>
+	<div style="margin-left: 38vw; font-size: 3vw; z-index: 1; position: relative;">
+		<span style="padding-top: 12vw; display: block; color: black;"># 자연주의</span>
 		<span># </span>
 		<span id="prod"></span>
 		<span id="cursor">_</span>
@@ -33,6 +33,5 @@
 document.querySelector('#bgImg').style.opacity = 1;
 prodListForIndex();
 </script>
-<%@include file="include/footer.jsp"%>
 </body>
 </html>
