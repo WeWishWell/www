@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminE">
+
+	<select id="eventBoardList" resultType="EventBoardVO">  
+	<![CDATA[  
+		select * 
+		from event_board
+		order by seq desc  
+	]]>
+	</select>
+	
+	<insert id="insertEvent" parameterType="EventBoardVO">
+	<![CDATA[
+		insert into event_board (seq, title, writer, content, category)
+		values ((select max(seq)+1 from event_board e), #{title}, '관리자', #{content}, #{category})
+	]]>
+	</insert>
+	
+	<update id="updateEvent" parameterType="EventBoardVO">
+	<![CDATA[
+			update event_board
+			set title = #{title}, content = #{content}, category = #{category}
+			where seq = #{seq}
+		]]>
+	</update>
+
+	<delete id="deleteEvent" parameterType="EventBoardVO">
+		<![CDATA[
+			delete from event_board
+			where seq = #{seq}
+		]]>
+	</delete>
+	
+	<select id="eventSearch" parameterType="map" resultType="EventBoardVO">
+	<![CDATA[  
+		select * 
+		from event_board
+		where ${searchType} like concat('%',#{keyword},'%') 
+		order by seq desc
+	]]>
+	</select>
+	
+	<select id="eventDetail" resultType="EventBoardVO">  
+	<![CDATA[
+		select seq, title, content, category
+		from event_board
+		where seq = #{seq}
+	]]>
+	</select>
+	
+	<select id="eventMaxNum" resultType="_int">
+		<![CDATA[SELECT max(seq) FROM event_board]]>
+	</select>
+
+</mapper>

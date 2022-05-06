@@ -7,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wewishwell.shop.service.EventService;
@@ -91,60 +90,6 @@ public class EventController {
 		mav.addObject("reply", selectReplyList);
 		return mav;
 	}
-	
 
-	@GetMapping("/insertEvent")
-	public String insertEvent(EventBoardVO vo) {
-		return "insertEvent";
-	}
-	
-	@PostMapping("/insertEvent")
-	public ModelAndView insertEventPost(EventBoardVO vo) {
-		// service
-		int rs = es.insertEvent(vo);
-		ModelAndView mav = new ModelAndView();
-		if(rs == 1) {
-			mav.setViewName("eventList");
-		} else {
-			mav.setViewName("insertEvent");
-		}
-		return mav;
-	}
-		
-	@GetMapping("/updateEvent")
-	public ModelAndView updateEvent(EventBoardVO vo) {
-		EventBoardVO detailMap = es.eventDetail(vo);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", detailMap);
-		mav.setViewName("updateEvent");
-		return mav;
-	}	
-		
-	@PostMapping("/updateEvent")
-	public ModelAndView updateEventPost(EventBoardVO vo) {
-		// service
-		int rs = es.updateEvent(vo);
-		ModelAndView mav = new ModelAndView();
-		if(rs == 1) {
-			mav.setViewName("eventList");
-		} else {
-			mav.setViewName("redirect:/updateEvent?seq=" + vo.getSeq());
-		}
-		return mav;
-	}
-	
-	@GetMapping("/deleteEvent")
-	public ModelAndView deleteEvent(EventBoardVO vo) {
-		// service
-		ModelAndView mav = new ModelAndView();
-		int rs = es.deleteEvent(vo);
-		if(rs == 1) {
-			mav.setViewName("eventList");
-		} else {
-			mav.setViewName("redirect:/updateEvent?seq=" + vo.getSeq());
-		}
-		return mav;
-	}
 	
 }

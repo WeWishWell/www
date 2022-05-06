@@ -410,7 +410,7 @@
 							</span>
 							 <span class="products_reviews_summary_v2__score_icon_avg" style="font-size:50;line-height: 1.0em">${avgreview}</span>
 						</div>
-							<b id="likeratio"></b>의 구매자가 이 상품을 좋아합니다.
+							<b id="likeratio"></b>의 구매자가 이 상품에 만족합니다.
 					</div>
 
 

@@ -20,13 +20,13 @@
 </head>
 <body>
 <div class="bgColor" style="width: 100%; height: 2000px; font-size: 32pt; color: black;">
-	<img alt="organic" id="bgImg" style="width: 100%; min-width: 1200px; opacity: 0.3; margin: auto; position: absolute; z-index: 0; display: block;" src="resources/images/index_bg.jpg">
+	<img alt="organic" id="bgImg" style="width: 100%; min-width: 1200px; opacity: 0.3; margin: auto; position: absolute; z-index: 0; display: block;" src="resources/images/index_bg.jpg?a=134">
 	<div style="margin-left: 40%; z-index: 1; position: relative;">
-		<span style="padding-top: 160px; display: block; color: black;"># 자연주의</span>
+		<span style="padding-top: 20%; display: block; color: black;"># 자연주의</span>
 		<span># </span>
 		<span id="prod"></span>
 		<span id="cursor">_</span>
-		<div id="prodImgDiv" style="width: 300px; margin: 50px 0 0 10%; opacity: 0;"></div>
+		<div id="prodImgDiv" style="width: 300px; margin-top: 50px; opacity: 0;"></div>
 	</div>
 </div>
 <script type="text/javascript">

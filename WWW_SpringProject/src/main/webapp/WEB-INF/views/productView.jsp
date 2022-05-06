@@ -146,7 +146,6 @@ ul li {list-style-type: none;}
 	</div>
 <script type="text/javascript">
 var category = '${category}'
-console.log(category);
 	if(category == 'all' || category == '') {
 		document.querySelector('#category1').className = 'on'
 		document.querySelector('#category1_image').src = 'resources/images/icon_cate015001_on.png'

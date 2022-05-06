@@ -38,7 +38,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link link-dark" id="eventAdmin">
+        <a href="adminEvent" class="nav-link link-dark" id="eventAdmin">
           <svg class="bi me-2" width="16" height="16"></svg>
           이벤트관리
         </a>
@@ -57,6 +57,8 @@ if(href.includes('adminProd')) {
 	document.querySelector('#reviewAdmin').className = 'nav-link active';
 } else if(href.includes('adminList')) {
 	document.querySelector('#memberAdmin').className = 'nav-link active';
+} else {
+	document.querySelector('#eventAdmin').className = 'nav-link active';
 }
 
 </script>

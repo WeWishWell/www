@@ -103,9 +103,16 @@
 	#action4:hover ~ #heart {display: block;}
 	.dropdown-menu {margin-top: 40px;}
 	.dropdown-menu:hover {display: block;}
+	
+	@font-face {
+    font-family: 'font12312313';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
 </style>
 </head>
-<body>
+<body style="font-family: font12312313">
 <header>
 <div style="width: 100%; height: 150px; display: inline-block;">
 	<div id="color" style="width: 100%; height: 110px; position: fixed; z-index: 900">
@@ -166,7 +173,7 @@
 				</script>
 				
 				<!-- 최근본상품 -->
-				<a href="#" id="action2" class="active"><img alt="" src="resources/images/header_history.png" style="width: 24px; margin-top: 5px;"></a>
+				<a href="#" id="action2" class="active"><img alt="" src="resources/images/header_history.png" style="width: 24px; margin-top: 5px; padding-bottom: 20px;"></a>
 				
 				<ul id="recent" class="dropdown-menu" style="margin-left: 80px; width: 400px;">
 					<li style="padding-left: 16px;"><b>최근본상품</b></li>
@@ -175,15 +182,11 @@
 				</ul>
 				
 				<!-- 장바구니 -->
-				<a href="basketList?id=${sessionScope.data}" id="action3" class="active" style="margin-top: 4px"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-				<path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-				</svg></a>
+				<a href="basketList?id=${sessionScope.data}" id="action3" class="active"><img alt="" src="resources/images/header_shopping-cart.png" style="width: 24px; margin-top: 5px; padding-bottom: 20px;"></a>
 				<ul id="basket" class="dropdown-menu" style="margin-left: 122px; width: 400px;"></ul>
 				
 				<!-- 찜 -->
-				<a href="likeList?id=${sessionScope.data}" id="action4" class="active" style="margin-top: 7px"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-				<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-				</svg></a>
+				<a href="likeList?id=${sessionScope.data}" id="action4" class="active"><img alt="" src="resources/images/header_heart.png" style="width: 24px; margin-top: 5px; padding-bottom: 20px;"></a>
 				<ul id="heart" class="dropdown-menu" style="margin-left: 166px; width: 400px;"></ul>
 			</div>
 		</div>
