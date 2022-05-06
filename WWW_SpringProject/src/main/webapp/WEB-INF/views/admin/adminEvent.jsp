@@ -6,24 +6,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>adminEvent.jsp</title>
+<title>이벤트관리(ADMIN)</title>
 <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css"
     />
 </head>
 <body>
+
 <div style="display: flex;">
 
 <!-- sidebar -->
 <%@ include file="../include/adminSidebar.jsp"%>
 
 <!-- 본문 -->
-<div class="pb-5">
-	<div class="container">
-		<div class="row" style="margin-top: 22">
-			<h2>&emsp;&emsp;이벤트 관리</h2>
-			<hr>
+	<div class="container" style="margin-top: 15px;">
+		<h2>&emsp;&emsp;이벤트 관리</h2>
+		<hr>
+		<div class="row">
 			
 			<!-- 신규 이벤트 등록 버튼-->
 			<br>
@@ -37,7 +37,7 @@
 			<br>
 	
 			<!-- 이벤트 전체 목록 -->
-			<div class="row-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+			<div class="row-lg-12 p-5 bg-white rounded mb-5">
 				<div class="table-responsive">
 					<table class="table">
 						<thead class="thead-light">
@@ -67,7 +67,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 </body>
 </html>

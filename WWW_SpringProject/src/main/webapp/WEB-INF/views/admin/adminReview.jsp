@@ -62,11 +62,10 @@ function reviewDel(num) {
 <%@include file="../include/adminSidebar.jsp"%>
 
 <!-- 본문 -->
-   <div class="pb-5">
-      <div class="container">
-         <div class="row" style="margin-top: 22">
-            <h2>&emsp;&emsp;리뷰관리</h2>
-            <hr>
+      <div class="container" style="margin-top: 15px;">
+         <h2>&emsp;&emsp;리뷰관리</h2>
+         <hr>
+         <div class="row">
             
             <!-- 검색창 -->
             <form action="adminReview" method="post">
@@ -74,45 +73,63 @@ function reviewDel(num) {
             <div class="row">
             
 		    	<!-- 키워드 검색 -->
-			  	<div class="col input-group mb-3">
-				  <select class="custom-select" name="searchType" id="inputGroupSelect01">
+			  	<div class="input-group mb-3" style="width: 350px;">
+				  <select class="form-select" name="searchType" id="inputGroupSelect01">
 				    <option value="prod_name">상품명</option>
 				    <option value="title">제목</option>
 				    <option value="star">별점</option>
 				  </select>
-				  <div class="input-group-prepend">
-				    <input type="search" name="searchKeyword" style="height: 38px"/>
-				  </div>
+			      <input type="text" class="form-control" name="searchKeyword" style="width: 120px;">
 				</div>
 			  	
 		    <!-- 날짜검색 -->
-			    <div class="col-5 input-group mb-3" style="width: 600px">
-				  	<span class="input-group-text" id="basic-addon1">작성일자</span>
-				  	<input type="date" name="startDate" id="startDate" class="form-control" onclick="mindate()"/>
-			  			~
-		   			<input type="date" name="endDate" id="endDate" class="form-control" />
-				    <script>
-						document.getElementById('startDate').max = new Date().toISOString().substring(0, 10);
-						document.getElementById('endDate').max = new Date().toISOString().substring(0, 10);
+		    <div class="input-group mb-3" style="width: 600px;">
+			  	<span class="input-group-text" id="basic-addon1">작성일자</span>
+			  	<input type="date" name="startDate" id="startDate" class="form-control"/>
+		  		<span class="input-group-text bg-body border-0" id="basic-addon1">~</span>
+	   			<input type="date" name="endDate" id="endDate" class="form-control" />
+	   			<script type="text/javascript">
+					// 달력 검색 날짜 최소, 최대 설정
+	   				document.getElementById('startDate').max = new Date().toISOString().substring(0, 10);
+					document.getElementById('endDate').max = new Date().toISOString().substring(0, 10);
+					
+					document.getElementById('endDate').addEventListener('click', function() {
+						const sd = document.getElementById('startDate');
+						const ed = document.getElementById('endDate');
 						
-						function mindate(){
-							document.getElementById('endDate').min = document.getElementById('startDate').value;
+						if(sd.value == '') {
+							ed.min = '';
+						} else {
+							ed.min = sd.value;
 						}
-					</script>
-				   
-				    
-				  	<!-- 검색버튼 -->
-				  	<button type="submit" class="btn btn-primary" >
-				    	조회 <span class="pe-7s-search"></span>
-				  	</button>
-				</div>
+					});
+					
+					document.getElementById('startDate').addEventListener('click', function() {
+						document.getElementById('endDate').value = '';
+						document.getElementById('endDate').min = '';
+					});
+					
+					// 검색 후 값 유지
+	   				if('${searchkw.startDate}'!= ''){
+			       		document.getElementById('startDate').value = '${searchkw.startDate}';
+			       	}
+			       	if('${searchkw.endDate}'!= ''){
+			       		document.getElementById('endDate').value = '${searchkw.endDate}';
+			       	}
+				</script>
+			    
+			  	<!-- 검색버튼 -->
+			  	<button type="submit" class="btn btn-primary" >
+			    	조회 <span class="pe-7s-search"></span>
+			  	</button>
+			</div>
 			
 			</div>
 			</div>
 			</form>
 			
 			<!-- 주문 리스트 -->
-            <div class="row-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+            <div class="row-lg-12 p-5 bg-white rounded mb-5">
                <div class="table-responsive">
                   <table class="table">
                      <thead class="thead-light">
@@ -147,7 +164,6 @@ function reviewDel(num) {
             </div>
          </div>
       </div>
-   </div>
 </div>
 </body>
 </html>

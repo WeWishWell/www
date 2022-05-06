@@ -7,13 +7,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>adminEventInsert.jsp</title>
+<title>이벤트 등록</title>
 <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css"
     />
 </head>
 <body>
+
 <div style="display: flex;">
 
 <!-- sidebar -->

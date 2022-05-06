@@ -66,11 +66,10 @@
 <%@include file="../include/adminSidebar.jsp"%>
 
 <!-- 본문 -->
-   <div class="pb-5">
-      <div class="container">
-         <div class="row" style="margin-top: 22">
-            <h2>&emsp;&emsp;배송현황</h2>
-            <hr>
+      <div class="container" style="margin-top: 15px;">
+         <h2>&emsp;&emsp;배송현황</h2>
+         <hr>
+         <div class="row">
             
             <!-- 검색창 -->
             <form action="adminOrder" method="post">
@@ -169,7 +168,7 @@
 			</form>
 			
 			<!-- 주문 리스트 -->
-            <div class="row-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+            <div class="row-lg-12 p-5 bg-white rounded mb-5">
                <div class="table-responsive">
                   <table class="table">
                      <thead class="thead-light">
@@ -224,7 +223,6 @@
             </div>
          </div>
       </div>
-   </div>
 </div>
 </body>
 </html>
