@@ -70,10 +70,10 @@ function reviewDel(num) {
             <!-- 검색창 -->
             <form action="adminReview" method="post">
             <div class="container">
-            <div class="row">
+            <div class="row justify-content-between">
             
 		    	<!-- 키워드 검색 -->
-			  	<div class="input-group mb-3" style="width: 350px;">
+			  	<div class="col-7 input-group mb-3" style="width: 350px;">
 				  <select class="form-select" name="searchType" id="inputGroupSelect01">
 				    <option value="prod_name">상품명</option>
 				    <option value="title">제목</option>

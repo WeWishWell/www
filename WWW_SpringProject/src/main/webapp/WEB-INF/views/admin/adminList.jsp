@@ -72,32 +72,51 @@ function memberDel(num) {
             <!-- 검색창 -->
             <form action="adminList" method="post">
             <div class="container">
-            <div class="row">
+            <div class="row justify-content-between">
             
 		    	<!-- 키워드 검색 -->
-			  	<div class="col input-group mb-3">
-				  <select class="custom-select" name="searchType" id="inputGroupSelect01">
+			  	<div class="col-7 input-group mb-3" style="width: 350px;">
+				  <select class="form-select" name="searchType" id="inputGroupSelect01">
 				    <option value="id">회원 ID</option>
 			        <option value="name">회원 이름</option>
 				  </select>
-				  <div class="input-group-prepend">
-				    <input type="search" name="searchKeyword" style="height: 38px"/>
-				  </div>
+				  <input type="search" class="form-control" name="searchKeyword" style="width: 120px;">
 				</div>
 			  	
-		    <!-- 날짜검색 -->
-			    <div class="col-5 input-group mb-3" style="width: 600px">
-				  	<span class="input-group-text" id="basic-addon1">가입일자</span>
-				  	<input type="date" name="startDate" id="startDate" class="form-control" onclick="mindate()"/>
-			  			~
+			    <!-- 날짜검색 -->
+			    <div class="input-group mb-3" style="width: 600px;">
+				  	<span class="input-group-text" id="basic-addon1">작성일자</span>
+				  	<input type="date" name="startDate" id="startDate" class="form-control"/>
+			  		<span class="input-group-text bg-body border-0" id="basic-addon1">~</span>
 		   			<input type="date" name="endDate" id="endDate" class="form-control" />
-				    <script>
-						document.getElementById('startDate').max = new Date().toISOString().substring(0, 10);
+		   			<script type="text/javascript">
+						// 달력 검색 날짜 최소, 최대 설정
+		   				document.getElementById('startDate').max = new Date().toISOString().substring(0, 10);
 						document.getElementById('endDate').max = new Date().toISOString().substring(0, 10);
 						
-						function mindate(){
-							document.getElementById('endDate').min = document.getElementById('startDate').value;
-						}
+						document.getElementById('endDate').addEventListener('click', function() {
+							const sd = document.getElementById('startDate');
+							const ed = document.getElementById('endDate');
+							
+							if(sd.value == '') {
+								ed.min = '';
+							} else {
+								ed.min = sd.value;
+							}
+						});
+						
+						document.getElementById('startDate').addEventListener('click', function() {
+							document.getElementById('endDate').value = '';
+							document.getElementById('endDate').min = '';
+						});
+						
+						// 검색 후 값 유지
+		   				if('${searchkw.startDate}'!= ''){
+				       		document.getElementById('startDate').value = '${searchkw.startDate}';
+				       	}
+				       	if('${searchkw.endDate}'!= ''){
+				       		document.getElementById('endDate').value = '${searchkw.endDate}';
+				       	}
 					</script>
 				    
 				    
