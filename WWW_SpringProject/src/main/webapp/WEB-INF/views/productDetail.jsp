@@ -424,7 +424,7 @@
 		<div class="container">
 		<c:forEach var="review" items="${review}" varStatus="status">
 			<!-- review 1 -->
-			<div class="review-list">
+			<div class="review-list" style="margin-bottom: 20px;">
 						<div class="d-flex">
 							<div class="right">
 								<span id='reviewnum${status.index}' hidden="true">${review.num}</span>
@@ -463,7 +463,7 @@
 								<div class="review-description">
 									<p>${review.content}</p>
 								</div>
-								<span class="publish py-3 d-inline-block w-100"
+								<span class="publish d-inline-block w-100"
 									id="review_regdate${status.index}">getRegdate()</span>
 								<div class="helpful-thumbs">
 								<button id= "thumb_up${status.index}" class="thumbs" onclick="check_member_likereview(${status.index})" value="1">
