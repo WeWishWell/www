@@ -61,7 +61,7 @@ function showDetailAddr() {
 </head>
 <body>
 <div style="width: 100%; height: auto; ">
-	<img alt="organic" style="z-index: -1; opacity: 0.5; width: 100%; position: absolute; margin: auto;" src="resources/images/index_bg.png">
+	<img alt="organic" style="z-index: -1; opacity: 0.5; width: 100%; position: absolute; margin: auto;" src="resources/images/index_bg2.jpg">
 	<div class="container" style="padding-top: 50px;">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">

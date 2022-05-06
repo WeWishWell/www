@@ -11,7 +11,7 @@
 
 <body>
 <div style="width: 100%; height: auto;">
-	<img alt="organic" style="z-index: -1; opacity: 0.5; width: 100%; position: absolute; margin: auto;" src="resources/images/index_bg.png">
+	<img alt="organic" style="z-index: -1; opacity: 0.5; width: 100%; position: absolute; margin: auto;" src="resources/images/index_bg2.jpg">
 	<div style="width: 310px; height: 500px; margin: auto; padding-top: 160px;">
 		<div style="width: 310px; height: 300px; background-color: #ffffff; border-radius: 10px;" class="border border-1 border-light shadow-lg p-3 mb-5 bg-body">
 			<form name="form" method="post" onsubmit="return false;" style="height: 300px; background-clip: content-box; padding: 20px 10px 0 10px; display: block;" >
