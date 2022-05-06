@@ -65,7 +65,7 @@
 	
 	<select id="check_reviewLike" parameterType="ReviewlikeVO" resultType="int">
 		<![CDATA[
-			select review_like.like from review_like where num= #{num} and id = ${id};
+			select review_like.like from review_like where num= #{num} and id = #{id};
 		]]>
 	</select>
 	
@@ -89,7 +89,7 @@
 	
 	<select id="checkreviewcnt" parameterType="ReviewlikeVO" resultType="int">
 		<![CDATA[
-			select count(`like`) from review_like where num= #{num} and id = ${id};
+			select count(`like`) from review_like where num= #{num} and id = #{id};
 		]]>
 	</select>
 </mapper>
