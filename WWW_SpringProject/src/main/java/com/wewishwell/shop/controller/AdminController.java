@@ -15,7 +15,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wewishwell.shop.common.Pagination;
 import com.wewishwell.shop.service.AdminService;
+import com.wewishwell.shop.service.PagingService;
 import com.wewishwell.shop.vo.MemberVO;
 import com.wewishwell.shop.vo.ProductVO;
 import com.wewishwell.shop.vo.ReviewVO;
@@ -25,6 +27,10 @@ public class AdminController {
 	
 	@Autowired
 	AdminService as;
+	
+	@Autowired
+	PagingService ps;
+	
 	
 	private boolean isThisAdmin() {
 		HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -36,36 +42,31 @@ public class AdminController {
 		}
 	}
 	
-	// === 배송현황 페이지
-	@GetMapping("adminOrder")
-	public ModelAndView orderManagement(@RequestParam Map<String, Object> Search) {
-		ModelAndView mav = new ModelAndView();
-		if(isThisAdmin()) {
-			// order테이블 리스트
-			List<Map<String, Object>> orderList = as.getOrderList(Search);
-			mav.addObject("data", orderList);
-			mav.setViewName("admin/adminOrder");
-		}
-		return mav;
-	}
-	
-	// === 배송현황 페이지 검색
-	@PostMapping("adminOrder")
-	public ModelAndView orderManagementPost(@RequestParam Map<String, Object> Search) {
-		
-		//System.out.println(Search);
-		
-		// order테이블 검색 리스트
-		List<Map<String, Object>> orderSearchList = as.getOrderList(Search);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", orderSearchList);
-		mav.addObject("searchkw", Search); // 검색 키워드
-		mav.setViewName("admin/adminOrder");
-
-		return mav;
-	}
-	
+	// 배송현황 페이징
+		@GetMapping("pgGetOrderList")
+		public ModelAndView pgGetOrderList(@RequestParam Map<String, Object> Search, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
+			ModelAndView mav = new ModelAndView();
+			if(isThisAdmin()) {
+				//전체 게시글 개수
+				int listCnt = ps.getOrderListCnt(Search);
+				
+				//Pagination 객체생성
+				Pagination pagination = new Pagination();
+				pagination.pageInfo(page, range, listCnt);
+				
+				Search.put("startList", pagination.getStartList());
+				Search.put("listSize", pagination.getListSize());
+				
+				// order테이블 리스트
+				mav.addObject("searchkw", Search); // 검색 키워드
+				
+				mav.addObject("pagination", pagination);
+				mav.addObject("data", ps.pgGetOrderList(Search));
+				
+				mav.setViewName("admin/adminOrderPg");
+			}
+			return mav;
+		}	
 	// === 배송상태 변경
 	@GetMapping("updateStatus")
 	public ModelAndView updateStatus(@RequestParam Map<String, Object> updateStatus) {

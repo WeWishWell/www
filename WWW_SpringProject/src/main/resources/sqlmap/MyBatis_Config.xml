@@ -20,6 +20,7 @@
   <mapper resource="/sqlmap/mapper/product-mapper.xml"/>
   <mapper resource="/sqlmap/mapper/eventBoard-mapper.xml"/>
   <mapper resource="/sqlmap/mapper/admin-mapper.xml"/>
+  <mapper resource="/sqlmap/mapper/paging-mapper.xml"/>
   <mapper resource="/sqlmap/mapper/adminEvent-mapper.xml"/>
   <mapper resource="/sqlmap/mapper/Review_Mapper.xml"/>
 </mappers>

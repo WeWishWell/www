@@ -20,7 +20,7 @@
         </a>
       </li>
       <li>
-        <a href="adminOrder" class="nav-link link-dark" id="orderAdmin">
+        <a href="pgGetOrderList" class="nav-link link-dark" id="pgGetOrderList">
           <svg class="bi me-2" width="16" height="16"></svg>
           배송현황
         </a>
@@ -51,8 +51,8 @@ const href = document.location.href.split('/shop/')[1];
 
 if(href.includes('adminProd')) {
 	document.querySelector('#prodAdmin').className = 'nav-link active';
-} else if(href.includes('adminOrder')) {
-	document.querySelector('#orderAdmin').className = 'nav-link active';
+} else if(href.includes('pgGetOrderList')) {
+	document.querySelector('#pgGetOrderList').className = 'nav-link active';
 } else if(href.includes('adminReview')) {
 	document.querySelector('#reviewAdmin').className = 'nav-link active';
 } else if(href.includes('adminList')) {
