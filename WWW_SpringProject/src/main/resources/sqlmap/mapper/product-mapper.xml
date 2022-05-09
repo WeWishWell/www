@@ -163,6 +163,18 @@
 		]]>
 	</select>
 	
+	<select id="getOrderListNoName" resultType="hashmap">
+		<![CDATA[
+			select oi.*, p.name, p.price, p.category
+			from (select o.*, od.prod_id, od.prod_cnt
+					from `order` o left join order_detail od
+					on o.order_num = od.order_num
+					where o.order_num=#{order_num}) oi
+			left join product p
+			on oi.prod_id = p.id;
+		]]>
+	</select>
+	
 	<select id="prodListForIndex" resultType="productVO">
 		<![CDATA[SELECT name, id FROM product]]>
 	</select>

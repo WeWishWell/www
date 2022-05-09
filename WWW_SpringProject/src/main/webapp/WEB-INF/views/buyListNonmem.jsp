@@ -45,7 +45,7 @@
 			return;
 		}
 		
-		location.href = 'orderTracking?order_num='+order_num+'&order_Name='+order_Name;
+		location.href = encodeURI('orderTracking?order_num='+order_num+'&order_Name='+order_Name);
 	}
 </script>
 </head>

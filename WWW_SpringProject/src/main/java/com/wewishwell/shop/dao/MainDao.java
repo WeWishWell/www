@@ -113,6 +113,10 @@ public class MainDao {
 	public List<Map<String, Object>> getOrderList(Map<String, Object> order) {
 		return sst.selectList("product.getOrderList", order);
 	}
+	
+	public List<Map<String, Object>> getOrderListNoName(Map<String, Object> order) {
+		return sst.selectList("product.getOrderListNoName", order);
+	}
 
 	public List<ProductVO> prodListForIndex() {
 		return sst.selectList("product.prodListForIndex");

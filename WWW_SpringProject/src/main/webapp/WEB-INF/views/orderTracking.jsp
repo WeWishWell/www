@@ -133,6 +133,7 @@
 </style>
 <script type="text/javascript">
 	if('${requestScope.data}' == '[]') {
+		console.log('${requestScope.data}');
 		alert('존재하지 않는 주문입니다.');
 		window.history.back();
 	}
