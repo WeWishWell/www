@@ -33,14 +33,19 @@
 <script type="text/javascript">
 	function nonmemOrderList() {
 		const order_num = document.querySelector('#order_num').value;
+		const order_Name = document.querySelector('#order_Name').value;
 		
-		if(order_num == '' || order_num == null) {
+		if(order_Name == '') {
+			alert('받는사람 이름을 입력해주세요.');
+			return;
+		}
+		
+		if(order_num == '') {
 			alert('주문번호를 입력해주세요.');
-			return 0;
+			return;
 		}
-		else{
-			location.href = 'orderTracking?order_num='+document.querySelector('#order_num').value;
-		}
+		
+		location.href = 'orderTracking?order_num='+order_num+'&order_Name='+order_Name;
 	}
 </script>
 </head>
@@ -50,19 +55,33 @@
 <hr>
 <section class="search-sec">
     <div class="container">
-           <div class="row">
-               <div class="col-lg-12">
-               <label class="form-label">주문번호를 입력해주세요.</label>
+    	<div style="width: 300px; text-align: center; margin: auto;">
+           <div class="row" style="margin-bottom: 20px;">
+               <div class="col">
+               <label class="form-label">받는사람 이름을 입력해주세요.</label>
                    <div class="row">
-                       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                           <input type="text" class="form-control search-slt" id="order_num" placeholder="주문번호 입력">
-                       </div>
-                       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                           <button type="button" class="btn btn-danger wrn-btn" style="background-color:#f7d069; border-color: #f7d069" onclick="nonmemOrderList()">Search</button>
+                       <div class="col">
+                           <input type="text" class="form-control search-slt" id="order_Name" placeholder="받는사람 입력">
                        </div>
                    </div>
                </div>
            </div>
+           <div class="row" style="margin-bottom: 40px;">
+               <div class="col">
+               <label class="form-label">주문번호를 입력해주세요.</label>
+                   <div class="row">
+                       <div class="col">
+                           <input type="text" class="form-control search-slt" id="order_num" placeholder="주문번호 입력">
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="row">
+	           <div class="col">
+	               <button type="button" class="btn btn-danger wrn-btn" style="background-color:#f7d069; border-color: #f7d069" onclick="nonmemOrderList()">Search</button>
+	           </div>
+           </div>
+    	</div>
     </div>
 </section>
  </div>

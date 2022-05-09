@@ -131,6 +131,12 @@
           background-color: #f5f5f5 !important;
         }
 </style>
+<script type="text/javascript">
+	if('${requestScope.data}' == '[]') {
+		alert('존재하지 않는 주문입니다.');
+		window.history.back();
+	}
+</script>
   </head>
   <body>
     <div id="snippetContent">
