@@ -7,11 +7,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.wewishwell.shop.common.Pagination;
-import com.wewishwell.shop.vo.MemberVO;
-import com.wewishwell.shop.vo.ProductVO;
-import com.wewishwell.shop.vo.ReviewVO;
-
 @Repository
 public class PagingDao {
 	

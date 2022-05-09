@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wewishwell.shop.common.Pagination;
 import com.wewishwell.shop.dao.PagingDao;
 
 @Service
