@@ -127,7 +127,7 @@
 							<button type="button" id="addrBtn" class="btn btn-secondary" style="width: 128px; margin: 64px 0 0 135px; position: absolute;" onclick="daumPostcode();">우편번호 찾기</button>
 							<input type="text" readonly="readonly" name="addr" class="form-control" placeholder="" aria-label="addr-holder" aria-describedby="addr-form">
 							<div style="margin-top: 2px;">
-								<input type="text" onkeyup="getDetailAddr(this);" style="width: 163px;" id="detailaddr" class="form-control" placeholder="상세주소">
+								<input type="text" onkeyup="getDetailAddr(this);" style="width: 163px;" id="detailaddr" class="form-control" placeholder="상세주소" required>
 							</div>
 							<input type="hidden" class="form-control" name="address">
 						</div>
