@@ -26,12 +26,14 @@
 				document.form.addr.value = "${data.address}";
 				document.form.address.value = "${data.address}";
 				document.querySelector('#detailaddr').hidden = true;
+				document.querySelector('#detailaddr').required = false;
 				document.querySelector('#addrBtn').hidden = true;
 			} else {
 				document.querySelector('#orderusername').value = "" ;
 				document.form.addr.value = "" ;
 				document.form.address.value = "";
 				document.querySelector('#detailaddr').hidden = false;
+				document.querySelector('#detailaddr').required = true;
 				document.querySelector('#addrBtn').hidden = false;
 			}
 		}
