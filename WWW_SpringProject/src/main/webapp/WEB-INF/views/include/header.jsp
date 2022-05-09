@@ -95,7 +95,7 @@
 
 	.bgColor {background-color: #ffffff;}
 	.H_active {font-size: x-large; text-decoration:none; color: #000000; margin-left: 20px;}
-	.active:hover {color: #000000;}
+	.H_active:hover {color: #000000;}
 	#headLogin:hover ~ #NotLoginInfo {display: block;}
 	#action1:hover ~ #myInfo {display: block;}
 	#action2:hover ~ #recent {display: block;}
