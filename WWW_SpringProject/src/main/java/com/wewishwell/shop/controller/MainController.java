@@ -211,18 +211,17 @@ public class MainController {
 	
 	// === 장바구니 제품 삭제
 		@GetMapping("/basketDelete")
-		public ModelAndView basketDelete(BasketVO basketVo) {
+		public String basketDelete(BasketVO basketVo, HttpServletRequest req) {
 
 			// service
 			int rs = ms.deleteBasket(basketVo);
 
-			ModelAndView mav = new ModelAndView();
 			if(rs == 1) {
-				String id = basketVo.getUser_id().toString();
-				mav.setViewName("redirect:/basketList?id=" + id);
+				return "redirect:" + req.getHeader("Referer");
+			} else {
+				return "index";
 			}
 
-			return mav;
 		}
 	
 	// === 장바구니에서 구매

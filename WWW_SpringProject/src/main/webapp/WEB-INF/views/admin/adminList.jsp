@@ -85,7 +85,7 @@ function memberDel(num) {
 			  	
 			    <!-- 날짜검색 -->
 			    <div class="input-group mb-3" style="width: 600px;">
-				  	<span class="input-group-text" id="basic-addon1">작성일자</span>
+				  	<span class="input-group-text" id="basic-addon1">가입일자</span>
 				  	<input type="date" name="startDate" id="startDate" class="form-control"/>
 			  		<span class="input-group-text bg-body border-0" id="basic-addon1">~</span>
 		   			<input type="date" name="endDate" id="endDate" class="form-control" />
