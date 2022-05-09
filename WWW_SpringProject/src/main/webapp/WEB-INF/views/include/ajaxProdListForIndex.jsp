@@ -17,6 +17,7 @@
 				var prod = document.querySelector('#prod');
 				let index = 0;
 				let check = 0;
+				let prevNum = -1;
 				let prodNum = randomNum(0, data.length-1);
 				let ImgCheck = 0;
 				
@@ -34,7 +35,10 @@
 							index--;
 						} else {
 							check = 0;
-							prodNum = randomNum(0, data.length-1);
+							prevNum = prodNum;
+							while(prevNum == prodNum) {
+								prodNum = randomNum(0, data.length-1);
+							}
 						}
 					}
 					
