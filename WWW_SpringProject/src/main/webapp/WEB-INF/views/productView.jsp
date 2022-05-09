@@ -34,6 +34,7 @@ ul li {list-style-type: none;}
  .list_item_category li a.gz img{ position: relative;     top: 8px; } 
 .list_item_category li a.bs img{   /*  position: relative;    top: -5px; */}
 
+
 @font-face {
     font-family: 'SeoulHangangM';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/YiSunShinDotumM.woff') format('woff');
@@ -41,6 +42,20 @@ ul li {list-style-type: none;}
     font-style: normal;
 }
 </style>
+
+<script type="text/javascript">
+	function doScroll(value) {
+		const textWidth = document.querySelector('#'+value).offsetWidth;
+		const scrollWidth = textWidth - 241;
+		if(scrollWidth > 0) {
+			document.querySelector('#'+value).style.cssFloat = 'right';
+		}
+	}
+	
+	function resetScroll(value) {
+		document.querySelector('#'+value).style.cssFloat = '';
+	}
+</script>
 
 </head>
 <body>
@@ -125,7 +140,7 @@ ul li {list-style-type: none;}
 			<c:forEach var="b" items="${data}">
 				<!-- card 1 -->
 				<div style="margin-bottom: 20px; width: 300px; font-family: SeoulHangangM;">
-					<div class="card">
+					<div class="card" style="height: 430.58">
 						<!--             <div class="card-header"> -->
 						<%--               <h4><b>${b.name}</b></h4> <h6>${b.price }</h6> --%>
 						<!--             </div> -->
@@ -133,14 +148,12 @@ ul li {list-style-type: none;}
 							<%double s = Math.random();%>
 							<img src="resources/images/pro_${b.id}.png?a=<%=s%>" alt="Image" style="max-width: 100%;" />
 						</a>
-						<div class="card-body">
-							<h4>
+						<div class="card-body" style="overflow: hidden; white-space: nowrap; padding: 0; margin: 16px;">
 							<a href="productDetail?id=${b.id}"
 							style="color: black; text-decoration: none;">
-							<b>${b.name}</b>
+							<b onmouseover="doScroll(this.id);" onmouseout="resetScroll(this.id);" id="prodName_${b.id}" class="prodNameClass" style="display: inline-block; font-size: calc(1.275rem + .3vw);">${b.name}</b>
 							</a>
-							</h4>
-							<h5>${b.price}원</h5>
+							<h5 style="clear: both;">${b.price}원</h5>
 							<%--               <p class="card-text">${b.disc}</p> --%>
 							<%--               <a href="productDetail?id=${b.id}" class="btn btn-primary">More</a> --%>
 						</div>
