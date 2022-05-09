@@ -157,7 +157,7 @@
 			from (select o.*, od.prod_id, od.prod_cnt
 					from `order` o left join order_detail od
 					on o.order_num = od.order_num
-					where o.order_num=#{order_num} AND receiver_name=#{order_Name}) oi
+					where user_id = concat("", user_id*1) AND o.order_num=#{order_num} AND receiver_name=#{order_Name}) oi
 			left join product p
 			on oi.prod_id = p.id;
 		]]>
