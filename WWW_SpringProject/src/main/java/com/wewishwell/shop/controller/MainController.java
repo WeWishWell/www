@@ -259,7 +259,6 @@ public class MainController {
 			int orderNum = ms.selectOrderNum(order); // 주문번호 
 			order.put("order_num", orderNum);
 			
-			
 			if(order.get("buy_method").equals("장바구니구매")) {
 				
 				// === order_detail 테이블 추가 ===
@@ -272,7 +271,7 @@ public class MainController {
 					ms.deleteBasket(basketVo);
 					
 					// === 주문내역 불러오기
-					mav.setViewName("redirect:/orderTracking?order_num="+orderNum); 
+					mav.setViewName("redirect:/orderTracking?order_num="+orderNum+"&order_Name="+(String)order.get("receiver_name")); 
 				}
 			}
 			else if(order.get("buy_method").equals("제품바로구매")) {
@@ -280,7 +279,7 @@ public class MainController {
 				// === order_detail 테이블 추가 ===
 				ms.insertOrderDetailOne(order);
 				
-				mav.setViewName("redirect:/orderTracking?order_num="+orderNum); 
+				mav.setViewName("redirect:/orderTracking?order_num="+orderNum+"&order_Name="+(String)order.get("receiver_name")); 
 			}
 			return mav;
 		}
@@ -292,7 +291,7 @@ public class MainController {
 			List<Map<String, Object>> orderlist = ms.getOrderList(order);
 			
 			ModelAndView mav = new ModelAndView();
-			mav.addObject("data", orderlist); 
+			mav.addObject("data", orderlist);
 			mav.setViewName("orderTracking");
 
 			return mav;
