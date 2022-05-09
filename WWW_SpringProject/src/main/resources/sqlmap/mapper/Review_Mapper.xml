@@ -59,7 +59,13 @@
 	
 	<update id="Update_likeCNT" parameterType="ReviewVO">
 		<![CDATA[
-		update review set review.like = #{like} where num = #{num};
+		update review set review.like = `like`+1 where num = #{num};
+		]]>
+	</update>
+	
+	<update id="Update_unlikeCNT" parameterType="ReviewVO">
+		<![CDATA[
+		update review set review.like = `like`-1 where num = #{num};
 		]]>
 	</update>
 	
@@ -92,4 +98,36 @@
 			select count(`like`) from review_like where num= #{num} and id = #{id};
 		]]>
 	</select>
+	
+	<select id="reviewlist_sort_by_star" parameterType="productVO" resultType="ReviewVO">
+		<![CDATA[
+			select * from review where prod_id =#{id}
+			order by star desc;
+		]]>
+	</select>
+	
+	<select id="getcntlike" parameterType="ReviewVO" resultType="ReviewVO">
+		<![CDATA[
+			select num, `like` from review where num = #{num}
+		]]>
+	</select>
+	
+	<update id="Modify_un2likeCNT" parameterType="ReviewVO">
+		<![CDATA[
+		update review set `like` = `like`+2 where num = #{num};
+		]]>
+	</update>
+	
+	<update id="Modify_li2unlikeCNT" parameterType="ReviewVO">
+		<![CDATA[
+		update review set `like` = `like`-2 where num = #{num};
+		]]>
+	</update>
+	
+	<select id="getreviewlike" parameterType="ReviewlikeVO" resultType="ReviewlikeVO">
+		<![CDATA[
+			select num,id, `like` from review_like where num = #{num} and id = #{id};
+		]]>
+	</select>
+	
 </mapper>

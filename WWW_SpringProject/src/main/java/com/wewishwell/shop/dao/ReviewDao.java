@@ -56,7 +56,7 @@ public class ReviewDao {
 	}
 
 	public int Decrease_likeCNT(ReviewVO vo) {
-		return sst.update("review.Update_likeCNT",vo);
+		return sst.update("review.Update_unlikeCNT",vo);
 	}
 
 	public int check_reviewLike(ReviewlikeVO reviewlikeVO) {
@@ -77,6 +77,26 @@ public class ReviewDao {
 
 	public int checkreviewcnt(ReviewlikeVO reviewlikeVO) {
 		return sst.selectOne("review.checkreviewcnt", reviewlikeVO);
+	}
+
+	public List<ReviewVO> reviewlist_sort_by_star(ProductVO productVO) {
+		return sst.selectList("review.reviewlist_sort_by_star", productVO);
+	}
+
+	public ReviewVO getcntlike(ReviewVO reviewVO) {
+		return sst.selectOne("review.getcntlike", reviewVO);
+	}
+
+	public int Modify_un2likeCNT(ReviewVO vo) {
+		return sst.update("review.Modify_un2likeCNT", vo);
+	}
+
+	public int Modify_li2unlikeCNT(ReviewVO vo) {
+		return sst.update("review.Modify_li2unlikeCNT", vo);
+	}
+
+	public ReviewlikeVO getreviewlike(ReviewlikeVO vo) {
+		return sst.selectOne("review.getreviewlike", vo);
 	}
 
 }

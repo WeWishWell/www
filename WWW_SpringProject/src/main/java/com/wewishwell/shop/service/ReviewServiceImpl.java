@@ -101,5 +101,30 @@ public class ReviewServiceImpl implements ReviewService {
 		return dao.checkreviewcnt(reviewlikeVO);
 	}
 
+	@Override
+	public List<ReviewVO> reviewlist_sort_by_star(ProductVO productVO) {
+		return dao.reviewlist_sort_by_star(productVO);
+	}
+
+	@Override
+	public ReviewVO getcntlike(ReviewVO reviewVO) {
+		return dao.getcntlike(reviewVO);
+	}
+
+	@Override
+	public int Modify_un2likeCNT(ReviewVO vo) {
+		return dao.Modify_un2likeCNT(vo);
+	}
+
+	@Override
+	public int Modify_li2unlikeCNT(ReviewVO vo) {
+		return dao.Modify_li2unlikeCNT(vo);
+	}
+
+	@Override
+	public ReviewlikeVO getreviewlike(ReviewlikeVO vo) {
+		return dao.getreviewlike(vo);
+	}
+
 
 }

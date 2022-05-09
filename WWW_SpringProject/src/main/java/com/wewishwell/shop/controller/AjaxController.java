@@ -169,6 +169,26 @@ public class AjaxController {
 		return rvs.checkreviewcnt(reviewlikeVO);
 	}
 	
+	@GetMapping("Modify_un2likeCNT")
+	public int Modify_un2likeCNT(ReviewVO vo) {
+		return rvs.Modify_un2likeCNT(vo);
+	}
+	
+	@GetMapping("Modify_li2unlikeCNT")
+	public int Modify_li2unlikeCNT(ReviewVO vo) {
+		return rvs.Modify_li2unlikeCNT(vo);
+	}
+	
+	@GetMapping("getcntlike")
+	public ReviewVO getcntlike(ReviewVO reviewVO) {
+		return rvs.getcntlike(reviewVO);
+	}
+	
+	@GetMapping("getreviewlike")
+	public ReviewlikeVO getreviewlike(ReviewlikeVO vo) {
+		return rvs.getreviewlike(vo);
+	}
+	
 	// === 배송상태 변경
 	@PostMapping("updateStatus")
 	public int updateStatus(@RequestParam Map<String, Object> updateStatus) {

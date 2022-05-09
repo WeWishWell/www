@@ -42,4 +42,14 @@ public interface ReviewService {
 
 	public int checkreviewcnt(ReviewlikeVO reviewlikeVO);
 
+	public List<ReviewVO> reviewlist_sort_by_star(ProductVO productVO);
+
+	public ReviewVO getcntlike(ReviewVO reviewVO);
+
+	public int Modify_un2likeCNT(ReviewVO vo);
+
+	public int Modify_li2unlikeCNT(ReviewVO vo);
+
+	public ReviewlikeVO getreviewlike(ReviewlikeVO vo);
+
 }

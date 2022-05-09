@@ -115,6 +115,7 @@ public class MainController {
 		int check = ms.likeCheck(plVO);
 		List<ReviewVO> reviewlist = new ArrayList<ReviewVO>();
 		reviewlist = reviewservice.getreviewlist(productVO);
+		List<ReviewVO> reviewlist_by_star = reviewservice.reviewlist_sort_by_star(productVO);
 		int cnt5star = reviewservice.cnt5star(productVO);
 		int cnt4star = reviewservice.cnt4star(productVO);
 		int cnt3star = reviewservice.cnt3star(productVO);
@@ -123,6 +124,7 @@ public class MainController {
 		int cntreview = reviewservice.cntreview(productVO);	
 		Double avgreview = reviewservice.avgreview(productVO);
 		mav.addObject("likeCheck", check);
+		mav.addObject("reviewlist_by_star", reviewlist_by_star);
 		mav.addObject("data", productDetail); // request.setAttribute("data",list)
 		mav.addObject("review",reviewlist);
 		mav.addObject("cnt5star",cnt5star);
