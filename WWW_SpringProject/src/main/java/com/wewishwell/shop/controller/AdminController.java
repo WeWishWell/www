@@ -116,7 +116,7 @@ public class AdminController {
 	//회원관리
 		@GetMapping("pgAdminMemList")
 		public ModelAndView pgAdminMemList(@RequestParam Map<String, Object> map,@RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
-			System.out.println(map);
+			//System.out.println(map);
 			ModelAndView mav = new ModelAndView();
 			
 			int listCnt = ps.pgAdminMemListCnt(map);
