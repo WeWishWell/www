@@ -113,28 +113,28 @@ public class AdminController {
 		return "index";
 	}
 	
-	//진희누나
-	@GetMapping("adminList")
-	public ModelAndView adminMemList(@RequestParam Map<String, Object> map) {
-		List<Map<String, Object>> adminMemList = as.adminMemList(map);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", adminMemList);
-		mav.setViewName("admin/adminList");
-		
-		return mav;
-		
-	}
-	
-	@PostMapping("adminList")
-	public ModelAndView adminMemListPost(@RequestParam Map<String, Object> search) {
-		List<Map<String, Object>> memberSerach = as.adminMemList(search);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("data",memberSerach);
-		mav.addObject("searchkeyword", search);
-		mav.setViewName("admin/adminList");
-		
-		return mav;
-	}
+	//회원관리
+		@GetMapping("pgAdminMemList")
+		public ModelAndView pgAdminMemList(@RequestParam Map<String, Object> map,@RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
+			System.out.println(map);
+			ModelAndView mav = new ModelAndView();
+			
+			int listCnt = ps.pgAdminMemListCnt(map);
+			
+			
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page, range, listCnt);
+			
+			map.put("startList", pagination.getStartList());
+			map.put("listSize", pagination.getListSize());
+			
+			mav.addObject("pagination",pagination);
+			mav.addObject("data", ps.pgAdminMemList(map));
+			mav.setViewName("admin/adminListPg");
+			
+			return mav;
+			
+		}
 	
 	@GetMapping("adminMemDel")
 	public String adminMemDel(MemberVO vo) {

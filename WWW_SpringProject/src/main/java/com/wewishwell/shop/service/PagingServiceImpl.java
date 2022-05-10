@@ -25,5 +25,14 @@ public class PagingServiceImpl implements PagingService{
 		return dao.getOrderListCnt(Search);
 	}
 	
-
+	//회원관리
+	@Override
+	public List<Map<String, Object>> pgAdminMemList(Map<String, Object> map){
+		return dao.pgAdminMemList(map);
+	}
+	
+	@Override
+	public int pgAdminMemListCnt(Map<String, Object> map) {
+		return dao.pgAdminMemListCnt(map);
+	}
 }

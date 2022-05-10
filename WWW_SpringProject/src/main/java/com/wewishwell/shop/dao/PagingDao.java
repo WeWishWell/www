@@ -22,4 +22,12 @@ public class PagingDao {
 	public int getOrderListCnt(Map<String, Object> Search) {
 		return sst.selectOne("paging.pgGetOrderListCnt", Search);
 	}
+	//회원리스
+	public List<Map<String, Object>> pgAdminMemList(Map<String, Object> map){
+		return sst.selectList("paging.pgAdminMemList", map);
+	}
+	
+	public int pgAdminMemListCnt(Map<String, Object> map) {
+		return sst.selectOne("paging.pgAdminMemListCnt", map);
+	}
 }

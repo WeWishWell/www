@@ -37,5 +37,24 @@
 		<![CDATA[ AND order_date <= DATE_ADD(cast(#{endDate} as date), INTERVAL 1 DAY) ]]>
 		</if>
 	</select>
+	
+	<select id="pgAdminMemList" resultType="hashmap">
+    	<![CDATA[ select * from `members` where 1 = 1 ]]>
+    	<if test="searchKeyword != null and searchKeyword != ''"> AND ${searchType} = #{searchKeyword} </if>
+		<if test="startDate != null and startDate != ''"> AND regdate >= cast(#{startDate} as date) </if>
+		<if test="endDate != null and endDate != ''">
+		<![CDATA[ AND regdate <= cast(#{endDate} as date) ]]>
+		</if>
+		<![CDATA[ order by regdate DESC LIMIT ${startList}, ${listSize} ]]>
+	</select>
+	
+	<select id="pgAdminMemListCnt" resultType="_int">
+    	<![CDATA[ select count(id) from `members` where 1 = 1 ]]>
+    	<if test="searchKeyword != null and searchKeyword != ''"> AND ${searchType} = #{searchKeyword} </if>
+		<if test="startDate != null and startDate != ''"> AND regdate >= cast(#{startDate} as date) </if>
+		<if test="endDate != null and endDate != ''">
+		<![CDATA[ AND regdate <= cast(#{endDate} as date) ]]>
+		</if>
+	</select>
 
 </mapper>
