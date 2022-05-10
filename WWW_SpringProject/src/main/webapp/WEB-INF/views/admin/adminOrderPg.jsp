@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+<%@ include file="../include/ajaxAdminOrder.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,16 +31,14 @@
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
 		var url = window.location.href.split('page')[0];
 		if(url.includes('?')){
-			if(window.location.href.split('page')[0].split('endDate=')[1] == '') {
-				url = url + "&page=" + page;
-			} else {
-				url = url + "page=" + page;
-			}
+			url = url + "&page=" + page;
 		} else {
 			url = url + "?page=" + page;
 		}
 		url = url + "&range=" + range;
 
+		url = url.replace('&&', '&');
+		
 		location.href = url;	
 	}
 
@@ -83,21 +82,21 @@
 						"변경 후에는 이전 상태로 되돌릴 수 없습니다.\n\n"+
 						"주문번호 : "+order_num+"\n"+
 						"현재 배송상태 : "+raw_status)) {
-					location.href = "updateStatus?order_num="+order_num+"&order_status="+status;
+					updateStatus(order_num, status);
 			}
 		} else if(status == "배송 중" && raw_status != "배송 중") {
 			if(confirm("배송 중 상태로 변경하시겠습니까?\n"+
 						"변경 후에는 이전 상태로 되돌릴 수 없습니다.\n\n"+
 						"주문번호 : "+order_num+"\n"+
 						"현재 배송상태 : "+raw_status)) {
-					location.href = "updateStatus?order_num="+order_num+"&order_status="+status;
+					updateStatus(order_num, status);
 			}
 		} else if(status == "배송완료" && raw_status != "배송완료") {
 			if(confirm("배송완료 상태로 변경하시겠습니까?\n"+
 						"변경 후에는 이전 상태로 되돌릴 수 없습니다.\n\n"+
 						"주문번호 : "+order_num+"\n"+
                     	"현재 배송상태 : "+raw_status)) {
-					location.href = "updateStatus?order_num="+order_num+"&order_status="+status;
+					updateStatus(order_num, status);
 			}
 		}
 	}

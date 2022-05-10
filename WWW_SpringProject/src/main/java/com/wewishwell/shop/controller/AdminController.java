@@ -67,6 +67,7 @@ public class AdminController {
 			}
 			return mav;
 		}	
+		
 	// === 배송상태 변경
 	@GetMapping("updateStatus")
 	public ModelAndView updateStatus(@RequestParam Map<String, Object> updateStatus) {
@@ -74,7 +75,7 @@ public class AdminController {
 		as.updateStatus(updateStatus);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/adminOrder");
+		mav.setViewName("redirect:/pgGetOrderList");
 		return mav;
 	}
 	
