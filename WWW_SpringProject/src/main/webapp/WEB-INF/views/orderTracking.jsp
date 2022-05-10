@@ -133,8 +133,17 @@
 </style>
 <script type="text/javascript">
 	if('${requestScope.data}' == '[]') {
-		console.log('${requestScope.data}');
-		alert('존재하지 않는 주문입니다.');
+		notNomemberOrder();
+	}
+	
+	if(document.referrer.split('/shop/')[1] == 'buyListNonmem') {
+		if(isNaN('${requestScope.data[0].user_id}')) {
+			notNomemberOrder();
+		}
+	}
+	
+	function notNomemberOrder() {
+		alert('존재하지 않는 비회원 주문입니다.');
 		window.history.back();
 	}
 </script>
