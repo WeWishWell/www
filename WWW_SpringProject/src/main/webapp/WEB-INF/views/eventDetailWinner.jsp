@@ -41,5 +41,12 @@
 			<button type="button" class="btn btn-outline-secondary" onclick="location.href='eventListWinner'">목록</button>
 		</div>
 	</div>
+
+<script type="text/javascript">
+	//이벤트헤더 제어
+	if('${requestScope.data.category}' == '[당첨자발표]') {
+		document.querySelector('#eventListWinner').style.color = '#000000';
+	}
+</script>
 </body>
 </html>

@@ -108,6 +108,13 @@
 		});
 		
 		insertReply();
+		
+		//이벤트헤더 제어
+		if('${requestScope.data.category}' == '[진행이벤트]') {
+			document.querySelector('#eventListOn').style.color = '#000000';
+		} else if('${requestScope.data.category}' == '[종료이벤트]') {
+			document.querySelector('#eventListEnd').style.color = '#000000';
+		}
 	</script>
 		
 	<br>

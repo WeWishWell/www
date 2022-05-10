@@ -26,6 +26,7 @@
 	} else if(document.location.href.split('/shop/')[1].includes('eventListWinner')) {
 		document.querySelector('#eventListWinner').style.color = '#000000';
 	}
+	
 </script>
 </body>
 </html>
