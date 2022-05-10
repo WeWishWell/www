@@ -27,40 +27,39 @@ List<ReviewVO> reviews = (List<ReviewVO>)request.getAttribute("reviews");
 	<hr>
 	<div class="row" style="margin-left: 40px;">
 		<%
-		int i=0;
-		for(ReviewVO rv : reviews) { 
-			i++;%>
+		for(int i=reviews.size()-1; i>=0; i--) { 
+			%>
 			<div class="card rounded-0" style="width: 240px; padding: 0; margin: 0 40px 20px 0;">
 				<%double s = Math.random();%>
-			  <img src="resources/images/pro_<%=rv.getProd_id()%>.png?a=<%=s%>" alt="img">
+			  <img src="resources/images/pro_<%=reviews.get(i).getProd_id()%>.png?a=<%=s%>" alt="img">
 			  <div class="card-body">
-			    <h5 class="card-title"><b><%=rv.getTitle()%></b></h5>
-			    <p><b><%=rv.getProd_name()%></b></p>
+			    <h5 class="card-title"><b><%=reviews.get(i).getTitle()%></b></h5>
+			    <p><b><%=reviews.get(i).getProd_name()%></b></p>
 			    <hr>
-			    <p class="card-text"><%=rv.getContent()%></p>
-			    <a href="javascript:return false;" data-bs-toggle="modal" data-bs-target="#modal<%=rv.getNum()%>" style="text-decoration: none;">자세히</a>
+			    <p class="card-text"><%=reviews.get(i).getContent()%></p>
+			    <a href="javascript:return false;" data-bs-toggle="modal" data-bs-target="#modal<%=reviews.get(i).getNum()%>" style="text-decoration: none;">자세히</a>
 			  </div>
 			</div>
 			
-			<div class="modal fade" id="modal<%=rv.getNum()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="modal<%=reviews.get(i).getNum()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel"><%=rv.getUser_id()%>님의 리뷰</h5>
+			        <h5 class="modal-title" id="exampleModalLabel"><%=reviews.get(i).getUser_id()%>님의 리뷰</h5>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
 			      	<div style="position: absolute; margin-left: 190px;">
-				      	<h5 class="card-title"><b><%=rv.getTitle()%></b></h5>
-				   		<p><b><%=rv.getProd_name()%></b></p>
+				      	<h5 class="card-title"><b><%=reviews.get(i).getTitle()%></b></h5>
+				   		<p><b><%=reviews.get(i).getProd_name()%></b></p>
 						<div class='RatingStar' id='rating<%=i%>'>
 						  <div class='RatingScore'>
 						    <div class='outer-star'><div class='inner-star' id='star<%=i%>'></div></div>
-						    ( <%=rv.getStar()%> )
+						    ( <%=reviews.get(i).getStar()%> )
 						  </div>
 						</div>
 						<script type="text/javascript">
-							ratings = {RatingScore: <%=rv.getStar()%>}
+							ratings = {RatingScore: <%=reviews.get(i).getStar()%>}
 							totalRating = 5;
 							table = document.querySelector('#rating<%=i%>');
 							function rateIt() {
@@ -74,9 +73,9 @@ List<ReviewVO> reviews = (List<ReviewVO>)request.getAttribute("reviews");
 							rateIt();
 						</script>
 			   		</div>
-			        <img src="resources/images/pro_<%=rv.getProd_id()%>.png" style="width: 180px;" alt="img">
+			        <img src="resources/images/pro_<%=reviews.get(i).getProd_id()%>.png" style="width: 180px;" alt="img">
 			        <hr>
-			        <span><%=rv.getContent()%></span>
+			        <span><%=reviews.get(i).getContent()%></span>
 			      </div>
 			    </div>
 			  </div>

@@ -5,7 +5,7 @@
 		
 	<!-- 리뷰 -->
 	<select id="review" resultType="ReviewVO">
-		<![CDATA[SELECT * FROM review ORDER BY prod_id DESC;]]>
+		<![CDATA[SELECT * FROM review ORDER BY regdate]]>
 	</select>
 	
 	<select id="findReview" resultType="_int">
