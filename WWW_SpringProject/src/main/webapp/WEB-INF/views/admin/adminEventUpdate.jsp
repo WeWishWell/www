@@ -21,17 +21,17 @@
 
 <!-- 본문 -->
 <div class="pb-5">
-	<div class="container">
-		<div class="row" style="margin-top: 22">
-			<h2>&emsp;&emsp;이벤트 수정</h2>
-			<hr>
+	<div class="container" style="margin-top: 15px; width: 700px;">
+		<h2>&emsp;&emsp;이벤트 수정</h2>
+		<hr>
+		<div class="row">
 			
 			<!-- 이벤트 수정 폼-->
 			<br>
 			<form name="form" action="adminEventUpdate" class="form-horizontal" method="post" enctype="multipart/form-data">
 			
 			<div class="form-group row" style="margin-top: 10px;">
-				<label class="col-sm-2 col-xs-12 col-form-label" for="category">카테고리</label>
+				<label class="col-sm-2 col-xs-12 col-form-label" for="category" style="padding-top: 0;">카테고리</label>
 				<div class="col-sm-10 col-xs-12">
 					<input type="radio" name="category" id="event1" value="[진행이벤트]"> 진행이벤트
 					<input type="radio" name="category" id="event2" value="[종료이벤트]"> 종료이벤트

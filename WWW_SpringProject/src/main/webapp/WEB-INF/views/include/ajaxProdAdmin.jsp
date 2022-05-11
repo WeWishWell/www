@@ -16,9 +16,9 @@
 			data: {id: id},
 			success: function (data) {
 				$('#adminProdDiv').css('width', '700px');
-				$('#adminProdDiv').css('margin-left', '50px');
+				$('#adminProdDiv').css('margin-left', '0');
 				$('#adminProdDiv').html(
-						'<h2>&emsp;&emsp;상품관리</h2><hr>'+
+						'<h2>&emsp;&emsp;상품수정</h2><hr>'+
 						'<form action="adminProd" method="post" name="form">'+
 						'<input type="hidden" name="id" value="'+data.id+'">'+
 						'<input type="hidden" name="getValue" value="'+getValue+'">'+
@@ -88,7 +88,7 @@
 			dataType:'json',
 			success: function (data) {
 				$('#adminProdDiv').css('width', '700px');
-				$('#adminProdDiv').css('margin-left', '50px');
+				$('#adminProdDiv').css('margin-left', '0');
 				$('#adminProdDiv').html(
 						'<h2>&emsp;&emsp;상품등록</h2><hr>'+
 						'<form action="adminProd" method="post" name="form">'+
