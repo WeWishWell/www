@@ -30,4 +30,9 @@ public class PagingDao {
 	public int pgAdminMemListCnt(Map<String, Object> map) {
 		return sst.selectOne("paging.pgAdminMemListCnt", map);
 	}
+	
+	//ADMIN상품페이지 count
+	public int getProdCnt(Map<String, String> map) {
+		return sst.selectOne("admin.getProdCnt", map);
+	}
 }

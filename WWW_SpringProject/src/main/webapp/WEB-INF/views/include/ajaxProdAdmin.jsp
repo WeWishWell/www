@@ -3,7 +3,9 @@
 <%@include file="../include/ajaxFile.jsp"%>
 
 <script type="text/javascript">
-
+	
+	var getValue = window.location.href.split('adminProd')[1];
+	
 	//AJAX 상품 수정
 	function prodModifyDo(id) {
 		
@@ -19,6 +21,7 @@
 						'<h2>&emsp;&emsp;상품관리</h2><hr>'+
 						'<form action="adminProd" method="post" name="form">'+
 						'<input type="hidden" name="id" value="'+data.id+'">'+
+						'<input type="hidden" name="getValue" value="'+getValue+'">'+
 						'<div class="row" style="margin: auto;">'+
 						'<div class="col"><b>상품명</b>'+
 						'<input type="text" id="adminPM_name" name="name" class="form-control" placeholder="상품명을 입력하세요" value="'+data.name+'" style="margin-bottom: 5px;"></div>'+
@@ -37,7 +40,7 @@
 						'</div>'+
 						'</form>'+
 						'<div style="margin: 5px 0 0 12px;"><button type="button" class="btn btn-primary" id="prodBtn" onclick="imgModify('+data.id+')">수정</button>'+
-						'<a href="adminProd" type="button" class="btn btn-secondary" style="margin-left: 5px;">취소</a></div>'
+						'<a href="adminProd'+getValue+'" type="button" class="btn btn-secondary" style="margin-left: 5px;">취소</a></div>'
 				);
 				$("#file").on("change", handleImgFileSelect);
 			},
@@ -90,6 +93,7 @@
 						'<h2>&emsp;&emsp;상품등록</h2><hr>'+
 						'<form action="adminProd" method="post" name="form">'+
 						'<input type="hidden" name="id" value="'+data+'">'+
+						'<input type="hidden" name="getValue" value="'+getValue+'">'+
 						'<div class="row" style="margin: auto;">'+
 						'<div class="col"><b>상품명</b>'+
 						'<input type="text" id="adminPM_name" name="name" class="form-control" placeholder="상품명을 입력하세요" value="" style="margin-bottom: 5px;"></div>'+
@@ -108,7 +112,7 @@
 						'</div>'+
 						'</form>'+
 						'<div style="margin: 5px 0 0 12px;"><button type="button" class="btn btn-primary" id="prodBtn" onclick="makeProdImg('+data+')">등록</button>'+
-						'<a href="adminProd" type="button" class="btn btn-secondary" style="margin-left: 5px;">취소</a></div>'
+						'<a href="adminProd'+getValue+'" type="button" class="btn btn-secondary" style="margin-left: 5px;">취소</a></div>'
 				);
 				$("#file").on("change", handleImgFileSelect);
 			},

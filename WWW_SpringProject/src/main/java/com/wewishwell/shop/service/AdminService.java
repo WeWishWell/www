@@ -16,13 +16,11 @@ public interface AdminService {
 	public int updateStatus(Map<String, Object> updateStatus);
 	
 	//상품관리
-	public List<ProductVO> getProd();
+	public List<ProductVO> getProd(Map<String, String> map);
 	public ProductVO getProdOne(String id);
 	public int modifyProd(ProductVO vo);
 	public int createProd(ProductVO vo);
 	public int deleteProd(String id);
-	public List<ProductVO> prodNameSrch(String val);
-	public List<ProductVO> prodCateSrch(String val);
 	
 	//회원관리
 	public List<Map<String, Object>> adminMemList(Map<String, Object> map);

@@ -35,10 +35,10 @@ public class AdminServiceImpl implements AdminService{
 
 	//상품관리
 	@Override
-	public List<ProductVO> getProd() {
-		return dao.getProd();
+	public List<ProductVO> getProd(Map<String, String> map) {
+		return dao.getProd(map);
 	}
-
+	
 	@Override
 	public ProductVO getProdOne(String id) {
 		return dao.getProdOne(id);
@@ -59,16 +59,6 @@ public class AdminServiceImpl implements AdminService{
 		return dao.deleteProd(id);
 	}
 
-	@Override
-	public List<ProductVO> prodNameSrch(String val) {
-		return dao.prodNameSrch(val);
-	}
-
-	@Override
-	public List<ProductVO> prodCateSrch(String val) {
-		return dao.prodCateSrch(val);
-	}
-	
 	//회원관리
 	@Override
 	public List<Map<String, Object>> adminMemList(Map<String, Object> map){

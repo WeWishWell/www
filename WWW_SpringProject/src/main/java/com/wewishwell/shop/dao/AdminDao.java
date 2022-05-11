@@ -32,8 +32,8 @@ public class AdminDao {
 	}
 	
 	//상품관리 DAO
-	public List<ProductVO> getProd() {
-		return sst.selectList("admin.getProd");
+	public List<ProductVO> getProd(Map<String, String> map) {
+		return sst.selectList("admin.getProd", map);
 	}
 	
 	public ProductVO getProdOne(String id) {
@@ -50,14 +50,6 @@ public class AdminDao {
 	
 	public int deleteProd(String id) {
 		return sst.delete("admin.deleteProd", id);
-	}
-	
-	public List<ProductVO> prodNameSrch(String val) {
-		return sst.selectList("admin.prodNameSrch", val);
-	}
-	
-	public List<ProductVO> prodCateSrch(String val) {
-		return sst.selectList("admin.prodCateSrch", val);
 	}
 	
 	//회원관리

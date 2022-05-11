@@ -16,4 +16,7 @@ public interface PagingService {
 	public List<Map<String, Object>> pgAdminMemList(Map<String, Object> map);
 	
 	public int pgAdminMemListCnt(Map<String, Object> map);
+	
+	//ADMIN상품 count
+	public int getProdCnt(Map<String, String> map);
 }

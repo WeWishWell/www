@@ -30,7 +30,23 @@
 	
 	<!-- 상품관리 MAPPER -->
 	<select id="getProd" resultType="productVO">
-		<![CDATA[SELECT id, name, price, disc, category FROM product ORDER BY id DESC]]>
+		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE 1=1]]>
+		<choose>
+			<when test="sel != null and sel == 1">AND name LIKE CONCAT('%',#{val},'%')</when>
+			<when test="sel == 2">AND category LIKE CONCAT('%',#{val},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+		<![CDATA[ORDER BY id DESC LIMIT ${startList}, ${listSize}]]>
+	</select>
+	
+	<!-- 상품관리 ListCnt MAPPER -->
+	<select id="getProdCnt" resultType="_int">
+		<![CDATA[SELECT count(id) FROM product WHERE 1=1]]>
+		<choose>
+			<when test="sel != null and sel == 1">AND name LIKE CONCAT('%',#{val},'%')</when>
+			<when test="sel == 2">AND category LIKE CONCAT('%',#{val},'%')</when>
+			<otherwise></otherwise>
+		</choose>
 	</select>
 	
 	<select id="getProdOne" resultType="productVO">
@@ -48,14 +64,6 @@
 	<delete id="deleteProd">
 		<![CDATA[DELETE FROM product WHERE id=#{id}]]>
 	</delete>
-	
-	<select id="prodNameSrch" resultType="productVO">
-		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE name LIKE CONCAT('%',#{val},'%');]]>
-	</select>
-	
-	<select id="prodCateSrch" resultType="productVO">
-		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE category LIKE CONCAT('%',#{val},'%');]]>
-	</select>
 	
 	<!-- 회원리스트 -->
 	<select id="adminMemList" parameterType="hashmap" resultType="hashmap">

@@ -81,34 +81,35 @@ public class AdminController {
 	
 	//상품관리 INDEX
 	@GetMapping("adminProd")
-	public ModelAndView getProd(@RequestParam Map<String, String> map) {
+	public ModelAndView getProd(@RequestParam Map<String, String> map, @RequestParam Map<String, Object> Search, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
 		ModelAndView mav = new ModelAndView();
 		if(isThisAdmin()) {
+			Pagination pgn = new Pagination();
+			pgn.pageInfo(page, range, ps.getProdCnt(map));
+			map.put("startList", Integer.toString(pgn.getStartList()));
+			map.put("listSize", Integer.toString(pgn.getListSize()));
+			
 			mav.addObject("search", map);
-			if(map.get("sel") == null) {
-				mav.addObject("data", as.getProd());
-			} else if(map.get("sel").equals("1")){
-				mav.addObject("data", as.prodNameSrch(map.get("val")));
-			} else if(map.get("sel").equals("2")){
-				mav.addObject("data", as.prodCateSrch(map.get("val")));
-			} else {
-				mav.addObject("data", as.getProd());
-			}
+			mav.addObject("pagination", pgn);
+			mav.addObject("data", as.getProd(map));
 			mav.setViewName("admin/adminProd");
 		}
 		return mav;
 	}
 	
 	@PostMapping("adminProd")
-	public String ModifyProd(ProductVO vo) {
+	public String ModifyProd(ProductVO vo, String getValue) {
 		int check = 0;
 		if(vo.getId() == as.prodMaxNum()) {
 			check = as.createProd(vo);
+			if(check == 1) {
+				return "redirect:/adminProd";
+			}
 		} else {
 			check = as.modifyProd(vo);
-		}
-		if(check == 1) {
-			return "redirect:/adminProd";
+			if(check == 1) {
+				return "redirect:/adminProd"+getValue;
+			}
 		}
 		return "index";
 	}
