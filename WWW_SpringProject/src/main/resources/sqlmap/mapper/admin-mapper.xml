@@ -30,11 +30,11 @@
 	
 	<!-- 상품관리 MAPPER -->
 	<select id="getProd" resultType="productVO">
-		<![CDATA[SELECT id, name, price, disc, category FROM product]]>
+		<![CDATA[SELECT id, name, price, disc, category FROM product ORDER BY id DESC]]>
 	</select>
 	
 	<select id="getProdOne" resultType="productVO">
-		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE id=#{id}]]>
+		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE id=#{id} ORDER BY id DESC]]>
 	</select>
 	
 	<update id="modifyProd">
