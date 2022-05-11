@@ -61,14 +61,14 @@
 	<select id="adminMemList" parameterType="hashmap" resultType="hashmap">
     	<![CDATA[select * from members where 1=1 ]]>
     	<if test="searchKeyword != null and searchKeyword != ''">
-					AND ${searchType} = #{searchKeyword}		
+			AND ${searchType} = #{searchKeyword}		
 		</if>
 		<if test="startDate != null and startDate != ''">
 			AND regdate >= cast(#{startDate} as date)
 		</if>
 		
 		<if test="endDate != null and endDate != ''">
-			<![CDATA[ AND regdate <=  DATE_ADD(cast(#{endDate} as date), INTERVAL 1 DAY) ]]>
+			<![CDATA[ AND regdate <= cast(#{endDate} as date) ]]>
 		</if>
 		<![CDATA[
 			order by regdate DESC
@@ -84,7 +84,7 @@
 	<select id="reviewList" parameterType="hashmap" resultType="hashmap">
     	<![CDATA[select *, DATE_FORMAT(regdate, '%Y-%m-%d') as 'reDate' from review where 1=1 ]]>
     	<if test="searchKeyword != null and searchKeyword != ''">
-					AND ${searchType} = #{searchKeyword}		
+			AND ${searchType} like CONCAT ('%',#{searchKeyword},'%')	
 		</if>
 		<if test="startDate != null and startDate != ''">
 			AND regdate >= cast(#{startDate} as date)

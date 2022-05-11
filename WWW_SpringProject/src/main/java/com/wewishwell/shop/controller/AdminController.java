@@ -140,10 +140,10 @@ public class AdminController {
 	public String adminMemDel(MemberVO vo) {
 		as.adminMemDel(vo);
 		
-		return "redirect:adminList";
+		return "redirect:pgAdminMemList";
 	}
 	
-	
+	//리뷰관리
 	@GetMapping("adminReview")
 	public ModelAndView reviewList(@RequestParam Map<String, Object> map) {
 		List<Map<String, Object>> reviewList = as.reviewList(map);
@@ -156,11 +156,11 @@ public class AdminController {
 	
 	@PostMapping("adminReview")
 	public ModelAndView reviewListPost(@RequestParam Map<String, Object> review) {
-		List<Map<String, Object>> reviewSearch = as.adminMemList(review);
+		List<Map<String, Object>> reviewSearch = as.reviewList(review);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("data",reviewSearch);
 		mav.addObject("searchkeyword",review);
-		mav.setViewName("admin/adminList");
+		mav.setViewName("admin/adminReview");
 		
 		return mav;
 	}

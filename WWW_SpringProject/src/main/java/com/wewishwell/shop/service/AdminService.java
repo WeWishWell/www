@@ -24,9 +24,10 @@ public interface AdminService {
 	public List<ProductVO> prodNameSrch(String val);
 	public List<ProductVO> prodCateSrch(String val);
 	
-	//진희누나
+	//회원관리
 	public List<Map<String, Object>> adminMemList(Map<String, Object> map);
 	public int adminMemDel(MemberVO vo);
+	//리뷰관리
 	public List<Map<String, Object>> reviewList(Map<String, Object> map);
 	public int reviewDel(ReviewVO vo);
 }

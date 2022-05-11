@@ -69,7 +69,7 @@ public class AdminServiceImpl implements AdminService{
 		return dao.prodCateSrch(val);
 	}
 	
-	//진희누나
+	//회원관리
 	@Override
 	public List<Map<String, Object>> adminMemList(Map<String, Object> map){
 		return dao.adminMemList(map);
@@ -80,6 +80,7 @@ public class AdminServiceImpl implements AdminService{
 		return dao.adminMemDel(vo);
 	}
 	
+	//리뷰관리
 	@Override
 	public List<Map<String, Object>> reviewList(Map<String, Object> map){
 		return dao.reviewList(map);

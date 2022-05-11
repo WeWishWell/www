@@ -60,7 +60,7 @@ public class AdminDao {
 		return sst.selectList("admin.prodCateSrch", val);
 	}
 	
-	//진희누나
+	//회원관리
 	public List<Map<String, Object>> adminMemList(Map<String, Object> map){
 		return sst.selectList("admin.adminMemList", map);
 	}
@@ -69,6 +69,7 @@ public class AdminDao {
 		return sst.delete("admin.adminMemDel", vo);
 	}
 	
+	//리뷰관리
 	public List<Map<String, Object>> reviewList(Map<String, Object> map){
 		return sst.selectList("admin.reviewList", map);
 	}
