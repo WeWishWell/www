@@ -57,7 +57,7 @@
 		<![CDATA[SELECT id, name, price, disc, category FROM product WHERE category LIKE CONCAT('%',#{val},'%');]]>
 	</select>
 	
-		<!-- 회원리스트 -->
+	<!-- 회원리스트 -->
 	<select id="adminMemList" parameterType="hashmap" resultType="hashmap">
     	<![CDATA[select * from members where 1=1 ]]>
     	<if test="searchKeyword != null and searchKeyword != ''">
