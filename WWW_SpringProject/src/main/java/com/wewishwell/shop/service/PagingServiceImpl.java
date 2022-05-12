@@ -25,15 +25,10 @@ public class PagingServiceImpl implements PagingService{
 		return dao.getOrderListCnt(Search);
 	}
 	
-	//회원관리
+	//회원관리 cnt
 	@Override
-	public List<Map<String, Object>> pgAdminMemList(Map<String, Object> map){
-		return dao.pgAdminMemList(map);
-	}
-	
-	@Override
-	public int pgAdminMemListCnt(Map<String, Object> map) {
-		return dao.pgAdminMemListCnt(map);
+	public int adminMemListCnt(Map<String, Object> map) {
+		return dao.adminMemListCnt(map);
 	}
 
 	//ADMIN상품 count
@@ -45,5 +40,11 @@ public class PagingServiceImpl implements PagingService{
 	@Override
 	public int getProductListCNT(Map<String, Object> map) {
 		return dao.getProductListCNT(map);
+	}
+	
+	//리뷰관리 cnt
+	@Override
+	public int reviewListCnt(Map<String, Object> map) {
+		return dao.reviewListCnt(map);
 	}
 }

@@ -32,7 +32,7 @@
         </a>
       </li>
       <li>
-        <a href="pgAdminMemList" class="nav-link link-dark" id="pgAdminMemList">
+        <a href="adminList" class="nav-link link-dark" id="adminList">
           <svg class="bi me-2" width="16" height="16"></svg>
           회원관리
         </a>
@@ -55,8 +55,8 @@ if(href.includes('adminProd')) {
 	document.querySelector('#pgGetOrderList').className = 'nav-link active';
 } else if(href.includes('adminReview')) {
 	document.querySelector('#reviewAdmin').className = 'nav-link active';
-} else if(href.includes('pgAdminMemList')) {
-	document.querySelector('#pgAdminMemList').className = 'nav-link active';
+} else if(href.includes('adminList')) {
+	document.querySelector('#adminList').className = 'nav-link active';
 } else {
 	document.querySelector('#eventAdmin').className = 'nav-link active';
 }

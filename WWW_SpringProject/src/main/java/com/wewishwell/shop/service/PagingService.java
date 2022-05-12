@@ -12,14 +12,15 @@ public interface PagingService {
 	//총 게시글 개수 확인
 	public int getOrderListCnt(Map<String, Object> Search); 
 	
-	//회원관리
-	public List<Map<String, Object>> pgAdminMemList(Map<String, Object> map);
-	
-	public int pgAdminMemListCnt(Map<String, Object> map);
+	//회원관리 cnt
+	public int adminMemListCnt(Map<String, Object> map);
 	
 	//ADMIN상품 count
 	public int getProdCnt(Map<String, String> map);
 	
 	//상품리스트 count
 	public int getProductListCNT(Map<String, Object> map);
+	
+	//리뷰관리 cnt
+	public int reviewListCnt(Map<String, Object> map);
 }

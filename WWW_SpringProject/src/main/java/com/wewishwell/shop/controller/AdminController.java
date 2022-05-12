@@ -1,6 +1,5 @@
 package com.wewishwell.shop.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -115,27 +114,25 @@ public class AdminController {
 	}
 	
 	//회원관리
-		@GetMapping("pgAdminMemList")
-		public ModelAndView pgAdminMemList(@RequestParam Map<String, Object> map,@RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
-			//System.out.println(map);
-			ModelAndView mav = new ModelAndView();
-			
-			int listCnt = ps.pgAdminMemListCnt(map);
-			
-			
-			Pagination pagination = new Pagination();
-			pagination.pageInfo(page, range, listCnt);
-			
-			map.put("startList", pagination.getStartList());
-			map.put("listSize", pagination.getListSize());
-			
-			mav.addObject("pagination",pagination);
-			mav.addObject("data", ps.pgAdminMemList(map));
-			mav.setViewName("admin/adminListPg");
-			
-			return mav;
-			
-		}
+	@GetMapping("adminList")
+	public ModelAndView adminMemList(@RequestParam Map<String, Object> map,@RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
+		//System.out.println(map);
+		ModelAndView mav = new ModelAndView();
+				
+		int listCnt = ps.adminMemListCnt(map);
+				
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, listCnt);
+				
+		map.put("startList", pagination.getStartList());
+		map.put("listSize", pagination.getListSize());
+				
+		mav.addObject("pagination",pagination);
+		mav.addObject("data", as.adminMemList(map));
+		mav.setViewName("admin/adminList");
+				
+		return mav;
+	}
 	
 	@GetMapping("adminMemDel")
 	public String adminMemDel(MemberVO vo) {
@@ -146,21 +143,19 @@ public class AdminController {
 	
 	//리뷰관리
 	@GetMapping("adminReview")
-	public ModelAndView reviewList(@RequestParam Map<String, Object> map) {
-		List<Map<String, Object>> reviewList = as.reviewList(map);
+	public ModelAndView reviewList(@RequestParam Map<String, Object> map, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", reviewList);
-		mav.setViewName("admin/adminReview");
 		
-		return mav;
-	}
-	
-	@PostMapping("adminReview")
-	public ModelAndView reviewListPost(@RequestParam Map<String, Object> review) {
-		List<Map<String, Object>> reviewSearch = as.reviewList(review);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("data",reviewSearch);
-		mav.addObject("searchkeyword",review);
+		int listCnt = ps.reviewListCnt(map);
+		
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, listCnt);
+
+		map.put("startList", pagination.getStartList());
+		map.put("listSize", pagination.getListSize());
+		
+		mav.addObject("pagination",pagination);
+		mav.addObject("data", as.reviewList(map));
 		mav.setViewName("admin/adminReview");
 		
 		return mav;

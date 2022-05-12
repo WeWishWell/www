@@ -66,21 +66,22 @@
 	</delete>
 	
 	<!-- 회원리스트 -->
-	<select id="adminMemList" parameterType="hashmap" resultType="hashmap">
+	<select id="adminMemList" resultType="hashmap">
     	<![CDATA[select * from members where 1=1 ]]>
-    	<if test="searchKeyword != null and searchKeyword != ''">
-			AND ${searchType} = #{searchKeyword}		
-		</if>
-		<if test="startDate != null and startDate != ''">
-			AND regdate >= cast(#{startDate} as date)
-		</if>
-		
+    	<if test="searchKeyword != null and searchKeyword != ''"> AND ${searchType} like CONCAT ('%',#{searchKeyword},'%') </if>
+		<if test="startDate != null and startDate != ''"> AND regdate >= cast(#{startDate} as date) </if>
 		<if test="endDate != null and endDate != ''">
-			<![CDATA[ AND regdate <= cast(#{endDate} as date) ]]>
+		<![CDATA[ AND regdate <= cast(#{endDate} as date) ]]> </if>
+		<![CDATA[ order by regdate DESC LIMIT ${startList}, ${listSize}]]>
+	</select>
+	
+	<select id="adminMemListCnt" resultType="_int">
+    	<![CDATA[ select count(id) from `members` where 1 = 1 ]]>
+    	<if test="searchKeyword != null and searchKeyword != ''"> AND ${searchType} like CONCAT ('%',#{searchKeyword},'%') </if>
+		<if test="startDate != null and startDate != ''"> AND regdate >= cast(#{startDate} as date) </if>
+		<if test="endDate != null and endDate != ''">
+		<![CDATA[ AND regdate <= cast(#{endDate} as date) ]]>
 		</if>
-		<![CDATA[
-			order by regdate DESC
-		]]>
 	</select>
 	
 	<!-- 회원삭제 -->
@@ -92,18 +93,23 @@
 	<select id="reviewList" parameterType="hashmap" resultType="hashmap">
     	<![CDATA[select *, DATE_FORMAT(regdate, '%Y-%m-%d') as 'reDate' from review where 1=1 ]]>
     	<if test="searchKeyword != null and searchKeyword != ''">
-			AND ${searchType} like CONCAT ('%',#{searchKeyword},'%')	
-		</if>
+			AND ${searchType} like CONCAT ('%',#{searchKeyword},'%') </if>
 		<if test="startDate != null and startDate != ''">
-			AND regdate >= cast(#{startDate} as date)
-		</if>
-		
+			AND regdate >= cast(#{startDate} as date) </if>
 		<if test="endDate != null and endDate != ''">
-			<![CDATA[ AND regdate <=  DATE_ADD(cast(#{endDate} as date), INTERVAL 1 DAY) ]]>
-		</if>
-		<![CDATA[
-			order by regdate DESC
-		]]>
+			<![CDATA[ AND regdate <= DATE_ADD(cast(#{endDate} as date), INTERVAL 1 DAY) ]]> </if>
+		<![CDATA[ order by regdate DESC ]]>
+	</select>
+	
+	<!-- 리뷰리스트Cnt -->
+	<select id="reviewListCnt" resultType="_int">
+    	<![CDATA[select count(num), DATE_FORMAT(regdate, '%Y-%m-%d') as 'reDate' from review where 1=1 ]]>
+    	<if test="searchKeyword != null and searchKeyword != ''">
+			AND ${searchType} like CONCAT ('%',#{searchKeyword},'%') </if>
+		<if test="startDate != null and startDate != ''">
+			AND regdate >= cast(#{startDate} as date) </if>
+		<if test="endDate != null and endDate != ''">
+			<![CDATA[ AND regdate <= DATE_ADD(cast(#{endDate} as date), INTERVAL 1 DAY) ]]> </if>
 	</select>
 	
 	<!-- 리뷰삭제 -->

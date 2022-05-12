@@ -22,13 +22,10 @@ public class PagingDao {
 	public int getOrderListCnt(Map<String, Object> Search) {
 		return sst.selectOne("paging.pgGetOrderListCnt", Search);
 	}
-	//회원리스
-	public List<Map<String, Object>> pgAdminMemList(Map<String, Object> map){
-		return sst.selectList("paging.pgAdminMemList", map);
-	}
 	
-	public int pgAdminMemListCnt(Map<String, Object> map) {
-		return sst.selectOne("paging.pgAdminMemListCnt", map);
+	//회원관리페이지 cnt
+	public int adminMemListCnt(Map<String, Object> map) {
+		return sst.selectOne("admin.adminMemListCnt", map);
 	}
 	
 	//ADMIN상품페이지 count
@@ -38,5 +35,10 @@ public class PagingDao {
 
 	public int getProductListCNT(Map<String, Object> map) {
 		return sst.selectOne("paging.getProductListCNT",map);
+	}
+	
+	//리뷰관리페이지 cnt
+	public int reviewListCnt(Map<String, Object> map) {
+		return sst.selectOne("admin.reviewListCnt", map);
 	}
 }

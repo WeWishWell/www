@@ -38,25 +38,6 @@
 		</if>
 	</select>
 	
-	<select id="pgAdminMemList" resultType="hashmap">
-    	<![CDATA[ select * from `members` where 1 = 1 ]]>
-    	<if test="searchKeyword != null and searchKeyword != ''"> AND ${searchType} = #{searchKeyword} </if>
-		<if test="startDate != null and startDate != ''"> AND regdate >= cast(#{startDate} as date) </if>
-		<if test="endDate != null and endDate != ''">
-		<![CDATA[ AND regdate <= cast(#{endDate} as date) ]]>
-		</if>
-		<![CDATA[ order by regdate DESC LIMIT ${startList}, ${listSize} ]]>
-	</select>
-	
-	<select id="pgAdminMemListCnt" resultType="_int">
-    	<![CDATA[ select count(id) from `members` where 1 = 1 ]]>
-    	<if test="searchKeyword != null and searchKeyword != ''"> AND ${searchType} = #{searchKeyword} </if>
-		<if test="startDate != null and startDate != ''"> AND regdate >= cast(#{startDate} as date) </if>
-		<if test="endDate != null and endDate != ''">
-		<![CDATA[ AND regdate <= cast(#{endDate} as date) ]]>
-		</if>
-	</select>
-	
 	<select id="getProductListCNT" parameterType="hashmap" resultType="_int">
 		<![CDATA[
 			select count(*) as listCNT from product where 1=1

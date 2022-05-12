@@ -65,7 +65,7 @@ public class AdminDao {
 	public List<Map<String, Object>> reviewList(Map<String, Object> map){
 		return sst.selectList("admin.reviewList", map);
 	}
-	
+		
 	public int reviewDel(ReviewVO vo) {
 		return sst.delete("admin.reviewDel", vo);
 	}
