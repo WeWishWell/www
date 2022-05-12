@@ -118,19 +118,19 @@ public class AdminController {
 	public ModelAndView adminMemList(@RequestParam Map<String, Object> map,@RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
 		//System.out.println(map);
 		ModelAndView mav = new ModelAndView();
-				
-		int listCnt = ps.adminMemListCnt(map);
-				
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
-				
-		map.put("startList", pagination.getStartList());
-		map.put("listSize", pagination.getListSize());
-				
-		mav.addObject("pagination",pagination);
-		mav.addObject("data", as.adminMemList(map));
-		mav.setViewName("admin/adminList");
-				
+		if(isThisAdmin()) {
+			int listCnt = ps.adminMemListCnt(map);
+					
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page, range, listCnt);
+					
+			map.put("startList", pagination.getStartList());
+			map.put("listSize", pagination.getListSize());
+					
+			mav.addObject("pagination",pagination);
+			mav.addObject("data", as.adminMemList(map));
+			mav.setViewName("admin/adminList");
+		}
 		return mav;
 	}
 	
@@ -145,19 +145,19 @@ public class AdminController {
 	@GetMapping("adminReview")
 	public ModelAndView reviewList(@RequestParam Map<String, Object> map, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
 		ModelAndView mav = new ModelAndView();
-		
-		int listCnt = ps.reviewListCnt(map);
-		
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
-
-		map.put("startList", pagination.getStartList());
-		map.put("listSize", pagination.getListSize());
-		
-		mav.addObject("pagination",pagination);
-		mav.addObject("data", as.reviewList(map));
-		mav.setViewName("admin/adminReview");
-		
+		if(isThisAdmin()) {
+			int listCnt = ps.reviewListCnt(map);
+			
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page, range, listCnt);
+	
+			map.put("startList", pagination.getStartList());
+			map.put("listSize", pagination.getListSize());
+			
+			mav.addObject("pagination",pagination);
+			mav.addObject("data", as.reviewList(map));
+			mav.setViewName("admin/adminReview");
+		}
 		return mav;
 	}
 	

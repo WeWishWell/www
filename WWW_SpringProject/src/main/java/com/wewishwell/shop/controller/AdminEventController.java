@@ -2,10 +2,15 @@ package com.wewishwell.shop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wewishwell.shop.service.AdminEventService;
@@ -17,20 +22,34 @@ public class AdminEventController {
 	@Autowired
 	AdminEventService aes;
 	
+	private boolean isThisAdmin() {
+		HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		HttpSession s = req.getSession();
+		if(s.getAttribute("roleCheck") == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 	@GetMapping("/adminEvent")
 	public ModelAndView selectEventList(){
-		
-		List<EventBoardVO> selectEventList = aes.selectEventList();
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", selectEventList);
-		mav.setViewName("admin/adminEvent");
 		
+		if(isThisAdmin()) {
+			List<EventBoardVO> selectEventList = aes.selectEventList();
+			mav.addObject("data", selectEventList);
+			mav.setViewName("admin/adminEvent");
+		}
 		return mav;
 	}
 	
 	@GetMapping("/adminEventInsert")
 	public String adminEventInsert() {
-		return "admin/adminEventInsert";
+		if(isThisAdmin()) {
+			return "admin/adminEventInsert";
+		}
+		return "index";
 	}
 	
 	@PostMapping("/adminEventInsert")
@@ -48,13 +67,15 @@ public class AdminEventController {
 	@GetMapping("/adminEventUpdate")
 	public ModelAndView updateEvent(String seq) {
 		// System.out.println(seq);
-		
-		EventBoardVO adminEventDetail = aes.adminEventDetail(seq);
-		// System.out.println(adminEventDetail);
-		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", adminEventDetail);
-		mav.setViewName("admin/adminEventUpdate");
+		
+		if(isThisAdmin()) {
+			EventBoardVO adminEventDetail = aes.adminEventDetail(seq);
+			// System.out.println(adminEventDetail);
+			
+			mav.addObject("data", adminEventDetail);
+			mav.setViewName("admin/adminEventUpdate");
+		}
 		return mav;
 	}
 	
@@ -74,7 +95,9 @@ public class AdminEventController {
 	@GetMapping("/deleteEvent")
 	public String deleteEvent(EventBoardVO vo) {
 		// System.out.println("deleteEvent" + vo);
-		aes.deleteEvent(vo);
+		if(isThisAdmin()) {
+			aes.deleteEvent(vo);
+		}
 		return "redirect:/adminEvent";
 	}
 	
