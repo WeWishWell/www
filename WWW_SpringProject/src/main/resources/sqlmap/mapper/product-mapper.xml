@@ -105,7 +105,8 @@
 		SELECT id,name, price,category from product where id=#{id};
 		]]>
 	</select>
-		<select id="getSearchList" parameterType="hashmap" resultType="ProductVO">
+	
+	<select id="getSearchList" parameterType="hashmap" resultType="ProductVO">
 	<![CDATA[  
 		select  * 
 		from  product  
@@ -117,7 +118,6 @@
 		or replace(name,' ','') like CONCAT('%',#{keyword},'%')
 		or replace(category,' ','') like CONCAT('%',#{keyword},'%'))  
 	</if>  
-
 	</select>
 	
 	<insert id="insertOrder">

@@ -42,6 +42,12 @@ public class PagingServiceImpl implements PagingService{
 		return dao.getProductListCNT(map);
 	}
 	
+	// 상품검색 count
+	@Override
+	public int getProductSearchCNT(Map<String, Object> map) {
+		return dao.getProductSearchCNT(map);
+	}
+	
 	//리뷰관리 cnt
 	@Override
 	public int reviewListCnt(Map<String, Object> map) {

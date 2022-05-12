@@ -89,7 +89,7 @@ public class MainDao {
 		return sst.selectOne("product.getproductList",map);
 	}
 
-	public List<ProductVO> getSearchList(Map<String, String> map) {
+	public List<ProductVO> getSearchList(Map<String, Object> map) {
 		return sst.selectList("product.getSearchList", map);
 	}
 

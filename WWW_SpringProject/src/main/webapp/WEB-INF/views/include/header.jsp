@@ -112,7 +112,7 @@
 <div style="width: 100%; height: 150px; display: inline-block;">
 	<div id="color" style="width: 100%; height: 110px; position: fixed; z-index: 900">
 		<div style="width: 1280px; margin: auto;">
-		<form action="product" method="post" id="searchBtn2" class="search-box" style="position: absolute; margin: 120px 0 0 920px; opacity: 0;">
+		<form action="product" method="get" id="searchBtn2" class="search-box" style="position: absolute; margin: 120px 0 0 920px; opacity: 0;">
 			<input type="text" id="searchText" name= "keyword" placeholder=" " onkeyup=""/><button type="reset"></button>
 			<button hidden="true" type="submit"></button>
 		</form>

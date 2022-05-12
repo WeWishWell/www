@@ -80,48 +80,75 @@ public class MainController {
     // === 제품페이지 카테고리
 	@GetMapping("product")
 	public ModelAndView productlist(@RequestParam Map<String, Object> map, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
+		ModelAndView mav = new ModelAndView();
 		Pagination pagination = new Pagination();
+		List<ProductVO> productList = new ArrayList<ProductVO>();
 		pagination.setListSize(8);
 		int listCNT = 0;
-		if(map.get("category").equals("all")) {
-			listCNT = pagserivce.getProductListCNT(map);
-		}else if(map.get("category").equals("스킨,미스트")) {
-			listCNT = pagserivce.getProductListCNT(map);
-		}else if(map.get("category").equals("세럼,에센스")) {
-			listCNT = pagserivce.getProductListCNT(map);
-		}else if(map.get("category").equals("로션,크림")) {
-			listCNT = pagserivce.getProductListCNT(map);
-		}else if(map.get("category").equals("마스크,패드,마사지")) {
-			listCNT = pagserivce.getProductListCNT(map);
-		}else if(map.get("category").equals("선케어")) {
-			listCNT = pagserivce.getProductListCNT(map);
-		}else if(map.get("category").equals("클렌징")) {
-			listCNT = pagserivce.getProductListCNT(map);
-		}
-		pagination.pageInfo(page, range, listCNT);
-		map.put("startList", pagination.getStartList());
-		map.put("listSize", pagination.getListSize());
-		List<ProductVO> productList = new ArrayList<ProductVO>();
 		
-		ModelAndView mav = new ModelAndView();
-		productList = ms.productList(map);
-		mav.addObject("pagination", pagination);
+		// 카테고리 클릭 시
+		if(map.containsKey("category")) {
+			if(map.get("category").equals("all")) {
+				listCNT = pagserivce.getProductListCNT(map);
+			}else if(map.get("category").equals("스킨,미스트")) {
+				listCNT = pagserivce.getProductListCNT(map);
+			}else if(map.get("category").equals("세럼,에센스")) {
+				listCNT = pagserivce.getProductListCNT(map);
+			}else if(map.get("category").equals("로션,크림")) {
+				listCNT = pagserivce.getProductListCNT(map);
+			}else if(map.get("category").equals("마스크,패드,마사지")) {
+				listCNT = pagserivce.getProductListCNT(map);
+			}else if(map.get("category").equals("선케어")) {
+				listCNT = pagserivce.getProductListCNT(map);
+			}else if(map.get("category").equals("클렌징")) {
+				listCNT = pagserivce.getProductListCNT(map);
+			}
+			pagination.pageInfo(page, range, listCNT);
+			map.put("startList", pagination.getStartList());
+			map.put("listSize", pagination.getListSize());
+			productList = ms.productList(map);
+			
+			mav.addObject("category",map.get("category"));
+		} 
+
+		// 검색 시
+		else {
+			listCNT = pagserivce.getProductSearchCNT(map);
+			pagination.pageInfo(page, range, listCNT);
+			map.put("startList", pagination.getStartList());
+			map.put("listSize", pagination.getListSize());
+			
+			productList = ms.getSearchList(map);
+		}
+		
 		mav.addObject("data", productList);
-		mav.addObject("category",map.get("category"));
+		mav.addObject("pagination", pagination);
 		mav.setViewName("productView"); // list.jsp
 		
 		return mav;
 	}
 
     // === 검색
-	@PostMapping("product")
-	public ModelAndView getSearchList(@RequestParam Map<String,String> map) {
-		ModelAndView mav = new ModelAndView();
-		List<ProductVO> searchList = ms.getSearchList(map);
-		mav.addObject("data", searchList);
-		mav.setViewName("productView");
-		return mav;
-	}
+//	@GetMapping("productSearch")
+//	public ModelAndView getSearchList(@RequestParam Map<String, Object> map, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
+//		System.out.println(map);
+//		System.out.println(map.containsKey("keyword"));
+//		System.out.println(map.containsKey("category"));
+//		
+//		Pagination pagination = new Pagination();
+//		pagination.setListSize(8);
+//		int listCNT = pagserivce.getProductSearchCNT(map);
+//		pagination.pageInfo(page, range, listCNT);
+//		map.put("startList", pagination.getStartList());
+//		map.put("listSize", pagination.getListSize());
+//		
+//		ModelAndView mav = new ModelAndView();
+//		List<ProductVO> searchList = ms.getSearchList(map);
+//		mav.addObject("pagination", pagination);
+//		mav.addObject("data", searchList);
+//		mav.setViewName("productView");
+//		return mav;
+//	}
 
     // === 제품 상세 페이지
 	@GetMapping("/productDetail")

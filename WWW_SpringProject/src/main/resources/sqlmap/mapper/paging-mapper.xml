@@ -46,5 +46,20 @@
 			and category = #{category};
 		</if>
 	</select>
+	
+	<select id="getPordSearchCnt" parameterType="hashmap" resultType="_int">
+	<![CDATA[  
+		select  count(*) 
+		from  product  
+		where 1 = 1  
+	]]>  
+	<if test="keyword != null and keyword != ''">  
+		and (name like CONCAT('%',#{keyword},'%') 
+		or category like CONCAT('%',#{keyword},'%')
+		or replace(name,' ','') like CONCAT('%',#{keyword},'%')
+		or replace(category,' ','') like CONCAT('%',#{keyword},'%'))  
+	</if>  
+	</select>
+	
 
 </mapper>

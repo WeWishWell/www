@@ -42,7 +42,7 @@ public interface MainService {
 	
 	public Map<String, Object> getproductList(Map<String, Object> map);
 
-	public List<ProductVO> getSearchList(Map<String, String> map);
+	public List<ProductVO> getSearchList(Map<String, Object> map);
 
 	public int insertOrder(Map<String, Object> order);
 	

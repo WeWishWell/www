@@ -21,6 +21,9 @@ public interface PagingService {
 	//상품리스트 count
 	public int getProductListCNT(Map<String, Object> map);
 	
+	//상품검색 count
+	public int getProductSearchCNT(Map<String, Object> map);
+	
 	//리뷰관리 cnt
 	public int reviewListCnt(Map<String, Object> map);
 }

@@ -37,6 +37,11 @@ public class PagingDao {
 		return sst.selectOne("paging.getProductListCNT",map);
 	}
 	
+	//상품검색 count
+	public int getProductSearchCNT(Map<String, Object> map) {
+		return sst.selectOne("paging.getPordSearchCnt",map);
+	}
+	
 	//리뷰관리페이지 cnt
 	public int reviewListCnt(Map<String, Object> map) {
 		return sst.selectOne("admin.reviewListCnt", map);

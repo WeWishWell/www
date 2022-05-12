@@ -99,7 +99,7 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public List<ProductVO> getSearchList(Map<String, String> map) {
+	public List<ProductVO> getSearchList(Map<String, Object> map) {
 		return dao.getSearchList(map);
 	}
 
