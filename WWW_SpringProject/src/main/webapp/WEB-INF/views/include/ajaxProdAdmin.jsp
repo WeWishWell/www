@@ -53,7 +53,23 @@
 	function imgModify(id){
         
         var form = new FormData();
-        if($("#file")[0].files[0] == undefined) {
+        if($('#adminPM_name').val() == '') {
+        	alert('상품의 이름을 입력해주세요.');
+        	$('#adminPM_name').focus();
+        	return;
+        } else if($('#adminPM_price').val() == '') {
+        	alert('상품의 가격을 입력해주세요.');
+        	$('#adminPM_price').focus();
+        	return;
+        } else if($('#adminPM_category').val() == '') {
+        	alert('상품의 카테고리를 입력해주세요.');
+        	$('#adminPM_category').focus();
+        	return;
+        } else if($('#adminPM_disc').val() == '') {
+        	alert('상품의 설명을 입력해주세요.');
+        	$('#adminPM_disc').focus();
+        	return;
+        } else if($("#file")[0].files[0] == undefined) {
         	alert('정보를 수정했습니다.');
         	document.form.submit();
         	return;
@@ -128,7 +144,24 @@
         if($("#file")[0].files[0] == undefined) {
         	alert('상품의 사진을 등록해주세요.');
         	return;
-        }
+        } else if($('#adminPM_name').val() == '') {
+        	alert('상품의 이름을 입력해주세요.');
+        	$('#adminPM_name').focus();
+        	return;
+        } else if($('#adminPM_price').val() == '') {
+        	alert('상품의 가격을 입력해주세요.');
+        	$('#adminPM_price').focus();
+        	return;
+        } else if($('#adminPM_category').val() == '') {
+        	alert('상품의 카테고리를 입력해주세요.');
+        	$('#adminPM_category').focus();
+        	return;
+        } else if($('#adminPM_disc').val() == '') {
+        	alert('상품의 설명을 입력해주세요.');
+        	$('#adminPM_disc').focus();
+        	return;
+        } 
+        
         form.append("file", $("#file")[0].files[0]);
         
          jQuery.ajax({
