@@ -118,6 +118,10 @@
 		or replace(name,' ','') like CONCAT('%',#{keyword},'%')
 		or replace(category,' ','') like CONCAT('%',#{keyword},'%'))  
 	</if>  
+	<![CDATA[ 
+	order by id desc 
+	Limit #{startList}, #{listSize};
+	]]>
 	</select>
 	
 	<insert id="insertOrder">
