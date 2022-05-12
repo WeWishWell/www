@@ -77,14 +77,14 @@
                	<script type="text/javascript">
                		for(let i of ${requestScope.check}) {
                			if(i == ${b.odm}) {
-               				document.querySelector('#review${b.odm}').innerHTML = '<a href="review">리뷰보기</a><br><a href="#" onclick="realDel(${b.odm});" style="color: red;">리뷰삭제</a>';
+               				document.querySelector('#review${b.odm}').innerHTML = '<a href="review">리뷰보기</a><br><a href="javascript:void(0);" onclick="realDel(${b.odm});" style="color: red;">리뷰삭제</a>';
                				break;
                			}
                		}
                		if(document.querySelector('#review${b.odm}').innerHTML == '') {
                			var prod_name${b.odm} = '${b.name}'.replace(/ /g, "&nbsp;");
                			var prod${b.odm} = {id: ${b.prod_id}, name: prod_name${b.odm}, odm: ${b.odm}};
-               			document.querySelector('#review${b.odm}').innerHTML = '<a href="#" onclick="review(prod${b.odm});">리뷰쓰기</a>';
+               			document.querySelector('#review${b.odm}').innerHTML = '<a href="javascript:void(0);" onclick="review(prod${b.odm});">리뷰쓰기</a>';
                		}
                	</script>
                </c:forEach>
