@@ -19,7 +19,7 @@ public class MainServiceImpl implements MainService{
 	MainDao dao;
 	
 	@Override
-	public List<ProductVO> productList(Map<String, String> map) {
+	public List<ProductVO> productList(Map<String, Object> map) {
 		return dao.productList(map);
 	}
 	

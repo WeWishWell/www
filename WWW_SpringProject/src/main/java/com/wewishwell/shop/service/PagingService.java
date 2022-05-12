@@ -19,4 +19,7 @@ public interface PagingService {
 	
 	//ADMIN상품 count
 	public int getProdCnt(Map<String, String> map);
+	
+	//상품리스트 count
+	public int getProductListCNT(Map<String, Object> map);
 }

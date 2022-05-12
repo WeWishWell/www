@@ -18,7 +18,7 @@ public class MainDao {
 	@Autowired
 	SqlSessionTemplate sst;
 
-	public List<ProductVO> productList(Map<String, String> map) {
+	public List<ProductVO> productList(Map<String, Object> map) {
 		return sst.selectList("product.product_list", map);
 	}
 

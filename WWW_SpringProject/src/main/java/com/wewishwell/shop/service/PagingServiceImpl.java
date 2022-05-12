@@ -41,4 +41,9 @@ public class PagingServiceImpl implements PagingService{
 	public int getProdCnt(Map<String, String> map) {
 		return dao.getProdCnt(map);
 	}
+
+	@Override
+	public int getProductListCNT(Map<String, Object> map) {
+		return dao.getProductListCNT(map);
+	}
 }

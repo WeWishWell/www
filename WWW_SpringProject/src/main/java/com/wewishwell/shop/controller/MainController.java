@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import com.wewishwell.shop.common.Pagination;
 import com.wewishwell.shop.service.MainService;
 import com.wewishwell.shop.service.MemberService;
+import com.wewishwell.shop.service.PagingService;
 import com.wewishwell.shop.service.ReviewService;
 import com.wewishwell.shop.vo.BasketVO;
 import com.wewishwell.shop.vo.MemberVO;
@@ -36,6 +38,9 @@ public class MainController {
 	
 	@Autowired
 	ReviewService reviewservice;
+	
+	@Autowired
+	PagingService pagserivce;
 	
 	@GetMapping("test")
 	public String testing() {
@@ -74,10 +79,33 @@ public class MainController {
 	
     // === 제품페이지 카테고리
 	@GetMapping("product")
-	public ModelAndView productlist(@RequestParam Map<String, String> map) {
+	public ModelAndView productlist(@RequestParam Map<String, Object> map, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
+		Pagination pagination = new Pagination();
+		pagination.setListSize(8);
+		int listCNT = 0;
+		if(map.get("category").equals("all")) {
+			listCNT = pagserivce.getProductListCNT(map);
+		}else if(map.get("category").equals("스킨,미스트")) {
+			listCNT = pagserivce.getProductListCNT(map);
+		}else if(map.get("category").equals("세럼,에센스")) {
+			listCNT = pagserivce.getProductListCNT(map);
+		}else if(map.get("category").equals("로션,크림")) {
+			listCNT = pagserivce.getProductListCNT(map);
+		}else if(map.get("category").equals("마스크,패드,마사지")) {
+			listCNT = pagserivce.getProductListCNT(map);
+		}else if(map.get("category").equals("선케어")) {
+			listCNT = pagserivce.getProductListCNT(map);
+		}else if(map.get("category").equals("클렌징")) {
+			listCNT = pagserivce.getProductListCNT(map);
+		}
+		pagination.pageInfo(page, range, listCNT);
+		map.put("startList", pagination.getStartList());
+		map.put("listSize", pagination.getListSize());
 		List<ProductVO> productList = new ArrayList<ProductVO>();
+		
 		ModelAndView mav = new ModelAndView();
 		productList = ms.productList(map);
+		mav.addObject("pagination", pagination);
 		mav.addObject("data", productList);
 		mav.addObject("category",map.get("category"));
 		mav.setViewName("productView"); // list.jsp

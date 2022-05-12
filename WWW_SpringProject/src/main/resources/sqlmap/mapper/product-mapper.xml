@@ -13,7 +13,8 @@
 		and category = #{category}
 		</if>
 		<![CDATA[
-		order by id desc;
+		order by id desc
+		Limit #{startList}, #{listSize};
 		]]>
 	</select>
 	

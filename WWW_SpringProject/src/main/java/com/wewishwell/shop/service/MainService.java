@@ -10,7 +10,7 @@ import com.wewishwell.shop.vo.ProductVO;
 
 public interface MainService {
 
-	public List<ProductVO> productList(Map<String, String> map);
+	public List<ProductVO> productList(Map<String, Object> map);
 
 	public ProductVO productDetail(ProductVO productVO);
 

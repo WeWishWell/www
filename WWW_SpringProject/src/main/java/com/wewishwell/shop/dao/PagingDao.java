@@ -35,4 +35,8 @@ public class PagingDao {
 	public int getProdCnt(Map<String, String> map) {
 		return sst.selectOne("admin.getProdCnt", map);
 	}
+
+	public int getProductListCNT(Map<String, Object> map) {
+		return sst.selectOne("paging.getProductListCNT",map);
+	}
 }
