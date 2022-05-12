@@ -32,34 +32,29 @@
 			ScrollCheck();
 		});
 		
-		action2.addEventListener("mouseover", () =>{
-			const cookie = getCookie('recent_view_items');
-			if(cookie != null){
-				if(cookie == '') {
-					deleteCookie('recent_view_items');
-					return;
-				}
-				var arr = []; 
-				reversearr = [];
-				arr = cookie.split(",");
-				for(let i = arr.length-1; i>=0;i--){
-					reversearr.push(arr[i]);
-				}
-				html = '<li style="padding-left: 16px;"><b>최근본목록</b></li><li><hr class="dropdown-divider"></li>';
-				for(var i = 0; i<4;i++ ){
-					html += ajaxRecentList(reversearr[i]);
-				}
-				document.querySelector('#recent').innerHTML = html;
+		//최근본목록 불러오기
+		const cookie = getCookie('recent_view_items');
+		if(cookie != null){
+			if(cookie == '') {
+				deleteCookie('recent_view_items');
+				return;
 			}
-		});
-		
-		action3.addEventListener("mouseover", () => {
-			ajaxBasketList();
-		});
-		
-		action4.addEventListener("mouseover", () => {
-			ajaxLikeList();
-		});
+			var arr = []; 
+			reversearr = [];
+			arr = cookie.split(",");
+			for(let i = arr.length-1; i>=0;i--){
+				reversearr.push(arr[i]);
+			}
+			html = '<li style="padding-left: 16px;"><b>최근본목록</b></li><li><hr class="dropdown-divider"></li>';
+			for(var i = 0; i<4;i++ ){
+				html += ajaxRecentList(reversearr[i]);
+			}
+			document.querySelector('#recent').innerHTML = html;
+		}
+		//장바구니 불러오기
+		ajaxBasketList();
+		//좋아요 불러오기
+		ajaxLikeList();
 		
 		if('${sessionScope.roleCheck}' != '') {
 			document.querySelector('#myInfo').innerHTML += '<li><a class="dropdown-item" href="adminProd" style="color: red;">관리자</a></li><li><a class="dropdown-item" href="logout">로그아웃</a></li>';

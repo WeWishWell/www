@@ -18,6 +18,7 @@
 					return;
 				}
 				document.querySelector('#jjim').className = 'btn btn-danger';
+				ajaxLikeList();
 			},
 			error: function (request, status, error) {
 				console.log(request, status, error);
@@ -40,6 +41,7 @@
 					return;
 				}
 				document.querySelector('#jjim').className = 'btn btn-outline-danger';
+				ajaxLikeList();
 			},
 			error: function (request, status, error) {
 				console.log(request, status, error);
@@ -63,6 +65,8 @@
 					return;
 				}
 				document.querySelector('#modalBtn').click();
+				//장바구니 불러오기
+				ajaxBasketList();
 			},
 			error: function (request, status, error) {
 				console.log(request, status, error);
