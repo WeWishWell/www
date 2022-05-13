@@ -354,7 +354,7 @@
 	</div>
 
 
-	<div class="container" style="padding-top: 30px;">
+	<div class="container" style="padding-top: 60px;">
 		<div class="row">
 			<div class="col">
 				<img src="resources/images/pro_${data.id}.png" alt="Image"
