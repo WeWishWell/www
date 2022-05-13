@@ -30,7 +30,7 @@
                     <div class="py-2 text-uppercase">상품금액</div>
                   </th>
                   <th scope="col" class="border-0 bg-light" style=" text-align: center;">
-                    <div class="py-2 text-uppercase">Remove</div>
+                    <div class="py-2 text-uppercase">비우기</div>
                   </th>
                 </tr>
               </thead>

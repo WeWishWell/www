@@ -21,6 +21,7 @@ function plusAJAX(prod_id, cnt) {
 			let prodSum = price*data
 			totalPrice(prodSum, prod_id);
 			AlltotalPrice();
+			ajaxBasketList();
 		},
 		error: function (request, status, error) {
 			console.log(request, status, error);
@@ -45,6 +46,7 @@ function minusAJAX(prod_id, cnt) {
 			let prodSum = price*data
 			totalPrice(prodSum, prod_id);
 			AlltotalPrice();
+			ajaxBasketList();
 		},
 		error: function (request, status, error) {
 			console.log(request, status, error);

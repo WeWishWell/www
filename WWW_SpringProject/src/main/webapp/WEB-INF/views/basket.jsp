@@ -71,7 +71,7 @@ function minus(prodid, cnt) {
                     <div class="py-2 text-uppercase">합계</div>
                   </th>
                   <th scope="col" class="border-0 bg-light" style=" text-align: center;">
-                    <div class="py-2 text-uppercase">Remove</div>
+                    <div class="py-2 text-uppercase">비우기</div>
                   </th>
                 </tr>
               </thead>
@@ -117,7 +117,7 @@ function minus(prodid, cnt) {
 
       <div class="row py-5 p-4 bg-white rounded shadow-sm">
 <!--         <div class="col-lg-6"> -->
-          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">주문 합계</div>
           <div class="p-4">
             <ul class="list-unstyled mb-4">
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">총합계</strong>
