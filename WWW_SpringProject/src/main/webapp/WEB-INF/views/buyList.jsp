@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="./include/header.jsp"%>
 <%@include file="./include/ajaxPopup.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +66,7 @@
                       </div>
                     </div>
                   </th>
-                  <td class="border-0 align-middle" style=" text-align: center;"><strong>${b.price}원</strong></td>
+                  <td class="border-0 align-middle" style=" text-align: center;"><strong><fmt:formatNumber value="${b.price}" pattern="#,###"/>원</strong></td>
                   <td class="border-0 align-middle" style=" text-align: center;"><strong>${b.order_status}</strong></td>
                   <td class="border-0 align-middle" id="date${b.odm}" style=" text-align: center;">
                   	<script type="text/javascript">

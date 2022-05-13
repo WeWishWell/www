@@ -21,6 +21,7 @@
 				} else {
 					for(prod of data) {
 						html += '<li style="padding-left: 16px;"><span style="display: block; position: absolute; margin-left: 110px;">'+prod.name+'</span>';
+						html += '<span style="display: block; position: absolute; margin: 20 0 0 110px;">'+prod.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+'원</span>';
 						html += '<a href="deleteLike?prod_id='+prod.id+'&user_id=${sessionScope.data}" style="position: absolute; margin: 93px 0 0 110px;"><img src="resources/images/bin.png" alt="Image" style="width: 23"/></a>';
 						html += '<a href="productDetail?id='+prod.id+'"><img src="resources/images/pro_'+prod.id+'.png?a='+Math.random()+'" alt="" width="100px" style="margin-bottom: 5px;" class="img-fluid rounded shadow-sm"></a></li>';
 					}
@@ -53,8 +54,8 @@
 					
 					for(prod of data) {
 						html += '<li style="padding-left: 16px;"><span style="display: block; position: absolute; margin: 0 0 0 110px;">'+prod.name+'</span>';
+						html += '<span style="display: block; position: absolute; margin: 20 0 0 110px;">'+prod.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+'원</span>';
 						html += '<span style="display: block; position: absolute; margin: 40 0 0 110px;">수량: '+prod.cnt+'개</span>';
-						html += '<span style="display: block; position: absolute; margin: 60 0 0 110px;">'+prod.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+'원</span>';
 						html += '<a href="basketDelete?prod_id='+prod.prod_id+'&user_id=${sessionScope.data}" style="position: absolute; margin: 93px 0 0 110px;"><img src="resources/images/bin.png" alt="Image" style="width: 23"/></a>';
 						html += '<a href="productDetail?id='+prod.prod_id+'"><img src="resources/images/pro_'+prod.prod_id+'.png?a='+Math.random()+'" alt="" width="100px" style="margin-bottom: 5px;" class="img-fluid rounded shadow-sm"></a></li>';
 					}
