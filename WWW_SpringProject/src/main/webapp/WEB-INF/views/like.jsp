@@ -8,6 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>like.jsp</title>
+
+<script type="text/javascript">
+	
+	if(!isNaN('${sessionScope.data}')) {
+		alert('찜 기능은 회원가입 후 이용하실 수 있습니다.');
+		window.history.back();
+	}
+
+</script>
+
 </head>
 <body>
 
