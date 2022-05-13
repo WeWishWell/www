@@ -126,5 +126,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return dao.getreviewlike(vo);
 	}
 
+	@Override
+	public int reviewCnt() {
+		return dao.reviewCnt();
+	}
+
 
 }

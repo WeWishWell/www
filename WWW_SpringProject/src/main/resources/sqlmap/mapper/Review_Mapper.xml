@@ -8,6 +8,10 @@
 		<![CDATA[SELECT * FROM review ORDER BY regdate]]>
 	</select>
 	
+	<select id="reviewCnt" resultType="_int">
+		<![CDATA[SELECT count(num) FROM review]]>
+	</select>
+	
 	<select id="findReview" resultType="_int">
 		<![CDATA[SELECT num FROM review WHERE user_id=#{id}]]>
 	</select>

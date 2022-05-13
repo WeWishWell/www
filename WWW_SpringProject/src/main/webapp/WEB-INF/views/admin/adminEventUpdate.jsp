@@ -12,6 +12,25 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css"
     />
+
+<script type="text/javascript">
+	function eventTextCheck() {
+		const form = document.form;
+		const title = form.title;
+		const content = form.content;
+		
+		if(title.value == '') {
+			alert('이벤트 제목을 입력하세요.');
+			title.focus();
+			return;
+		} else if(content.value == '') {
+			alert('이벤트 내용을 입력하세요.');
+			content.focus();
+			return;
+		}
+		eventImgModify1('${data.seq}');
+	}
+</script>
 </head>
 <body>
 <div style="display: flex;">
@@ -78,7 +97,7 @@
 	
 			<div class="form-group row" style="margin-top: 10px;">
 				<div class="col-sm-12" align="right">
-					<button type="button" class="btn btn-success" onclick="eventImgModify1('${data.seq}');" role="button" title="수정"><i class="fa fa-save"></i>수정 완료</button>
+					<button type="button" class="btn btn-success" onclick="eventTextCheck();" role="button" title="수정"><i class="fa fa-save"></i>수정 완료</button>
 					<a class="btn btn-secondary" href="adminEvent" role="button" title="목록"><i class="fa fa-list-ul"></i>목록</a>
 				</div>
 			</div>
