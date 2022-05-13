@@ -254,9 +254,9 @@ ul li {
 		</div>
 	</div>
 	<div>
-		<div class="row" style="width: 1200px; margin: auto;">
-			<h2>&emsp;&emsp;상품정보</h2>
-			<hr>
+		<div class="row" style="width: 1200px; margin: auto; margin-top: 80">
+<!-- 			<h2>&emsp;&emsp;상품정보</h2> -->
+<!-- 			<hr> -->
 			<c:forEach var="b" items="${data}">
 				<!-- card 1 -->
 				<div
@@ -290,9 +290,9 @@ ul li {
 		</div>
 		
 		 <!-- 검색결과 없는 경우 -->
-       	<div class="text-center" id="searchnone" style="display: none; margin-top: 40">
-			<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%; opacity: 0.6">
-			<h4 style="margin-top: 35; opacity: 0.6">검색된 상품이 없습니다.</h4>					
+       	<div class="text-center" id="searchnone" style="display: none; margin-top: 3%">
+			<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%;">
+			<h4 style="margin-top: 35;">검색된 상품이 없습니다.</h4>					
 		</div>
         <script type="text/javascript">
         	if('${data}'== '[]'){

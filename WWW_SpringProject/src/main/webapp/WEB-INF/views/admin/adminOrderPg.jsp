@@ -261,8 +261,8 @@
               </table>
               <!-- 검색결과 없는 경우 -->
 	         	<div class="text-center" id="searchnone" style="display: none;">
-					<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%; opacity: 0.6">
-					<h4 style="margin-top: 35; opacity: 0.6">검색결과가 없습니다.</h4>					
+					<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%;">
+					<h4 style="margin-top: 35;">검색결과가 없습니다.</h4>					
 				</div>
               <script type="text/javascript">
               	if('${data}'== '[]'){
