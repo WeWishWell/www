@@ -46,8 +46,14 @@
 				reversearr.push(arr[i]);
 			}
 			html = '<li style="padding-left: 16px;"><b>최근본목록</b></li><li><hr class="dropdown-divider"></li>';
-			for(var i = 0; i<4;i++ ){
+			if(reversearr.length<=4){
+				for(var i = 0; i<reversearr.length;i++){
 				html += ajaxRecentList(reversearr[i]);
+				}
+			}else{
+				for(var i = 0; i<4;i++ ){
+					html += ajaxRecentList(reversearr[i]);
+				}
 			}
 			document.querySelector('#recent').innerHTML = html;
 		}
