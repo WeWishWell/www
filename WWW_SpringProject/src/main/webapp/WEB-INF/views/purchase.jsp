@@ -184,7 +184,7 @@
 						<div class="row gy-3"  id="deposit" style="display: none;">
 						    <div class="col-md-8">
 						        <label for="cc-name" class="form-label">입금액 : <b>${data.amount }</b>원</label><br>
-						        <label for="cc-name" class="form-label">예금주 명 : <b>홍길동</b>  |  계좌번호 : <b>110-123-456789</b> (신한은행)</label><br>
+						        <label for="cc-name" class="form-label">예금주 명 : <b>WWW</b>  |  계좌번호 : <b>110-123-456789</b> (신한은행)</label><br>
 						        <label for="cc-name" class="form-label">입금자명</label> 
 						        <input type="text" class="form-control" id="deposit-name" placeholder=""> 
 						            <small class="text-muted">
