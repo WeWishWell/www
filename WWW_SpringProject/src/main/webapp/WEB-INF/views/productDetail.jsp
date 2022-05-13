@@ -5,6 +5,7 @@
 <%@ include file="include/ajaxCheck.jsp"%>
 <%@ include file="include/ajaxReview.jsp"%>
 <%@ include file="include/productdetail_review_css.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -361,7 +362,7 @@
 			</div>
 			<div class="col">
 				<h3>${data.name}</h3>
-				<h5>${data.price}원</h5>
+				<h5><fmt:formatNumber value="${data.price}" pattern="#,###"/>원</h5>
 				<hr>
 				${data.disc } <br> <br>
 				<div class="col" align="right">
@@ -386,7 +387,7 @@
 						</thead>
 						<tbody>
 							<tr align="center">
-								<td>${data.price}원</td>
+								<td><fmt:formatNumber value="${data.price}" pattern="#,###"/>원</td>
 								<td id="out_cnt"><script type="text/javascript">
 			                    $("select[name=cnt]").change(function(){
 			                    	document.querySelector('#out_cnt').innerText = $(this).val(); //value값 가져오기
@@ -401,7 +402,8 @@
 			                    	$("select[name=cnt]").change(function(){
 			                    		sum = $(this).val()*${data.price }
 			                    		if(document.querySelector('#out_cnt').innerText != '선택') {
-			                    			document.querySelector('#out_sum').innerText = sum; //value값 가져오기
+			                    			//value값 가져오기
+			                    			document.querySelector('#out_sum').innerText = sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+'원'; 
 			                    		} else {
 			                    			document.querySelector('#out_sum').innerText = '';
 			                    		}

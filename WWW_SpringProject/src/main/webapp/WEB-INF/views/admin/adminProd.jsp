@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="../include/header.jsp"%>
 <%@include file="../include/ajaxProdAdmin.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +97,7 @@
 		<c:forEach var="prod" items="${requestScope.data}">
 			<tr>
 				<td>${prod.name}</td>
-				<td style="text-align: center;">${prod.price}</td>
+				<td style="text-align: center;"><fmt:formatNumber value="${prod.price}" pattern="#,###"/>원</td>
 				<td style="text-align: center;">${prod.category}</td>
 				<td style="text-align: center;">
 					<button type="button" onclick="prodModify(${prod.id})" class="btn btn-outline-primary btn-sm">상품 수정</button>

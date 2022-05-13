@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp"%>
 <%@include file="./include/daumjuso.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +78,7 @@
 						</div>
 						<label for="bill" class="form-label">주문 금액</label>
 						<div>
-							<p><b>${data.amount }</b>원</p>
+							<p><b><fmt:formatNumber value="${data.amount }" pattern="#,###"/></b>원</p>
 						</div>
 					</div>
 				

@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -268,13 +269,13 @@
                     </div>
                   </div>
                 </th>
-                <td class="border-0 align-middle" style=" text-align: center;">${b.price}</td>
+                <td class="border-0 align-middle" style=" text-align: center;"><fmt:formatNumber value="${b.price}" pattern="#,###"/>원</td>
                 <td class="border-0 align-middle" style=" text-align: center;">${b.prod_cnt}</td>
                 <td class="border-0 align-middle" style=" text-align: center;" id="out_sum_${b.prod_id}">
                    <script type="text/javascript">
                        var sum = 0;
                       sum = ${b.price}*${b.prod_cnt}
-                      document.querySelector('#out_sum_${b.prod_id}').innerText = sum;
+                      document.querySelector('#out_sum_${b.prod_id}').innerText = sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")+'원';
                   </script>	
                 </td>
               </tr>
