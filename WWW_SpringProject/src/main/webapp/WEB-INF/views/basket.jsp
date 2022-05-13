@@ -61,7 +61,7 @@ function basketBuyCheck() {
                     </div>
                   </th>
                   <td class="border-0 align-middle" style=" text-align: center;"><fmt:formatNumber value="${b.price}" pattern="#,###"/>원</td>
-                  <td class="border-0 align-middle" style=" text-align: center;">${b.cnt}</td>
+                  <td class="border-0 align-middle" style=" text-align: center;"><button type="button" class="btn btn-light">-</button>&emsp;${b.cnt}&emsp;<button type="button" class="btn btn-light">+</button></td>
                   <td class="border-0 align-middle" style=" text-align: center;" id="out_sum_${b.prod_id}">
                		 <script type="text/javascript">
                		 	var sum = 0;
