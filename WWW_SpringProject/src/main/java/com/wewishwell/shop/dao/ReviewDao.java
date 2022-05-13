@@ -98,5 +98,9 @@ public class ReviewDao {
 	public ReviewlikeVO getreviewlike(ReviewlikeVO vo) {
 		return sst.selectOne("review.getreviewlike", vo);
 	}
+	
+	public int reviewCnt() {
+		return sst.selectOne("review.reviewCnt");
+	}
 
 }

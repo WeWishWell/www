@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import com.wewishwell.shop.common.Pagination;
 import com.wewishwell.shop.service.MemberService;
+import com.wewishwell.shop.service.ReviewService;
 import com.wewishwell.shop.vo.MemberVO;
 
 @Controller
@@ -24,6 +26,9 @@ public class MemberController {
 	
 	@Autowired
 	MemberService ms;
+	
+	@Autowired
+	ReviewService rs;
 	
 	@GetMapping("/index")
 	public String home(HttpServletRequest req) {
@@ -155,8 +160,13 @@ public class MemberController {
 	
 	
 	@GetMapping("review")
-	public ModelAndView review() {
+	public ModelAndView review(@RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
 		ModelAndView mav = new ModelAndView();
+		Pagination pgn = new Pagination();
+		
+		pgn.setListSize(12);
+		pgn.pageInfo(page, range, rs.reviewCnt());
+		mav.addObject("pagination", pgn);
 		mav.addObject("reviews", ms.review());
 		mav.setViewName("review");
 		return mav;

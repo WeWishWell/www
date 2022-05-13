@@ -51,5 +51,7 @@ public interface ReviewService {
 	public int Modify_li2unlikeCNT(ReviewVO vo);
 
 	public ReviewlikeVO getreviewlike(ReviewlikeVO vo);
+	
+	public int reviewCnt();
 
 }
