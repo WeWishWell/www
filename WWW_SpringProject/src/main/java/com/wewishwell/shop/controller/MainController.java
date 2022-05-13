@@ -279,6 +279,7 @@ public class MainController {
 	// ===  구매페이지 : 구매 완료, order테이블 추가
 		@PostMapping("/purchase")
 		public ModelAndView purchase_post(@RequestParam Map<String, Object> order) {
+			
 			ModelAndView mav = new ModelAndView();
 			order.put("receiver_address", order.get("address"));
 			order.remove("addr");

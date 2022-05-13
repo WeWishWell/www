@@ -181,6 +181,7 @@ function fn_next(page, range, rangeSize) {
                      </thead>
                      <tbody>
                       <c:forEach var="b" items="${data}">
+                      
                         <tr>
                            <td scope="row" style=" text-align: center;">${b.num}</td>
                            <td scope="row" style=" text-align: center;">${b.user_id}</td>
@@ -193,6 +194,7 @@ function fn_next(page, range, rangeSize) {
                                  <span class="#"> 삭제 </span>
                               </button>
                         </tr>
+                        
                         </c:forEach>
                      </tbody>
                   </table>

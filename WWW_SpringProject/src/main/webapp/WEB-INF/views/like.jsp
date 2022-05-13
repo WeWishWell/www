@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@
                       </div>
                     </div>
                   </th>
-                  <td class="border-0 align-middle" style=" text-align: center;"><strong>${b.price}</strong></td>
+                  <td class="border-0 align-middle" style=" text-align: center;"><strong><fmt:formatNumber value="${b.price}" pattern="#,###"/></strong>원</td>
                   <td class="border-0 align-middle" align="center">
                   	<a href="deleteLike?prod_id=${b.id}&user_id=${sessionScope.data}" > 
 						<img src="resources/images/bin.png" alt="Image" style="width: 23" />
