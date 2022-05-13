@@ -46,4 +46,9 @@ public class PagingDao {
 	public int reviewListCnt(Map<String, Object> map) {
 		return sst.selectOne("admin.reviewListCnt", map);
 	}
+
+	//구매내역 cnt
+	public int getBuyListCnt(Map<String, Object> map) {
+		return sst.selectOne("paging.getBuyListCnt", map);
+	}
 }

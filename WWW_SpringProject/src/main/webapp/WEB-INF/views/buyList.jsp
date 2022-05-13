@@ -19,6 +19,43 @@
 			location.href = 'delReview?id=${sessionScope.data}&odm='+odm;
         }
 	}
+
+//이전 버튼 이벤트
+	function fn_prev(page, range, rangeSize) {
+		var page = ((range - 2) * rangeSize) + 1;
+		var range = range - 1;
+		var url = window.location.href.split('page')[0];
+		if(url.includes('?')){ url = url + "page=" + page;} else{url = url + "?page=" + page;}
+		url = url + "&range=" + range;
+
+		location.href = url;
+	}
+
+  //페이지 번호 클릭
+	function fn_pagination(page, range, rangeSize, searchType, keyword) {
+		var url = window.location.href.split('page')[0];
+		if(url.includes('?')){
+			url = url + "&page=" + page;
+		} else {
+			url = url + "?page=" + page;
+		}
+		url = url + "&range=" + range;
+
+		url = url.replace('&&', '&');
+		
+		location.href = url;	
+	}
+
+	//다음 버튼 이벤트
+	function fn_next(page, range, rangeSize) {
+		var page = parseInt((range * rangeSize)) + 1;
+		var range = parseInt(range) + 1;
+		var url = window.location.href.split('page')[0];
+		if(url.includes('?')){ url = url + "page=" + page;} else{url = url + "?page=" + page;}
+		url = url + "&range=" + range;
+
+		location.href = url;
+	}
 </script>
 </head>
 <body>
@@ -32,7 +69,7 @@
           <!-- Shopping cart table -->
           <div class="table-responsive">
             <table class="table">
-              <thead>
+              <thead id="resultheader" style="display: ">
                 <tr>
                   <th scope="col" class="border-0 bg-light">
                     <div class="p-2 px-3 text-uppercase">제품명</div>
@@ -93,6 +130,39 @@
             </table>
           </div>
           <!-- End -->
+          
+          <!-- 검색결과 없는 경우 -->
+       	<div class="text-center" id="searchnone" style="display: none; margin-top: 3%">
+			<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%;">
+			<h4 style="margin-top: 35;">구매한 상품이 없습니다.</h4>
+			<div class="d-grid gap-2 col-3 mx-auto">
+			  <button class="btn btn-primary" type="button" onclick="location.href='product' ">상품 구매하러가기</button>
+			</div>				
+		</div>
+        <script type="text/javascript">
+        	if('${data}'== '[]'){
+        		document.querySelector('#searchnone').style.display = "";
+        		document.querySelector('#resultheader').style.display = "none";
+        	}
+        </script>
+        
+        <!-- pagination{s} -->
+	<div id="paginationBox">
+		<ul class="pagination justify-content-center">
+			<c:if test="${pagination.prev}">
+				<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+			</c:if>
+
+			<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+				<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> ${idx} </a></li>
+			</c:forEach>
+
+			<c:if test="${pagination.next}">
+				<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')" >Next</a></li>
+			</c:if>
+		</ul>
+	</div>
+	<!-- pagination{e} -->
           
         </div>
       </div>

@@ -84,8 +84,8 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public List<Map<String, String>> buyList(String id) {
-		return dao.buyList(id);
+	public List<Map<String, String>> buyList(Map<String, Object> map) {
+		return dao.buyList(map);
 	}
 	
 	@Override

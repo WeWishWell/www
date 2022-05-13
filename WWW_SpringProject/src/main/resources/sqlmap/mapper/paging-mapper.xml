@@ -47,6 +47,13 @@
 		</if>
 	</select>
 	
+	<select id="getBuyListCnt" parameterType="hashmap" resultType="_int">
+		<![CDATA[
+			select count(*) as listCNT from `order` 
+			where user_id = #{id};
+		]]>
+	</select>
+	
 	<select id="getPordSearchCnt" parameterType="hashmap" resultType="_int">
 	<![CDATA[  
 		select  count(*) 

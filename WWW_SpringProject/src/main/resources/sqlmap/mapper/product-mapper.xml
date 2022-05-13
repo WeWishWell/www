@@ -93,7 +93,12 @@
 	</delete>
 	
 	<select id="buyList" resultType="hashmap">
-		<![CDATA[SELECT b.order_num, order_detail_num odm, prod_id, name, price, order_date, order_status FROM order_detail od, (SELECT order_num, id, name, price, order_date, order_status FROM product p, (SELECT o.order_num, order_date, order_status, prod_id FROM `order` o, order_detail od WHERE o.order_num = od.order_num AND user_id=#{id}) a WHERE p.id=a.prod_id) b WHERE od.order_num = b.order_num AND od.prod_id = b.id order by order_date desc]]>
+		<![CDATA[
+			SELECT b.order_num, order_detail_num odm, prod_id, name, price, order_date, order_status FROM order_detail od, (SELECT order_num, id, name, price, order_date, order_status FROM product p, (SELECT o.order_num, order_date, order_status, prod_id FROM `order` o, order_detail od WHERE o.order_num = od.order_num AND user_id=#{id}) a WHERE p.id=a.prod_id) b 
+			WHERE od.order_num = b.order_num AND od.prod_id = b.id 
+			order by order_date desc
+			limit ${startList}, ${listSize}
+		]]>
 	</select>
 	
 	<delete id="delReview">

@@ -362,12 +362,22 @@ public class MainController {
 	
     // === 구매내역 페이지
 	@GetMapping("buyList")
-	public ModelAndView buyList(String id) {
+	public ModelAndView buyList(String id, @RequestParam Map<String, Object> map, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
 		ModelAndView mav = new ModelAndView();
-		List<Map<String, String>> map = ms.buyList(id);
-		List<Integer> map2 = mbs.findReview(id);
-		mav.addObject("data", map);
-		mav.addObject("check", map2);
+		
+		int listCnt = pagserivce.getBuyListCnt(map);
+		
+		//Pagination 객체생성
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, listCnt);
+		
+		map.put("startList", pagination.getStartList());
+		map.put("listSize", pagination.getListSize());
+		
+		// order테이블 리스트
+		mav.addObject("pagination", pagination);
+		mav.addObject("data", ms.buyList(map));
+		mav.addObject("check", mbs.findReview(id));
 		mav.setViewName("buyList");
 		return mav;
 	}

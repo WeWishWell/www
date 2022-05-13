@@ -36,7 +36,7 @@ public interface MainService {
 
 	public int deleteLike(ProdLikeVO vo);
 	
-	public List<Map<String, String>> buyList(String id);
+	public List<Map<String, String>> buyList(Map<String, Object> map);
 	
 	public int delReview(String odm);
 	

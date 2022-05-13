@@ -77,8 +77,8 @@ public class MainDao {
 		return sst.delete("product.deleteLike",vo);
 	}
 	
-	public List<Map<String, String>> buyList(String id) {
-		return sst.selectList("product.buyList", id);
+	public List<Map<String, String>> buyList(Map<String, Object> map) {
+		return sst.selectList("product.buyList", map);
 	}
 	
 	public int delReview(String odm) {
