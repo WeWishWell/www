@@ -34,6 +34,18 @@
 	<br>
 	</c:forEach>
 	</div>
+	
+	 <!-- 검색결과 없는 경우 -->
+    	<div class="text-center" id="searchnone" style="display: none; margin-top: 5%">
+			<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%;">
+			<h4 style="margin-top: 35;">진행중인 이벤트가 없습니다.</h4>					
+		</div>
+        <script type="text/javascript">
+        	if('${data}'== '[]'){
+        		document.querySelector('#searchnone').style.display = "";
+        	}
+        </script>
+	
 	</div>
 
 </body>
