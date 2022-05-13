@@ -84,6 +84,10 @@
 	]]>
 	</select>
 	
+	<select id="orderCnt" resultType="_int">
+		<![CDATA[select count(prod_id) FROM basket WHERE user_id=#{id}]]>
+	</select>
+	
 	<select id="likeList" resultType="hashmap">
 		<![CDATA[SELECT p.id, p.name, p.price, p.category FROM prod_like pl, product p WHERE p.id = pl.prod_id and user_id=#{id};]]>
 	</select>

@@ -264,12 +264,17 @@ public class MainController {
 		@GetMapping("/purchase")
 		public ModelAndView purchase(MemberVO MemberVO) {
 			
-			Map<String, Object> orderInfo = ms.orderInfo(MemberVO);
+			ModelAndView mav = new ModelAndView();
+			String id = MemberVO.getId();
 			
+			if(ms.orderCnt(id) == 0) {
+				mav.setViewName("redirect:/basketList?id="+id);
+				return mav;
+			}
+			Map<String, Object> orderInfo = ms.orderInfo(MemberVO);
 			orderInfo.put("method", "장바구니구매");
 			
 			// service
-			ModelAndView mav = new ModelAndView();
 			mav.addObject("data", orderInfo);
 			mav.setViewName("purchase");
 

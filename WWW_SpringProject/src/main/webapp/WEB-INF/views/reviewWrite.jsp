@@ -217,7 +217,7 @@ h4 {
     </div>
 </div>
 <div class="card" style="text-align: center; margin: 10px auto; padding: 5px; width: 440px; height: 245px; font-family: SUIT-Medium;">
-	<form method="post" name="form">
+	<form method="post" name="form" onsubmit="return false">
 		<span style="font-size: 20px;">리뷰를 작성해주세요</span>
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="titleText">제목</span>

@@ -143,4 +143,9 @@ public class MainServiceImpl implements MainService{
 		return dao.basketChange(map);
 	}
 
+	@Override
+	public int orderCnt(String id) {
+		return dao.orderCnt(id);
+	}
+
 }

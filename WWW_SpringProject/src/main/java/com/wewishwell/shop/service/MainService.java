@@ -25,6 +25,7 @@ public interface MainService {
 	public List<Map<String, Object>> basketList(MemberVO MemberVO);
 	
 	public Map<String, Object> orderInfo(MemberVO memberVO);
+	public int orderCnt(String id);
 	
 	public int likeCheck(ProdLikeVO vo);
 	

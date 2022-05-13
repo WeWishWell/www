@@ -57,6 +57,10 @@ public class MainDao {
 		return sst.selectOne("product.orderInfo", memberVO);
 	}
 	
+	public int orderCnt(String id) {
+		return sst.selectOne("product.orderCnt", id);
+	}
+	
 	public int likeCheck(ProdLikeVO vo) {
 		return sst.selectOne("members.likeCheck", vo);
 	}
