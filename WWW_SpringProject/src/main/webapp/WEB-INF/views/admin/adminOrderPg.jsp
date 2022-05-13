@@ -14,8 +14,6 @@
     />
 
 <script>
-	console.log('${requestScope.searchkw}');
-	console.log('${searchkw.order_status}');
 	//이전 버튼 이벤트
 	function fn_prev(page, range, rangeSize) {
 		var page = ((range - 2) * rangeSize) + 1;
@@ -212,7 +210,7 @@
 <!-- 주문 리스트 -->
         <div class="row-lg-12 p-5 bg-white rounded shadow-sm mb-5">
            <div class="table-responsive">
-              <table class="table">
+              <table class="table" id="resulttbl" style="display: ;">
                  <thead class="thead-light">
                     <tr>
                        <th scope="col" style=" text-align: center;">주문번호</th>
@@ -225,7 +223,7 @@
                  <!-- 주문리스트 반복문 -->
                   <c:forEach var="b" items="${data}">
                     <tr>
-			<!-- 주문번호 -->
+						<!-- 주문번호 -->
                        <th scope="row" style=" text-align: center;">${b.order_num}</th>
                        <!-- 주문자 ID, 비회원(난수)일 경우 nonmember 치환 -->
                        <td style=" text-align: center;"><a href="orderTracking?order_num=${b.order_num}" id="orderId${b.order_num}">${b.user_id }</a></td>
@@ -254,13 +252,25 @@
                     <script type="text/javascript">
                      if('${b.user_id }'== "nonmember" || !isNaN('${b.user_id }')) {
                    		document.querySelector('#orderId${b.order_num}').innerText = "nonmember";
-			}
+					}
                     
                     	typeCheck('${b.order_num}', '${b.order_status}');
-		</script>
+					</script>
                     </c:forEach>
                  </tbody>
               </table>
+              <!-- 검색결과 없는 경우 -->
+	         	<div class="text-center" id="searchnone">
+					<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%; opacity: 0.6">
+					<h4 style="margin-top: 35; opacity: 0.6">검색결과가 없습니다.</h4>					
+				</div>
+              <script type="text/javascript">
+              	if('${data}'== '[]'){
+              		document.querySelector('#searchnone').style.display = "";
+              		document.querySelector('#resulttbl').style.display = "none";
+              	}
+              </script>
+              
               
               <!-- pagination{s} -->
 	<div id="paginationBox">

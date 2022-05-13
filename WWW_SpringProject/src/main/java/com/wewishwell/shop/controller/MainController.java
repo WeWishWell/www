@@ -128,27 +128,6 @@ public class MainController {
 		return mav;
 	}
 
-    // === 검색
-//	@GetMapping("productSearch")
-//	public ModelAndView getSearchList(@RequestParam Map<String, Object> map, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
-//		System.out.println(map);
-//		System.out.println(map.containsKey("keyword"));
-//		System.out.println(map.containsKey("category"));
-//		
-//		Pagination pagination = new Pagination();
-//		pagination.setListSize(8);
-//		int listCNT = pagserivce.getProductSearchCNT(map);
-//		pagination.pageInfo(page, range, listCNT);
-//		map.put("startList", pagination.getStartList());
-//		map.put("listSize", pagination.getListSize());
-//		
-//		ModelAndView mav = new ModelAndView();
-//		List<ProductVO> searchList = ms.getSearchList(map);
-//		mav.addObject("pagination", pagination);
-//		mav.addObject("data", searchList);
-//		mav.setViewName("productView");
-//		return mav;
-//	}
 
     // === 제품 상세 페이지
 	@GetMapping("/productDetail")
