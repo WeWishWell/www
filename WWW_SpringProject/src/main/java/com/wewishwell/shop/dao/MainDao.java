@@ -122,4 +122,8 @@ public class MainDao {
 		return sst.selectList("product.prodListForIndex");
 	}
 	
+	public int basketChange(Map<String, String> map) {
+		return sst.update("product.basketChange", map);
+	}
+	
 }

@@ -189,4 +189,8 @@
 		<![CDATA[SELECT name, id FROM product]]>
 	</select>
 	
+	<update id="basketChange">
+		<![CDATA[UPDATE basket SET cnt=#{cnt} WHERE user_id=#{user_id} AND prod_id=#{prod_id};]]>
+	</update>
+	
 </mapper>

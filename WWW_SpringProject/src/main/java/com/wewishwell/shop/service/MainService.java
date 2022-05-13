@@ -58,4 +58,6 @@ public interface MainService {
 	
 	public List<ProductVO> prodListForIndex();
 	
+	public int basketChange(Map<String, String> map);
+	
 }

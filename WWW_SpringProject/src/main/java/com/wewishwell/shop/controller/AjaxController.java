@@ -194,4 +194,23 @@ public class AjaxController {
 	public int updateStatus(@RequestParam Map<String, Object> updateStatus) {
 		return as.updateStatus(updateStatus);
 	}
+	
+	@GetMapping("basketChange")
+	public int basketChange(@RequestParam Map<String, String> map) {
+		int temp = Integer.parseInt(map.get("cnt"));
+		
+		if(map.get("change").equals("+")) {
+			temp++;
+		} else if(map.get("change").equals("-")){
+			temp--;
+		}
+		map.put("cnt", Integer.toString(temp));
+		
+		int check = ms.basketChange(map);
+		if(check == 1) {
+			return temp;
+		} else {
+			return -1;
+		}
+	}
 }

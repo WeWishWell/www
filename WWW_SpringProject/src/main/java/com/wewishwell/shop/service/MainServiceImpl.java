@@ -138,4 +138,9 @@ public class MainServiceImpl implements MainService{
 		return dao.prodListForIndex();
 	}
 
+	@Override
+	public int basketChange(Map<String, String> map) {
+		return dao.basketChange(map);
+	}
+
 }
