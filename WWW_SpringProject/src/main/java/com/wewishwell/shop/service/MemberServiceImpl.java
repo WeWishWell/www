@@ -1,6 +1,7 @@
 package com.wewishwell.shop.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,8 +51,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	//리뷰
 	@Override
-	public List<ReviewVO> review() {
-		return mdao.review();
+	public List<ReviewVO> review(Map<String, Object> map) {
+		return mdao.review(map);
 	}
 	@Override
 	public List<Integer> findReview(String id) {

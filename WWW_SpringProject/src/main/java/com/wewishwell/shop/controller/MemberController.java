@@ -1,5 +1,6 @@
 package com.wewishwell.shop.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -163,11 +164,16 @@ public class MemberController {
 	public ModelAndView review(@RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range) {
 		ModelAndView mav = new ModelAndView();
 		Pagination pgn = new Pagination();
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		pgn.setListSize(12);
 		pgn.pageInfo(page, range, rs.reviewCnt());
+		
+		map.put("startList", pgn.getStartList());
+		map.put("listSize", pgn.getListSize());
+		
 		mav.addObject("pagination", pgn);
-		mav.addObject("reviews", ms.review());
+		mav.addObject("reviews", ms.review(map));
 		mav.setViewName("review");
 		return mav;
 	}

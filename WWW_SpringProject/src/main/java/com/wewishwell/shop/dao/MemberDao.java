@@ -1,6 +1,7 @@
 package com.wewishwell.shop.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,8 @@ public class MemberDao {
 		return sst.selectOne("members.loginCheck", vo);
 	}
 	
-	public List<ReviewVO> review() {
-		return sst.selectList("members.review");
+	public List<ReviewVO> review(Map<String, Object> map) {
+		return sst.selectList("members.review", map);
 	}
 	
 	public List<Integer> findReview(String id) {

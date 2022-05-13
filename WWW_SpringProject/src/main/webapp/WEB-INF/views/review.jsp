@@ -22,7 +22,6 @@ List<ReviewVO> reviews = (List<ReviewVO>)request.getAttribute("reviews");
 	.outer-star::before, .inner-star::before {content: '\f005 \f005 \f005 \f005 \f005';font-family: 'Font Awesome 5 free';font-weight: 900;}
 </style>
 <script type="text/javascript">
-console.log('${requestScope.pagination}');
 //이전 버튼 이벤트
 function fn_prev(page, range, rangeSize) {
 	var page = ((range - 2) * rangeSize) + 1;
