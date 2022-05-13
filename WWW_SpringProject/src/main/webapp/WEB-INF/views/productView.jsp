@@ -290,7 +290,7 @@ ul li {
 		</div>
 		
 		 <!-- 검색결과 없는 경우 -->
-       	<div class="text-center" id="searchnone" style="margin-top: 40">
+       	<div class="text-center" id="searchnone" style="display: none; margin-top: 40">
 			<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%; opacity: 0.6">
 			<h4 style="margin-top: 35; opacity: 0.6">검색된 상품이 없습니다.</h4>					
 		</div>
