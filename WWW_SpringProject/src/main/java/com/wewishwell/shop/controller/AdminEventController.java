@@ -1,6 +1,6 @@
 package com.wewishwell.shop.controller;
 
-import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wewishwell.shop.common.Pagination;
 import com.wewishwell.shop.service.AdminEventService;
 import com.wewishwell.shop.vo.EventBoardVO;
 
@@ -33,12 +35,18 @@ public class AdminEventController {
 	}
 	
 	@GetMapping("/adminEvent")
-	public ModelAndView selectEventList(){
+	public ModelAndView selectEventList(@RequestParam Map<String, Object> map, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "1") int range){
 		ModelAndView mav = new ModelAndView();
 		
 		if(isThisAdmin()) {
-			List<EventBoardVO> selectEventList = aes.selectEventList();
-			mav.addObject("data", selectEventList);
+			Pagination pgn = new Pagination();
+			pgn.pageInfo(page, range, aes.eventBoardListCnt(map));
+			map.put("startList", pgn.getStartList());
+			map.put("listSize", pgn.getListSize());
+			
+			mav.addObject("search", map);
+			mav.addObject("pagination", pgn);
+			mav.addObject("data", aes.selectEventList(map));
 			mav.setViewName("admin/adminEvent");
 		}
 		return mav;
@@ -80,12 +88,11 @@ public class AdminEventController {
 	}
 	
 	@PostMapping("/adminEventUpdate")
-	public ModelAndView updateEventPost(EventBoardVO vo) {
-		
+	public ModelAndView updateEventPost(EventBoardVO vo, String getValue) {
 		int rs = aes.updateEvent(vo);
 		ModelAndView mav = new ModelAndView();
 		if(rs == 1) {
-			mav.setViewName("redirect:/adminEvent");
+			mav.setViewName("redirect:/adminEvent"+getValue);
 		} else {
 			mav.setViewName("redirect:/adminEventUpdate?seq=" + vo.getSeq());
 		}

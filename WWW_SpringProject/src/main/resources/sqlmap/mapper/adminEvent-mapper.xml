@@ -3,12 +3,23 @@
 
 <mapper namespace="adminE">
 
-	<select id="eventBoardList" resultType="EventBoardVO">  
-	<![CDATA[  
-		select * 
-		from event_board
-		order by seq desc  
-	]]>
+	<select id="eventBoardList" resultType="EventBoardVO">
+		<![CDATA[SELECT * FROM event_board WHERE 1=1]]>
+		<choose>
+			<when test="sel != null and sel == 1">AND category LIKE CONCAT('%',#{val},'%')</when>
+			<when test="sel == 2">AND title LIKE CONCAT('%',#{val},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+		<![CDATA[ORDER BY seq DESC LIMIT ${startList}, ${listSize}]]>
+	</select>
+	
+	<select id="eventBoardListCnt" resultType="_int">
+		<![CDATA[SELECT count(seq) FROM event_board WHERE 1=1]]>
+		<choose>
+			<when test="sel != null and sel == 1">AND category LIKE CONCAT('%',#{val},'%')</when>
+			<when test="sel == 2">AND title LIKE CONCAT('%',#{val},'%')</when>
+			<otherwise></otherwise>
+		</choose>
 	</select>
 	
 	<insert id="insertEvent" parameterType="EventBoardVO">

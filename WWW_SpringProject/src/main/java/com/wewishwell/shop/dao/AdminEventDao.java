@@ -15,8 +15,12 @@ public class AdminEventDao {
 	@Autowired
 	SqlSessionTemplate sst;
 	
-	public List<EventBoardVO> selectEventList(){
-		return sst.selectList("adminE.eventBoardList");	
+	public List<EventBoardVO> selectEventList(Map<String, Object> map){
+		return sst.selectList("adminE.eventBoardList", map);
+	}
+	
+	public int eventBoardListCnt(Map<String, Object> map) {
+		return sst.selectOne("adminE.eventBoardListCnt", map);
 	}
 	
 	public int insertEvent(EventBoardVO vo) {

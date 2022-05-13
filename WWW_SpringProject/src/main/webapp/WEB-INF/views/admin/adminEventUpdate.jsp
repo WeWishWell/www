@@ -48,7 +48,7 @@
 			<!-- 이벤트 수정 폼-->
 			<br>
 			<form name="form" action="adminEventUpdate" class="form-horizontal" method="post" enctype="multipart/form-data">
-			
+			<input type="hidden" name="getValue" value="">
 			<div class="form-group row" style="margin-top: 10px;">
 				<label class="col-sm-2 col-xs-12 col-form-label" for="category" style="padding-top: 0;">카테고리</label>
 				<div class="col-sm-10 col-xs-12">
@@ -98,7 +98,19 @@
 			<div class="form-group row" style="margin-top: 10px;">
 				<div class="col-sm-12" align="right">
 					<button type="button" class="btn btn-success" onclick="eventTextCheck();" role="button" title="수정"><i class="fa fa-save"></i>수정 완료</button>
-					<a class="btn btn-secondary" href="adminEvent" role="button" title="목록"><i class="fa fa-list-ul"></i>목록</a>
+					<a class="btn btn-secondary" href="#" onclick="backList();" role="button" title="목록"><i class="fa fa-list-ul"></i>목록</a>
+					<script type="text/javascript">
+						const a = window.location.href.split('adminEventUpdate?seq=${data.seq}')[1];
+						var val = '?'+a;
+						if(a == '' || a == 'undefined') {
+							val = '';
+						}
+						document.form.getValue.value = val;
+						
+						function backList() {
+							location.href = 'adminEvent'+val;
+						}
+					</script>
 				</div>
 			</div>
 	

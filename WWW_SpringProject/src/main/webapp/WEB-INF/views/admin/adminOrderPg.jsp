@@ -208,7 +208,7 @@
 </form>
 
 <!-- 주문 리스트 -->
-        <div class="row-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+        <div class="row-lg-12 p-5 bg-white rounded mb-5">
            <div class="table-responsive">
               <table class="table" id="resulttbl" style="display: ;">
                  <thead class="thead-light">

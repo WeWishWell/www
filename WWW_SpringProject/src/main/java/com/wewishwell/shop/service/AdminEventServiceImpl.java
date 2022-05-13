@@ -16,11 +16,6 @@ public class AdminEventServiceImpl implements AdminEventService {
 	AdminEventDao dao;
 	
 	@Override
-	public List<EventBoardVO> selectEventList() {
-		return dao.selectEventList();
-	}
-
-	@Override
 	public int insertEvent(EventBoardVO vo) {
 		return dao.insertEvent(vo);
 	}
@@ -49,6 +44,16 @@ public class AdminEventServiceImpl implements AdminEventService {
 	public int eventMaxNum() {
 		int i = dao.eventMaxNum();
 		return i+1;
+	}
+
+	@Override
+	public List<EventBoardVO> selectEventList(Map<String, Object> map) {
+		return dao.selectEventList(map);
+	}
+
+	@Override
+	public int eventBoardListCnt(Map<String, Object> map) {
+		return dao.eventBoardListCnt(map);
 	}
 
 }

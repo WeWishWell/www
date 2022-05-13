@@ -7,7 +7,8 @@ import com.wewishwell.shop.vo.EventBoardVO;
 
 public interface AdminEventService {
 	
-	public List<EventBoardVO> selectEventList();
+	public List<EventBoardVO> selectEventList(Map<String, Object> map);
+	public int eventBoardListCnt(Map<String, Object> map);
 
 	public int insertEvent(EventBoardVO vo);
 	
