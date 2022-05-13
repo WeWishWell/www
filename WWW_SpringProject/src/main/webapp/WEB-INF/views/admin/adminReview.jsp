@@ -198,7 +198,7 @@ function fn_next(page, range, rangeSize) {
                   </table>
                   <!-- pagination{s} -->
 					<div id="paginationBox">
-						<ul class="pagination">
+						<ul class="pagination justify-content-center">
 							<c:if test="${pagination.prev}">
 								<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
 							</c:if>
