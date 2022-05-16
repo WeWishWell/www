@@ -56,7 +56,7 @@ function minus(prodid, cnt) {
           <!-- Shopping cart table -->
           <div class="table-responsive">
             <table class="table">
-              <thead>
+              <thead id="resultheader" style="display: ">
                 <tr>
                   <th scope="col" class="border-0 bg-light">
                     <div class="p-2 px-3 text-uppercase">제품명</div>
@@ -110,12 +110,26 @@ function minus(prodid, cnt) {
                </c:forEach>
               </tbody>
             </table>
+            <!-- 검색결과 없는 경우 -->
+       	<div class="text-center" id="searchnone" style="display: none; margin-top: 3%">
+			<img src="resources/images/not_search.png" class="rounded" alt="" style="max-width: 10%;">
+			<h4 style="margin-top: 35;">장바구니에 담긴 상품이 없습니다.</h4>
+			<div class="d-grid gap-2 col-3 mx-auto">
+			  <button class="btn btn-primary" type="button" onclick="location.href='product' ">상품 구매하러가기</button>
+			</div>				
+		</div>
+        <script type="text/javascript">
+        	if('${data}'== '[]'){
+        		document.querySelector('#searchnone').style.display = "";
+        		document.querySelector('#resultheader').style.display = "none";
+        	}
+        </script>
           </div>
           <!-- End -->
         </div>
       </div>
 
-      <div class="row py-5 p-4 bg-white rounded shadow-sm">
+      <div class="row py-5 p-4 bg-white rounded shadow-sm" id="resultheadersum" style="display: ">
 <!--         <div class="col-lg-6"> -->
           <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">주문 합계</div>
           <div class="p-4">
@@ -131,6 +145,12 @@ function minus(prodid, cnt) {
           </div>
 <!--         </div> -->
       </div>
+      <script type="text/javascript">
+        	if('${data}'== '[]'){
+        		document.querySelector('#resultheadersum').style.display = "none";
+        	}
+        </script>
+       
 
     </div>
   </div>
